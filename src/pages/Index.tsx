@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
@@ -16,32 +17,41 @@ import {
   Car,
   MapPin
 } from "lucide-react";
-import heroImage from "@/assets/hero-minimal.jpg";
+import heroImage from "@/assets/hero-minimalist-cab.jpg";
+import BookingForm from "@/components/BookingForm";
 
 const testimonials = [
   {
     name: "Sarah Johnson",
     rating: 5,
-    text: "Excellent service! The driver was professional and the ride was smooth. Will definitely use again.",
-    location: "New York"
+    text: "Exceptional service from start to finish. The driver was punctual, professional, and the vehicle was immaculate. RideEasy has become my go-to transportation service for all business meetings.",
+    location: "New York",
+    position: "Marketing Director",
+    avatar: "SJ"
   },
   {
     name: "Michael Chen",
     rating: 5,
-    text: "Very reliable and affordable. The booking process was so easy and the car arrived exactly on time.",
-    location: "Los Angeles"
+    text: "Outstanding reliability and affordability. The booking process is seamless, and I've never experienced any delays. Their customer service team is incredibly responsive and helpful.",
+    location: "Los Angeles", 
+    position: "Software Engineer",
+    avatar: "MC"
   },
   {
     name: "Emily Davis",
     rating: 5,
-    text: "Safe and comfortable rides every time. The drivers are courteous and the vehicles are well-maintained.",
-    location: "Chicago"
+    text: "Safety and comfort are their top priorities. Every driver has been courteous and knowledgeable about the city. The vehicles are well-maintained and equipped with modern amenities.",
+    location: "Chicago",
+    position: "Healthcare Professional",
+    avatar: "ED"
   },
   {
     name: "David Wilson",
     rating: 5,
-    text: "24/7 availability is a game-changer. Perfect for early morning flights and late night returns.",
-    location: "Miami"
+    text: "The 24/7 availability is truly a game-changer for frequent travelers like myself. Perfect for early morning flights and late-night returns. Consistently excellent service quality.",
+    location: "Miami",
+    position: "Business Consultant",
+    avatar: "DW"
   }
 ];
 
@@ -64,37 +74,114 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <Navigation />
+    <>
+      <Helmet>
+        <title>RideEasy - Premium Cab Booking Service | Book Your Ride 24/7</title>
+        <meta 
+          name="description" 
+          content="Book premium cab services with RideEasy. Safe, reliable, and affordable rides 24/7. Professional drivers, modern vehicles, competitive rates. Book now!" 
+        />
+        <meta 
+          name="keywords" 
+          content="cab booking, taxi service, ride booking, airport transfer, city transportation, professional drivers, 24/7 cab service" 
+        />
+        <link rel="canonical" href="https://rideeasy.com/" />
+        <meta property="og:title" content="RideEasy - Premium Cab Booking Service" />
+        <meta property="og:description" content="Safe, reliable, and affordable cab rides at your fingertips. Book premium transportation with professional drivers 24/7." />
+        <meta property="og:url" content="https://rideeasy.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://rideeasy.com/hero-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="RideEasy - Premium Cab Booking Service" />
+        <meta name="twitter:description" content="Safe, reliable, and affordable cab rides. Book now!" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "RideEasy",
+            "description": "Premium cab booking service providing safe, reliable transportation 24/7",
+            "url": "https://rideeasy.com",
+            "logo": "https://rideeasy.com/logo.png",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+1-555-123-4567",
+              "contactType": "customer service",
+              "availableLanguage": "English"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "123 Main Street",
+              "addressLocality": "Downtown",
+              "addressRegion": "City",
+              "postalCode": "12345"
+            },
+            "service": {
+              "@type": "Service",
+              "name": "Cab Booking Service",
+              "description": "24/7 cab booking with professional drivers",
+              "provider": {
+                "@type": "Organization",
+                "name": "RideEasy"
+              }
+            }
+          })}
+        </script>
+      </Helmet>
+      
+      <div className="min-h-screen">
+        <Navigation />
       
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        >
-          <div className="absolute inset-0 bg-black/60"></div>
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/30">
+        <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Content */}
+          <div className="text-center lg:text-left">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              Book Your Cab <span className="text-primary">Anytime</span>, Anywhere
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-muted-foreground max-w-2xl">
+              Safe, reliable, and affordable rides at your fingertips. Experience premium transportation with professional drivers.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Button asChild size="lg" className="hero-button text-lg px-8 py-4">
+                <Link to="/booking">Book Now</Link>
+              </Button>
+              <Button 
+                asChild 
+                size="lg" 
+                variant="outline" 
+                className="text-lg px-8 py-4"
+              >
+                <Link to="/services">Our Services</Link>
+              </Button>
+            </div>
+          </div>
+          
+          {/* Minimalist Cab Illustration */}
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative">
+              <img 
+                src={heroImage} 
+                alt="Modern taxi cab illustration" 
+                className="w-full max-w-md lg:max-w-lg h-auto animate-fade-in"
+              />
+              <div className="absolute -inset-4 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+            </div>
+          </div>
         </div>
-        
-        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Book Your Cab <span className="text-primary">Anytime</span>, Anywhere
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto">
-            Safe, reliable, and affordable rides at your fingertips. Experience premium transportation with professional drivers.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="hero-button text-lg px-8 py-4">
-              <Link to="/booking">Book Now</Link>
-            </Button>
-            <Button 
-              asChild 
-              size="lg" 
-              variant="outline" 
-              className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-black"
-            >
-              <Link to="/services">Our Services</Link>
-            </Button>
+      </section>
+
+      {/* Quick Booking Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Quick Booking</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Book your ride in minutes with our simple booking form
+            </p>
+          </div>
+          <div className="max-w-2xl mx-auto">
+            <BookingForm compact />
           </div>
         </div>
       </section>
@@ -174,31 +261,44 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">What Our Customers Say</h2>
             <p className="text-xl text-muted-foreground">
-              Real experiences from real customers
+              Real experiences from satisfied customers across the nation
             </p>
           </div>
 
-          <div className="relative max-w-4xl mx-auto">
-            <Card className="p-8 text-center">
+          <div className="relative max-w-5xl mx-auto">
+            <Card className="p-12 text-center shadow-lg border-0 bg-white">
               <CardContent className="pt-6">
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-center mb-6">
                   {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} className="w-6 h-6 text-primary fill-current" />
+                    <Star key={i} className="w-8 h-8 text-primary fill-current" />
                   ))}
                 </div>
-                <blockquote className="text-xl mb-6 text-muted-foreground italic">
+                
+                {/* Avatar */}
+                <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-2xl font-bold text-primary">
+                    {testimonials[currentTestimonial].avatar}
+                  </span>
+                </div>
+                
+                <blockquote className="text-2xl mb-8 text-foreground leading-relaxed max-w-3xl mx-auto">
                   "{testimonials[currentTestimonial].text}"
                 </blockquote>
-                <div>
-                  <div className="font-semibold text-lg">
+                
+                <div className="border-t border-gray-200 pt-6">
+                  <div className="font-bold text-xl mb-1">
                     {testimonials[currentTestimonial].name}
                   </div>
-                  <div className="text-muted-foreground">
+                  <div className="text-primary font-medium mb-1">
+                    {testimonials[currentTestimonial].position}
+                  </div>
+                  <div className="text-muted-foreground flex items-center justify-center gap-1">
+                    <MapPin className="w-4 h-4" />
                     {testimonials[currentTestimonial].location}
                   </div>
                 </div>
@@ -207,27 +307,29 @@ const Index = () => {
 
             <button
               onClick={prevTestimonial}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all hover:scale-110 border"
               aria-label="Previous testimonial"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-6 h-6 text-foreground" />
             </button>
             
             <button
               onClick={nextTestimonial}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all hover:scale-110 border"
               aria-label="Next testimonial"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-6 h-6 text-foreground" />
             </button>
 
-            <div className="flex justify-center mt-6 space-x-2">
+            <div className="flex justify-center mt-8 space-x-3">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-colors ${
-                    index === currentTestimonial ? "bg-primary" : "bg-gray-300"
+                  className={`w-4 h-4 rounded-full transition-all ${
+                    index === currentTestimonial 
+                      ? "bg-primary scale-125" 
+                      : "bg-gray-300 hover:bg-gray-400"
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
@@ -250,8 +352,9 @@ const Index = () => {
         </div>
       </section>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

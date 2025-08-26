@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -8,62 +11,153 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, MessageCircle, Car } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+
+const contactFormSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().optional(),
+  subject: z.string().optional(),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
+
+type ContactFormData = z.infer<typeof contactFormSchema>;
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: ""
-  });
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!formData.name || !formData.email || !formData.message) {
-      toast({
-        title: "Missing Information",
-        description: "Please fill in all required fields.",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    toast({
-      title: "Message Sent Successfully!",
-      description: "We'll get back to you within 24 hours.",
-    });
-
-    // Reset form
-    setFormData({
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
       name: "",
       email: "",
       phone: "",
       subject: "",
-      message: ""
-    });
+      message: "",
+    },
+  });
+
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+    try {
+      // Submit to Supabase
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([{
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          subject: data.subject,
+          message: data.message,
+        }]);
+
+      if (error) throw error;
+
+      // Send email notification
+      const emailResponse = await fetch('https://iuheutrsjkybzadpcvud.supabase.co/functions/v1/send-contact-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1aGV1dHJzamt5YnphZHBjdnVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyMDY3OTEsImV4cCI6MjA3MTc4Mjc5MX0.0cHxipBHKpfiuSNNuTQDdMpSL9QRJ1Rf2La1mLDvHRA`,
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          subject: data.subject,
+          message: data.message,
+          type: 'contact',
+        }),
+      });
+
+      if (!emailResponse.ok) {
+        console.warn('Email notification failed, but contact was saved');
+      }
+
+      setShowSuccessDialog(true);
+      form.reset();
+      
+      toast({
+        title: "Message Sent Successfully!",
+        description: "Our team will contact you shortly.",
+      });
+    } catch (error: any) {
+      console.error('Contact submission error:', error);
+      toast({
+        title: "Submission Failed",
+        description: "Please try again or call us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div className="min-h-screen">
-      <Navigation />
+    <>
+      {/* SEO Meta Tags */}
+      <head>
+        <title>Contact RideEasy - 24/7 Cab Booking Service | Get Support</title>
+        <meta name="description" content="Contact RideEasy for cab booking support, questions, or feedback. Available 24/7 with professional customer service. Call +1 (555) 123-4567 or email us." />
+        <meta name="keywords" content="contact rideeasy, cab booking support, taxi service contact, customer service, ride booking help" />
+        <link rel="canonical" href="https://rideeasy.com/contact" />
+        <meta property="og:title" content="Contact RideEasy - 24/7 Cab Booking Service" />
+        <meta property="og:description" content="Get in touch with RideEasy for any questions about our cab booking service. Professional support available 24/7." />
+        <meta property="og:url" content="https://rideeasy.com/contact" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact RideEasy",
+            "description": "Contact page for RideEasy cab booking service",
+            "provider": {
+              "@type": "Organization",
+              "name": "RideEasy",
+              "telephone": "+1-555-123-4567",
+              "email": "info@rideeasy.com",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "123 Main Street",
+                "addressLocality": "Downtown",
+                "addressRegion": "City",
+                "postalCode": "12345"
+              }
+            }
+          })}
+        </script>
+      </head>
       
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 gradient-hero text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">Contact Us</h1>
-          <p className="text-xl max-w-3xl mx-auto">
-            Get in touch with our team for any questions, feedback, or support. 
-            We're here to help you 24/7.
-          </p>
-        </div>
-      </section>
+      <div className="min-h-screen">
+        <Navigation />
+        
+        {/* Hero Section */}
+        <header className="pt-24 pb-16 gradient-hero text-white">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-5xl font-bold mb-6">Contact RideEasy</h1>
+            <p className="text-xl max-w-3xl mx-auto">
+              Get in touch with our team for any questions, feedback, or support. 
+              We're here to help you 24/7 with professional cab booking services.
+            </p>
+          </div>
+        </header>
 
       {/* Contact Information & Form */}
       <section className="py-20 bg-background">
@@ -158,69 +252,94 @@ const Contact = () => {
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="name">Full Name *</Label>
-                        <Input
-                          id="name"
-                          placeholder="Your full name"
-                          value={formData.name}
-                          onChange={(e) => handleInputChange("name", e.target.value)}
-                          required
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="name"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Full Name</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Your full name" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        
+                        <FormField
+                          control={form.control}
+                          name="phone"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Phone Number</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Your phone number" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
                         />
                       </div>
-                      
-                      <div className="space-y-2">
-                        <Label htmlFor="phone">Phone Number</Label>
-                        <Input
-                          id="phone"
-                          type="tel"
-                          placeholder="Your phone number"
-                          value={formData.phone}
-                          onChange={(e) => handleInputChange("phone", e.target.value)}
-                        />
-                      </div>
-                    </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email Address *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="your.email@example.com"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange("email", e.target.value)}
-                        required
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email Address</FormLabel>
+                            <FormControl>
+                              <Input placeholder="your.email@example.com" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
-                    </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="subject">Subject</Label>
-                      <Input
-                        id="subject"
-                        placeholder="What's this about?"
-                        value={formData.subject}
-                        onChange={(e) => handleInputChange("subject", e.target.value)}
+                      <FormField
+                        control={form.control}
+                        name="subject"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Subject</FormLabel>
+                            <FormControl>
+                              <Input placeholder="What's this about?" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
-                    </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message *</Label>
-                      <Textarea
-                        id="message"
-                        placeholder="Tell us how we can help you..."
-                        value={formData.message}
-                        onChange={(e) => handleInputChange("message", e.target.value)}
-                        rows={5}
-                        required
+                      <FormField
+                        control={form.control}
+                        name="message"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Message</FormLabel>
+                            <FormControl>
+                              <Textarea 
+                                placeholder="Tell us how we can help you..."
+                                rows={5}
+                                {...field} 
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
-                    </div>
 
-                    <Button type="submit" size="lg" className="hero-button w-full">
-                      Send Message
-                    </Button>
-                  </form>
+                      <Button 
+                        type="submit" 
+                        size="lg" 
+                        className="hero-button w-full"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? "Sending..." : "Send Message"}
+                      </Button>
+                    </form>
+                  </Form>
                 </CardContent>
               </Card>
             </div>
@@ -303,8 +422,20 @@ const Contact = () => {
         </div>
       </section>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+
+      <Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Message Sent Successfully!</DialogTitle>
+            <DialogDescription>
+              Thank you for contacting RideEasy! Our team will get back to you shortly. We appreciate your interest in our cab booking services.
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 
