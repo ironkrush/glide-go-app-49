@@ -14,7 +14,102 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      booking_requests: {
+        Row: {
+          car_type: string | null
+          created_at: string
+          destination: string
+          email: string
+          estimated_fare: number | null
+          id: string
+          name: string
+          passenger_count: number | null
+          phone: string
+          pickup_date: string
+          pickup_location: string
+          pickup_time: string
+          special_requests: string | null
+          status: string | null
+          updated_at: string
+        }
+        Insert: {
+          car_type?: string | null
+          created_at?: string
+          destination: string
+          email: string
+          estimated_fare?: number | null
+          id?: string
+          name: string
+          passenger_count?: number | null
+          phone: string
+          pickup_date: string
+          pickup_location: string
+          pickup_time: string
+          special_requests?: string | null
+          status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          car_type?: string | null
+          created_at?: string
+          destination?: string
+          email?: string
+          estimated_fare?: number | null
+          id?: string
+          name?: string
+          passenger_count?: number | null
+          phone?: string
+          pickup_date?: string
+          pickup_location?: string
+          pickup_time?: string
+          special_requests?: string | null
+          status?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      contact_submissions: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          ip_address: unknown | null
+          message: string
+          name: string
+          phone: string | null
+          processed_at: string | null
+          status: string | null
+          subject: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          ip_address?: unknown | null
+          message: string
+          name: string
+          phone?: string | null
+          processed_at?: string | null
+          status?: string | null
+          subject?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          ip_address?: unknown | null
+          message?: string
+          name?: string
+          phone?: string | null
+          processed_at?: string | null
+          status?: string | null
+          subject?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
