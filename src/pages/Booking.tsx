@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calendar, Clock, MapPin, Phone, User, Car } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { sendBookingEmail } from "@/services/emailService";
 
 const Booking = () => {
   const { toast } = useToast();
@@ -43,33 +44,22 @@ const Booking = () => {
     }
 
     try {
-      // Send email notification
-      const emailResponse = await fetch('https://iuheutrsjkybzadpcvud.supabase.co/functions/v1/send-contact-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1aGV1dHJzamt5YnphZHBjdnVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyMDY3OTEsImV4cCI6MjA3MTc4Mjc5MX0.0cHxipBHKpfiuSNNuTQDdMpSL9QRJ1Rf2La1mLDvHRA`,
-        },
-        body: JSON.stringify({
-          name: formData.passengerName,
-          email: formData.passengerEmail || 'no-email@provided.com',
-          phone: formData.passengerPhone,
-          message: `Booking request from ${formData.passengerName}`,
-          type: 'booking',
-          bookingDetails: {
-            pickupLocation: formData.pickupLocation,
-            destination: formData.dropLocation,
-            pickupDate: formData.date,
-            pickupTime: formData.time,
-            passengerCount: 1,
-            carType: formData.cabType,
-            specialRequests: formData.specialRequests,
-          },
-        }),
+      // Send email using the new simple email service
+      const emailSent = await sendBookingEmail({
+        name: formData.passengerName,
+        email: formData.passengerEmail || 'no-email@provided.com',
+        phone: formData.passengerPhone,
+        pickupLocation: formData.pickupLocation,
+        destination: formData.dropLocation,
+        pickupDate: formData.date,
+        pickupTime: formData.time,
+        passengerCount: '1',
+        carType: formData.cabType,
+        specialRequests: formData.specialRequests,
       });
 
-      if (!emailResponse.ok) {
-        console.warn('Email notification failed');
+      if (!emailSent) {
+        throw new Error('Failed to send email');
       }
 
       // Show success message

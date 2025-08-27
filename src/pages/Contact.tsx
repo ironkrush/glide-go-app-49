@@ -11,7 +11,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, MessageCircle, Car } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { sendContactEmail } from "@/services/emailService";
+import { Helmet } from "react-helmet-async";
 import {
   Form,
   FormControl,
@@ -57,43 +58,22 @@ const Contact = () => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     try {
-      // Submit to Supabase
-      const { error } = await supabase
-        .from('contact_submissions')
-        .insert([{
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          subject: data.subject,
-          message: data.message,
-        }]);
-
-      if (error) throw error;
-
-      // Send email notification
-      const emailResponse = await fetch('https://iuheutrsjkybzadpcvud.supabase.co/functions/v1/send-contact-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1aGV1dHJzamt5YnphZHBjdnVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyMDY3OTEsImV4cCI6MjA3MTc4Mjc5MX0.0cHxipBHKpfiuSNNuTQDdMpSL9QRJ1Rf2La1mLDvHRA`,
-        },
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          subject: data.subject,
-          message: data.message,
-          type: 'contact',
-        }),
+      // Send email using the new simple email service
+      const emailSent = await sendContactEmail({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        subject: data.subject,
+        message: data.message,
       });
 
-      if (!emailResponse.ok) {
-        console.warn('Email notification failed, but contact was saved');
+      if (!emailSent) {
+        throw new Error('Failed to send email');
       }
 
       setShowSuccessDialog(true);
       form.reset();
-      
+
       toast({
         title: "Message Sent Successfully!",
         description: "Our team will contact you shortly.",
@@ -113,10 +93,10 @@ const Contact = () => {
   return (
     <>
       {/* SEO Meta Tags */}
-      <head>
+      <Helmet>
         <title>Contact Lankadhish - 24/7 Cab Booking Service | Get Support</title>
         <meta name="description" content="Contact Lankadhish for cab booking support, questions, or feedback. Available 24/7 with professional customer service. Call +1 (555) 123-4567 or email us." />
-        <meta name="keywords" content="contact Lankadhish, cab booking support Sri Lanka, taxi service contact, customer service, ride booking help" />
+        <meta name="keywords" content="contact Lankadhish, cab booking support India, taxi service contact, customer service, ride booking help" />
         <link rel="canonical" href="https://lankadhish.com/contact" />
         <meta property="og:title" content="Contact Lankadhish - 24/7 Cab Booking Service" />
         <meta property="og:description" content="Get in touch with Lankadhish for any questions about our cab booking service. Professional support available 24/7." />
@@ -143,7 +123,7 @@ const Contact = () => {
             }
           })}
         </script>
-      </head>
+      </Helmet>
       
       <div className="min-h-screen">
         <Navigation />
@@ -151,7 +131,7 @@ const Contact = () => {
         {/* Hero Section */}
         <header className="pt-24 pb-16 gradient-hero text-white">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-5xl md:text-5xl mobile-heading-lg font-bold mb-6">Contact RideEasy</h1>
+            <h1 className="text-5xl md:text-5xl mobile-heading-lg font-bold mb-6">Contact Lankadhish</h1>
             <p className="text-xl md:text-xl mobile-text-lg max-w-3xl mx-auto">
               Get in touch with our team for any questions, feedback, or support. 
               We're here to help you 24/7 with professional cab booking services.

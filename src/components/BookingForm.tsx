@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CalendarIcon, Clock, Users, Car, MapPin, Phone, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { sendBookingEmail } from "@/services/emailService";
 import {
   Form,
   FormControl,
@@ -71,56 +71,27 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
   const onSubmit = async (data: BookingFormData) => {
     setIsSubmitting(true);
     try {
-      // Submit to Supabase
-      const { error } = await supabase
-        .from('booking_requests')
-        .insert([{
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          pickup_location: data.pickupLocation,
-          destination: data.destination,
-          pickup_date: data.pickupDate,
-          pickup_time: data.pickupTime,
-          passenger_count: parseInt(data.passengerCount),
-          car_type: data.carType,
-          special_requests: data.specialRequests,
-        }]);
-
-      if (error) throw error;
-
-      // Send email notification
-      const emailResponse = await fetch('https://iuheutrsjkybzadpcvud.supabase.co/functions/v1/send-contact-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1aGV1dHJzamt5YnphZHBjdnVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyMDY3OTEsImV4cCI6MjA3MTc4Mjc5MX0.0cHxipBHKpfiuSNNuTQDdMpSL9QRJ1Rf2La1mLDvHRA`,
-        },
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          message: `Booking request from ${data.name}`,
-          type: 'booking',
-          bookingDetails: {
-            pickupLocation: data.pickupLocation,
-            destination: data.destination,
-            pickupDate: data.pickupDate,
-            pickupTime: data.pickupTime,
-            passengerCount: parseInt(data.passengerCount),
-            carType: data.carType,
-            specialRequests: data.specialRequests,
-          },
-        }),
+      // Send email using the new simple email service
+      const emailSent = await sendBookingEmail({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        pickupLocation: data.pickupLocation,
+        destination: data.destination,
+        pickupDate: data.pickupDate,
+        pickupTime: data.pickupTime,
+        passengerCount: data.passengerCount,
+        carType: data.carType,
+        specialRequests: data.specialRequests,
       });
 
-      if (!emailResponse.ok) {
-        console.warn('Email notification failed, but booking was saved');
+      if (!emailSent) {
+        throw new Error('Failed to send email');
       }
 
       setShowSuccessDialog(true);
       form.reset();
-      
+
       toast({
         title: "Booking Request Submitted!",
         description: "Our team will contact you shortly to confirm your booking.",
