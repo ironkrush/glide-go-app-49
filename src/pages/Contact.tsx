@@ -151,8 +151,8 @@ const Contact = () => {
         {/* Hero Section */}
         <header className="pt-24 pb-16 gradient-hero text-white">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-5xl font-bold mb-6">Contact RideEasy</h1>
-            <p className="text-xl max-w-3xl mx-auto">
+            <h1 className="text-5xl md:text-5xl mobile-heading-lg font-bold mb-6">Contact RideEasy</h1>
+            <p className="text-xl md:text-xl mobile-text-lg max-w-3xl mx-auto">
               Get in touch with our team for any questions, feedback, or support. 
               We're here to help you 24/7 with professional cab booking services.
             </p>
@@ -162,78 +162,78 @@ const Contact = () => {
       {/* Contact Information & Form */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 mobile-grid gap-12">
             {/* Contact Information */}
             <div>
-              <h2 className="text-3xl font-bold mb-8">Get in Touch</h2>
+              <h2 className="text-3xl md:text-3xl mobile-heading-md font-bold mb-8">Get in Touch</h2>
               <div className="space-y-6">
-                <Card className="p-6">
+                <Card className="p-6 mobile-card-padding">
                   <CardContent className="pt-6">
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                         <Phone className="w-6 h-6 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-lg mb-2">Phone Support</h3>
-                        <p className="text-muted-foreground mb-2">Call us for immediate assistance</p>
+                        <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">Phone Support</h3>
+                        <p className="text-muted-foreground mobile-text-base mb-2">Call us for immediate assistance</p>
                         <div className="space-y-1">
-                          <p className="font-medium">+1 (555) 123-4567</p>
-                          <p className="text-sm text-muted-foreground">Available 24/7</p>
+                          <p className="font-medium mobile-text-base">+91 98765 43210</p>
+                          <p className="text-sm mobile-text-base text-muted-foreground">Available 24/7</p>
                         </div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card className="p-6">
+                <Card className="p-6 mobile-card-padding">
                   <CardContent className="pt-6">
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                         <Mail className="w-6 h-6 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-lg mb-2">Email Support</h3>
-                        <p className="text-muted-foreground mb-2">Send us your queries anytime</p>
+                        <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">Email Support</h3>
+                        <p className="text-muted-foreground mobile-text-base mb-2">Send us your queries anytime</p>
                         <div className="space-y-1">
-                          <p className="font-medium">info@rideeasy.com</p>
-                          <p className="text-sm text-muted-foreground">Response within 2 hours</p>
+                          <p className="font-medium mobile-text-base">info@rideeasy.com</p>
+                          <p className="text-sm mobile-text-base text-muted-foreground">Response within 2 hours</p>
                         </div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card className="p-6">
+                <Card className="p-6 mobile-card-padding">
                   <CardContent className="pt-6">
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                         <MapPin className="w-6 h-6 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-lg mb-2">Office Address</h3>
-                        <p className="text-muted-foreground mb-2">Visit our headquarters</p>
+                        <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">Office Address</h3>
+                        <p className="text-muted-foreground mobile-text-base mb-2">Visit our headquarters</p>
                         <div className="space-y-1">
-                          <p className="font-medium">123 Main Street</p>
-                          <p className="font-medium">Downtown, City 12345</p>
-                          <p className="text-sm text-muted-foreground">Mon-Fri: 9AM - 6PM</p>
+                          <p className="font-medium mobile-text-base">123 Main Street</p>
+                          <p className="font-medium mobile-text-base">Downtown, Mumbai 400001</p>
+                          <p className="text-sm mobile-text-base text-muted-foreground">Mon-Fri: 9AM - 6PM</p>
                         </div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card className="p-6">
+                <Card className="p-6 mobile-card-padding">
                   <CardContent className="pt-6">
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                         <MessageCircle className="w-6 h-6 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-lg mb-2">WhatsApp</h3>
-                        <p className="text-muted-foreground mb-2">Quick support via WhatsApp</p>
+                        <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">WhatsApp</h3>
+                        <p className="text-muted-foreground mobile-text-base mb-2">Quick support via WhatsApp</p>
                         <div className="space-y-1">
-                          <p className="font-medium">+1 (555) 123-4567</p>
-                          <p className="text-sm text-muted-foreground">Instant messaging support</p>
+                          <p className="font-medium mobile-text-base">+91 98765 43210</p>
+                          <p className="text-sm mobile-text-base text-muted-foreground">Instant messaging support</p>
                         </div>
                       </div>
                     </div>
@@ -245,13 +245,13 @@ const Contact = () => {
             {/* Contact Form */}
             <div>
               <Card className="shadow-lg">
-                <CardHeader>
-                  <CardTitle className="text-2xl">Send us a Message</CardTitle>
-                  <p className="text-muted-foreground">
+                <CardHeader className="mobile-card-padding">
+                  <CardTitle className="text-2xl md:text-2xl mobile-heading-md">Send us a Message</CardTitle>
+                  <p className="text-muted-foreground mobile-text-base">
                     Fill out the form below and we'll get back to you shortly
                   </p>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="mobile-card-padding">
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -333,7 +333,7 @@ const Contact = () => {
                       <Button 
                         type="submit" 
                         size="lg" 
-                        className="hero-button w-full"
+                        className="hero-button w-full mobile-button"
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? "Sending..." : "Send Message"}
@@ -351,8 +351,8 @@ const Contact = () => {
       <section className="py-20 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Find Our Office</h2>
-            <p className="text-xl text-muted-foreground">
+            <h2 className="text-3xl md:text-3xl mobile-heading-md font-bold mb-4">Find Our Office</h2>
+            <p className="text-xl md:text-xl mobile-text-base text-muted-foreground">
               Located in the heart of the city for your convenience
             </p>
           </div>
@@ -378,16 +378,16 @@ const Contact = () => {
       <section className="py-16 dark-surface text-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Business Hours</h2>
-            <p className="text-soft">Our service is available 24/7, but our office hours are:</p>
+            <h2 className="text-3xl md:text-3xl mobile-heading-md font-bold mb-4">Business Hours</h2>
+            <p className="text-soft mobile-text-base">Our service is available 24/7, but our office hours are:</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <Card className="dark-surface-elevated border-gray-700 p-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 mobile-grid gap-8 text-center">
+            <Card className="dark-surface-elevated border-gray-700 p-6 mobile-card-padding">
               <CardContent className="pt-6">
                 <Clock className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2 text-white">Office Hours</h3>
-                <div className="text-soft space-y-1">
+                <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-2 text-white">Office Hours</h3>
+                <div className="text-soft mobile-text-base space-y-1">
                   <p>Monday - Friday: 9AM - 6PM</p>
                   <p>Saturday: 10AM - 4PM</p>
                   <p>Sunday: Closed</p>
@@ -395,11 +395,11 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            <Card className="dark-surface-elevated border-gray-700 p-6">
+            <Card className="dark-surface-elevated border-gray-700 p-6 mobile-card-padding">
               <CardContent className="pt-6">
                 <Phone className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2 text-white">Phone Support</h3>
-                <div className="text-soft space-y-1">
+                <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-2 text-white">Phone Support</h3>
+                <div className="text-soft mobile-text-base space-y-1">
                   <p>Available 24/7</p>
                   <p>Emergency Support</p>
                   <p>Instant Assistance</p>
@@ -407,11 +407,11 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            <Card className="dark-surface-elevated border-gray-700 p-6">
+            <Card className="dark-surface-elevated border-gray-700 p-6 mobile-card-padding">
               <CardContent className="pt-6">
                 <Car className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2 text-white">Ride Service</h3>
-                <div className="text-soft space-y-1">
+                <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-2 text-white">Ride Service</h3>
+                <div className="text-soft mobile-text-base space-y-1">
                   <p>24/7 Availability</p>
                   <p>All Days of Week</p>
                   <p>No Holiday Breaks</p>

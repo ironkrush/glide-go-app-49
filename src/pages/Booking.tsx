@@ -69,8 +69,8 @@ const Booking = () => {
       {/* Hero Section */}
       <section className="pt-24 pb-16 gradient-hero text-white">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">Book Your Ride</h1>
-          <p className="text-xl max-w-3xl mx-auto">
+          <h1 className="text-5xl md:text-5xl mobile-heading-lg font-bold mb-6">Book Your Ride</h1>
+          <p className="text-xl md:text-xl mobile-text-lg max-w-3xl mx-auto">
             Fill out the form below and our team will contact you shortly to confirm your booking.
           </p>
         </div>
@@ -81,13 +81,13 @@ const Booking = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Card className="shadow-lg">
-              <CardHeader className="text-center">
-                <CardTitle className="text-3xl font-bold">Book Your Cab</CardTitle>
-                <p className="text-muted-foreground">
+              <CardHeader className="text-center mobile-card-padding">
+                <CardTitle className="text-3xl md:text-3xl mobile-heading-md font-bold">Book Your Cab</CardTitle>
+                <p className="text-muted-foreground mobile-text-base">
                   Complete the form below and we'll get back to you within 15 minutes
                 </p>
               </CardHeader>
-              <CardContent className="p-8">
+              <CardContent className="p-8 mobile-card-padding">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Trip Details */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -153,7 +153,7 @@ const Booking = () => {
 
                   {/* Passenger Details */}
                   <div className="border-t pt-6">
-                    <h3 className="text-xl font-semibold mb-4">Passenger Information</h3>
+                    <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-4">Passenger Information</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="name" className="flex items-center space-x-2">
@@ -200,7 +200,7 @@ const Booking = () => {
 
                   {/* Vehicle Selection */}
                   <div className="border-t pt-6">
-                    <h3 className="text-xl font-semibold mb-4">Vehicle Preference</h3>
+                    <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-4">Vehicle Preference</h3>
                     <div className="space-y-2">
                       <Label htmlFor="cabType" className="flex items-center space-x-2">
                         <Car className="w-4 h-4 text-primary" />
@@ -211,10 +211,10 @@ const Booking = () => {
                           <SelectValue placeholder="Select vehicle type" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="mini">Mini - $0.50/km (4 passengers)</SelectItem>
-                          <SelectItem value="sedan">Sedan - $0.75/km (4 passengers)</SelectItem>
-                          <SelectItem value="suv">SUV - $1.25/km (6-7 passengers)</SelectItem>
-                          <SelectItem value="luxury">Luxury - $2.00/km (4 passengers)</SelectItem>
+                          <SelectItem value="mini">Mini - ₹25/km (4 passengers)</SelectItem>
+                          <SelectItem value="sedan">Sedan - ₹35/km (4 passengers)</SelectItem>
+                          <SelectItem value="suv">SUV - ₹55/km (6-7 passengers)</SelectItem>
+                          <SelectItem value="luxury">Luxury - ₹85/km (4 passengers)</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -235,10 +235,10 @@ const Booking = () => {
 
                   {/* Submit Button */}
                   <div className="pt-6">
-                    <Button type="submit" size="lg" className="hero-button w-full text-lg py-4">
+                    <Button type="submit" size="lg" className="hero-button w-full text-lg md:text-lg mobile-button py-4">
                       Submit Booking Request
                     </Button>
-                    <p className="text-sm text-muted-foreground text-center mt-4">
+                    <p className="text-sm mobile-text-base text-muted-foreground text-center mt-4">
                       Our team will contact you within 15 minutes to confirm your booking details.
                     </p>
                   </div>
@@ -252,15 +252,15 @@ const Booking = () => {
       {/* Contact Info */}
       <section className="py-16 dark-surface text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Need Immediate Assistance?</h2>
-          <p className="text-soft mb-6">Call us directly for urgent bookings or special requirements</p>
+          <h2 className="text-3xl md:text-3xl mobile-heading-md font-bold mb-4">Need Immediate Assistance?</h2>
+          <p className="text-soft mobile-text-base mb-6">Call us directly for urgent bookings or special requirements</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black">
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black mobile-button">
               <Phone className="w-4 h-4 mr-2" />
-              Call: +1 (555) 123-4567
+              Call: +91 98765 43210
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black">
-              WhatsApp: +1 (555) 123-4567
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black mobile-button">
+              WhatsApp: +91 98765 43210
             </Button>
           </div>
         </div>

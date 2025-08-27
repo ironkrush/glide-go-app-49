@@ -188,4 +188,74 @@ All colors MUST be HSL.
     filter: brightness(1) drop-shadow(0 10px 20px hsl(var(--primary) / 0.3));
     transform: scale(1.05);
   }
+
+  /* Mobile Typography Improvements */
+  @media (max-width: 768px) {
+    /* Reduce large headings on mobile */
+    .mobile-heading-lg {
+      @apply text-3xl font-bold;
+    }
+    
+    .mobile-heading-md {
+      @apply text-2xl font-semibold;
+    }
+    
+    .mobile-heading-sm {
+      @apply text-xl font-medium;
+    }
+    
+    /* Improve text spacing on mobile */
+    .mobile-text-lg {
+      @apply text-base leading-relaxed;
+    }
+    
+    .mobile-text-base {
+      @apply text-sm leading-relaxed;
+    }
+    
+    /* Testimonial specific improvements */
+    .testimonial-mobile {
+      @apply text-sm leading-relaxed;
+    }
+    
+    .testimonial-author-mobile {
+      @apply text-xs font-medium;
+    }
+    
+    /* Mobile card padding */
+    .mobile-card-padding {
+      @apply p-4;
+    }
+    
+    /* Hero section mobile improvements */
+    .hero-mobile-title {
+      @apply text-3xl font-bold leading-tight;
+    }
+    
+    .hero-mobile-subtitle {
+      @apply text-base leading-relaxed;
+    }
+  }
+
+  /* Mobile-first responsive design improvements */
+  @media (max-width: 640px) {
+    .container {
+      @apply px-4;
+    }
+    
+    /* Reduce grid gaps on mobile */
+    .mobile-grid {
+      @apply gap-4;
+    }
+    
+    /* Mobile button improvements */
+    .mobile-button {
+      @apply text-sm px-6 py-3;
+    }
+    
+    /* Mobile pricing card improvements */
+    .mobile-pricing {
+      @apply text-lg font-bold;
+    }
+  }
 }

@@ -136,21 +136,21 @@ const Index = () => {
         <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl hero-mobile-title font-bold mb-6 leading-tight">
               Book Your Cab <span className="text-primary">Anytime</span>, Anywhere
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-muted-foreground max-w-2xl">
+            <p className="text-xl md:text-2xl hero-mobile-subtitle mb-8 text-muted-foreground max-w-2xl">
               Safe, reliable, and affordable rides at your fingertips. Experience premium transportation with professional drivers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button asChild size="lg" className="hero-button text-lg px-8 py-4">
+              <Button asChild size="lg" className="hero-button text-lg md:text-lg mobile-button px-8 py-4">
                 <Link to="/booking">Book Now</Link>
               </Button>
               <Button 
                 asChild 
                 size="lg" 
                 variant="outline" 
-                className="text-lg px-8 py-4"
+                className="text-lg md:text-lg mobile-button px-8 py-4"
               >
                 <Link to="/services">Our Services</Link>
               </Button>
@@ -175,8 +175,8 @@ const Index = () => {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Quick Booking</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-4xl md:text-4xl mobile-heading-md font-bold mb-4">Quick Booking</h2>
+            <p className="text-xl md:text-xl mobile-text-base text-muted-foreground max-w-2xl mx-auto">
               Book your ride in minutes with our simple booking form
             </p>
           </div>
@@ -190,44 +190,44 @@ const Index = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Why Choose RideEasy?</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-4xl md:text-4xl mobile-heading-md font-bold mb-4">Why Choose RideEasy?</h2>
+            <p className="text-xl md:text-xl mobile-text-base text-muted-foreground max-w-2xl mx-auto">
               We're committed to providing you with the best transportation experience
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="text-center p-8 hover:shadow-lg transition-shadow">
+          <div className="grid grid-cols-1 md:grid-cols-3 mobile-grid gap-8">
+            <Card className="text-center p-8 md:p-8 mobile-card-padding hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                   <DollarSign className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-semibold mb-4">Affordable Fares</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-2xl md:text-2xl mobile-heading-sm font-semibold mb-4">Affordable Fares</h3>
+                <p className="text-muted-foreground mobile-text-base">
                   Competitive pricing with transparent fare structure. No hidden charges, no surge pricing surprises.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center p-8 hover:shadow-lg transition-shadow">
+            <Card className="text-center p-8 md:p-8 mobile-card-padding hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Clock className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-semibold mb-4">24/7 Availability</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-2xl md:text-2xl mobile-heading-sm font-semibold mb-4">24/7 Availability</h3>
+                <p className="text-muted-foreground mobile-text-base">
                   Round-the-clock service for all your transportation needs. Early morning flights or late night returns.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center p-8 hover:shadow-lg transition-shadow">
+            <Card className="text-center p-8 md:p-8 mobile-card-padding hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Shield className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-semibold mb-4">Safe Rides</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-2xl md:text-2xl mobile-heading-sm font-semibold mb-4">Safe Rides</h3>
+                <p className="text-muted-foreground mobile-text-base">
                   Professional verified drivers, well-maintained vehicles, and real-time GPS tracking for your safety.
                 </p>
               </CardContent>
@@ -239,22 +239,22 @@ const Index = () => {
       {/* Stats Section */}
       <section className="py-20 dark-surface text-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 mobile-grid gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">50K+</div>
-              <div className="text-soft">Happy Customers</div>
+              <div className="text-4xl md:text-4xl mobile-pricing font-bold text-primary mb-2">50K+</div>
+              <div className="text-soft mobile-text-base">Happy Customers</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">100K+</div>
-              <div className="text-soft">Rides Completed</div>
+              <div className="text-4xl md:text-4xl mobile-pricing font-bold text-primary mb-2">100K+</div>
+              <div className="text-soft mobile-text-base">Rides Completed</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">24/7</div>
-              <div className="text-soft">Service Available</div>
+              <div className="text-4xl md:text-4xl mobile-pricing font-bold text-primary mb-2">24/7</div>
+              <div className="text-soft mobile-text-base">Service Available</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">4.9★</div>
-              <div className="text-soft">Average Rating</div>
+              <div className="text-4xl md:text-4xl mobile-pricing font-bold text-primary mb-2">4.9★</div>
+              <div className="text-soft mobile-text-base">Average Rating</div>
             </div>
           </div>
         </div>
@@ -264,40 +264,40 @@ const Index = () => {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">What Our Customers Say</h2>
-            <p className="text-xl text-muted-foreground">
+            <h2 className="text-4xl md:text-4xl mobile-heading-md font-bold mb-4">What Our Customers Say</h2>
+            <p className="text-xl md:text-xl mobile-text-base text-muted-foreground">
               Real experiences from satisfied customers across the nation
             </p>
           </div>
 
           <div className="relative max-w-5xl mx-auto">
-            <Card className="p-12 text-center shadow-lg border-0 bg-white">
+            <Card className="p-12 md:p-12 mobile-card-padding text-center shadow-lg border-0 bg-white">
               <CardContent className="pt-6">
                 <div className="flex justify-center mb-6">
                   {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} className="w-8 h-8 text-primary fill-current" />
+                    <Star key={i} className="w-8 h-8 md:w-8 md:h-8 w-6 h-6 text-primary fill-current" />
                   ))}
                 </div>
                 
                 {/* Avatar */}
-                <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-primary">
+                <div className="w-20 h-20 md:w-20 md:h-20 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-2xl md:text-2xl mobile-heading-sm font-bold text-primary">
                     {testimonials[currentTestimonial].avatar}
                   </span>
                 </div>
                 
-                <blockquote className="text-2xl mb-8 text-foreground leading-relaxed max-w-3xl mx-auto">
+                <blockquote className="text-2xl md:text-2xl testimonial-mobile mb-8 text-foreground leading-relaxed max-w-3xl mx-auto">
                   "{testimonials[currentTestimonial].text}"
                 </blockquote>
                 
                 <div className="border-t border-gray-200 pt-6">
-                  <div className="font-bold text-xl mb-1">
+                  <div className="font-bold text-xl md:text-xl mobile-heading-sm mb-1">
                     {testimonials[currentTestimonial].name}
                   </div>
-                  <div className="text-primary font-medium mb-1">
+                  <div className="text-primary font-medium testimonial-author-mobile mb-1">
                     {testimonials[currentTestimonial].position}
                   </div>
-                  <div className="text-muted-foreground flex items-center justify-center gap-1">
+                  <div className="text-muted-foreground mobile-text-base flex items-center justify-center gap-1">
                     <MapPin className="w-4 h-4" />
                     {testimonials[currentTestimonial].location}
                   </div>
@@ -342,11 +342,11 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-20 gradient-hero text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-4">Ready to Ride?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-4xl mobile-heading-md font-bold mb-4">Ready to Ride?</h2>
+          <p className="text-xl md:text-xl mobile-text-base mb-8 max-w-2xl mx-auto">
             Join thousands of satisfied customers who trust RideEasy for their transportation needs.
           </p>
-          <Button asChild size="lg" className="hero-button text-lg px-8 py-4">
+          <Button asChild size="lg" className="hero-button text-lg md:text-lg mobile-button px-8 py-4">
             <Link to="/booking">Book Your Ride Now</Link>
           </Button>
         </div>
