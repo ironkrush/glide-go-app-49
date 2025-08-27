@@ -11,7 +11,7 @@ const About = () => {
       {/* Hero Section */}
       <section className="pt-24 pb-16 gradient-hero text-white">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">About RideEasy</h1>
+          <h1 className="text-5xl font-bold mb-6">About Lankadhish</h1>
           <p className="text-xl max-w-3xl mx-auto">
             Your trusted transportation partner, committed to providing safe, reliable, 
             and affordable rides with a customer-first approach.
@@ -26,7 +26,7 @@ const About = () => {
             <div>
               <h2 className="text-4xl font-bold mb-6">Our Mission</h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                At RideEasy, we believe transportation should be simple, safe, and accessible to everyone. 
+                At Lankadhish, we believe transportation should be simple, safe, and accessible to everyone. 
                 Our mission is to connect people with reliable rides while building stronger communities 
                 through exceptional service and innovative solutions.
               </p>
@@ -76,7 +76,7 @@ const About = () => {
       <section className="py-20 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Why Choose RideEasy?</h2>
+            <h2 className="text-4xl font-bold mb-4">Why Choose Lankadhish?</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               We go above and beyond to ensure your transportation experience exceeds expectations
             </p>

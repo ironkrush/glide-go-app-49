@@ -114,31 +114,31 @@ const Contact = () => {
     <>
       {/* SEO Meta Tags */}
       <head>
-        <title>Contact RideEasy - 24/7 Cab Booking Service | Get Support</title>
-        <meta name="description" content="Contact RideEasy for cab booking support, questions, or feedback. Available 24/7 with professional customer service. Call +1 (555) 123-4567 or email us." />
-        <meta name="keywords" content="contact rideeasy, cab booking support, taxi service contact, customer service, ride booking help" />
-        <link rel="canonical" href="https://rideeasy.com/contact" />
-        <meta property="og:title" content="Contact RideEasy - 24/7 Cab Booking Service" />
-        <meta property="og:description" content="Get in touch with RideEasy for any questions about our cab booking service. Professional support available 24/7." />
-        <meta property="og:url" content="https://rideeasy.com/contact" />
+        <title>Contact Lankadhish - 24/7 Cab Booking Service | Get Support</title>
+        <meta name="description" content="Contact Lankadhish for cab booking support, questions, or feedback. Available 24/7 with professional customer service. Call +1 (555) 123-4567 or email us." />
+        <meta name="keywords" content="contact Lankadhish, cab booking support Sri Lanka, taxi service contact, customer service, ride booking help" />
+        <link rel="canonical" href="https://lankadhish.com/contact" />
+        <meta property="og:title" content="Contact Lankadhish - 24/7 Cab Booking Service" />
+        <meta property="og:description" content="Get in touch with Lankadhish for any questions about our cab booking service. Professional support available 24/7." />
+        <meta property="og:url" content="https://lankadhish.com/contact" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ContactPage",
-            "name": "Contact RideEasy",
-            "description": "Contact page for RideEasy cab booking service",
+            "name": "Contact Lankadhish",
+            "description": "Contact page for Lankadhish cab booking service",
             "provider": {
               "@type": "Organization",
-              "name": "RideEasy",
-              "telephone": "+1-555-123-4567",
-              "email": "info@rideeasy.com",
+              "name": "Lankadhish",
+              "telephone": "+94-77-123-4567",
+              "email": "info@lankadhish.com",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "123 Main Street",
-                "addressLocality": "Downtown",
-                "addressRegion": "City",
-                "postalCode": "12345"
+                "streetAddress": "123 Galle Road",
+                "addressLocality": "Colombo",
+                "addressRegion": "Western Province",
+                "postalCode": "00300"
               }
             }
           })}
@@ -430,7 +430,7 @@ const Contact = () => {
           <DialogHeader>
             <DialogTitle>Message Sent Successfully!</DialogTitle>
             <DialogDescription>
-              Thank you for contacting RideEasy! Our team will get back to you shortly. We appreciate your interest in our cab booking services.
+              Thank you for contacting Lankadhish! Our team will get back to you shortly. We appreciate your interest in our cab booking services.
             </DialogDescription>
           </DialogHeader>
         </DialogContent>

@@ -50,7 +50,7 @@ const BlogPost = () => {
       <p>Always have alternative transportation options and emergency plans. Know the location of nearby safe places like police stations, hospitals, or hotels.</p>
 
       <h2>Conclusion</h2>
-      <p>Following these safety tips will help ensure your travels are both enjoyable and secure. Remember, no destination or schedule is worth compromising your safety. At RideEasy, we prioritize your safety with verified drivers, tracked vehicles, and 24/7 support.</p>
+      <p>Following these safety tips will help ensure your travels are both enjoyable and secure. Remember, no destination or schedule is worth compromising your safety. At Lankadhish, we prioritize your safety with verified drivers, tracked vehicles, and 24/7 support.</p>
     `
   };
 

@@ -9,10 +9,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <Car className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <span className="font-bold text-xl">RideEasy</span>
+              <span className="font-bold text-xl">Lankadhish</span>
             </div>
             <p className="text-soft mb-4">
               Your trusted partner for safe, affordable, and reliable transportation. 
@@ -76,11 +73,11 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary" />
-                <span className="text-soft">+1 (555) 123-4567</span>
+                <span className="text-soft">+91 </span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-primary" />
-                <span className="text-soft">info@rideeasy.com</span>
+                <span className="text-soft">info@lankadhish.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-primary" />
@@ -92,7 +89,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
           <p className="text-soft">
-            © 2024 RideEasy. All rights reserved. | Privacy Policy | Terms of Service
+            © 2024 Lankadhish. All rights reserved. | Privacy Policy | Terms of Service
           </p>
         </div>
       </div>

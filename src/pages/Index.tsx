@@ -22,36 +22,36 @@ import BookingForm from "@/components/BookingForm";
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
+    name: "Priya Perera",
     rating: 5,
-    text: "Exceptional service from start to finish. The driver was punctual, professional, and the vehicle was immaculate. RideEasy has become my go-to transportation service for all business meetings.",
-    location: "New York",
+    text: "Exceptional service from start to finish. The driver was punctual, professional, and the vehicle was immaculate. Lankadhish has become my go-to transportation service for all business meetings in Colombo.",
+    location: "Colombo",
     position: "Marketing Director",
-    avatar: "SJ"
+    avatar: "PP"
   },
   {
-    name: "Michael Chen",
+    name: "Rohan Silva",
     rating: 5,
     text: "Outstanding reliability and affordability. The booking process is seamless, and I've never experienced any delays. Their customer service team is incredibly responsive and helpful.",
-    location: "Los Angeles", 
+    location: "Kandy",
     position: "Software Engineer",
-    avatar: "MC"
+    avatar: "RS"
   },
   {
-    name: "Emily Davis",
+    name: "Amara Fernando",
     rating: 5,
-    text: "Safety and comfort are their top priorities. Every driver has been courteous and knowledgeable about the city. The vehicles are well-maintained and equipped with modern amenities.",
-    location: "Chicago",
+    text: "Safety and comfort are their top priorities. Every driver has been courteous and knowledgeable about Sri Lankan roads. The vehicles are well-maintained and equipped with modern amenities.",
+    location: "Galle",
     position: "Healthcare Professional",
-    avatar: "ED"
+    avatar: "AF"
   },
   {
-    name: "David Wilson",
+    name: "Kasun Rajapaksa",
     rating: 5,
-    text: "The 24/7 availability is truly a game-changer for frequent travelers like myself. Perfect for early morning flights and late-night returns. Consistently excellent service quality.",
-    location: "Miami",
+    text: "The 24/7 availability is truly a game-changer for frequent travelers like myself. Perfect for early morning flights from BIA and late-night returns. Consistently excellent service quality.",
+    location: "Negombo",
     position: "Business Consultant",
-    avatar: "DW"
+    avatar: "KR"
   }
 ];
 
@@ -76,53 +76,193 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>RideEasy - Premium Cab Booking Service | Book Your Ride 24/7</title>
-        <meta 
-          name="description" 
-          content="Book premium cab services with RideEasy. Safe, reliable, and affordable rides 24/7. Professional drivers, modern vehicles, competitive rates. Book now!" 
+        <title>Lankadhish - Premium Cab Booking Service | Best Taxi Service in Sri Lanka | Book Your Ride 24/7</title>
+        <meta
+          name="description"
+          content="Lankadhish - Sri Lanka's premier cab booking service. Safe, reliable, and affordable rides 24/7. Professional drivers, modern vehicles, competitive rates. Airport transfers, city rides, outstation trips. Book now!"
         />
-        <meta 
-          name="keywords" 
-          content="cab booking, taxi service, ride booking, airport transfer, city transportation, professional drivers, 24/7 cab service" 
+        <meta
+          name="keywords"
+          content="Lankadhish, Sri Lanka cab booking, taxi service Sri Lanka, ride booking Colombo, airport transfer Sri Lanka, city transportation, professional drivers, 24/7 cab service, outstation trips Sri Lanka, reliable taxi service, affordable cab rates, premium transportation Sri Lanka, online cab booking, taxi app Sri Lanka, car rental Sri Lanka, chauffeur service, business travel Sri Lanka, tourist transportation, safe rides Sri Lanka"
         />
-        <link rel="canonical" href="https://rideeasy.com/" />
-        <meta property="og:title" content="RideEasy - Premium Cab Booking Service" />
-        <meta property="og:description" content="Safe, reliable, and affordable cab rides at your fingertips. Book premium transportation with professional drivers 24/7." />
-        <meta property="og:url" content="https://rideeasy.com/" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="author" content="Lankadhish Transportation Services" />
+        <meta name="geo.region" content="LK" />
+        <meta name="geo.country" content="Sri Lanka" />
+        <meta name="geo.placename" content="Colombo, Sri Lanka" />
+        <meta name="language" content="English" />
+        <meta name="revisit-after" content="1 days" />
+        <link rel="canonical" href="https://lankadhish.com/" />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Lankadhish - Premium Cab Booking Service | Best Taxi Service in Sri Lanka" />
+        <meta property="og:description" content="Sri Lanka's premier cab booking service. Safe, reliable, and affordable rides 24/7. Professional drivers, modern vehicles, competitive rates. Book your ride now!" />
+        <meta property="og:url" content="https://lankadhish.com/" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://rideeasy.com/hero-image.jpg" />
+        <meta property="og:image" content="https://lankadhish.com/hero-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="Lankadhish" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="RideEasy - Premium Cab Booking Service" />
-        <meta name="twitter:description" content="Safe, reliable, and affordable cab rides. Book now!" />
+        <meta name="twitter:title" content="Lankadhish - Premium Cab Booking Service | Best Taxi Service in Sri Lanka" />
+        <meta name="twitter:description" content="Sri Lanka's premier cab booking service. Safe, reliable, and affordable rides 24/7. Book your ride now!" />
+        <meta name="twitter:image" content="https://lankadhish.com/hero-image.jpg" />
+        <meta name="twitter:site" content="@Lankadhish" />
+        <meta name="twitter:creator" content="@Lankadhish" />
+
+        {/* Additional SEO Meta Tags */}
+        <meta name="theme-color" content="#fbbf24" />
+        <meta name="msapplication-TileColor" content="#fbbf24" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Lankadhish" />
+
+        {/* Structured Data - Organization */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "RideEasy",
-            "description": "Premium cab booking service providing safe, reliable transportation 24/7",
-            "url": "https://rideeasy.com",
-            "logo": "https://rideeasy.com/logo.png",
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+1-555-123-4567",
-              "contactType": "customer service",
-              "availableLanguage": "English"
-            },
+            "name": "Lankadhish",
+            "alternateName": "Lankadhish Transportation Services",
+            "description": "Sri Lanka's premier cab booking service providing safe, reliable transportation 24/7 across the island",
+            "url": "https://lankadhish.com",
+            "logo": "https://lankadhish.com/logo.png",
+            "image": "https://lankadhish.com/hero-image.jpg",
+            "foundingDate": "2019",
+            "founders": [
+              {
+                "@type": "Person",
+                "name": "Lankadhish Team"
+              }
+            ],
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "telephone": "+94-77-123-4567",
+                "contactType": "customer service",
+                "availableLanguage": ["English", "Sinhala", "Tamil"],
+                "areaServed": "LK",
+                "hoursAvailable": "Mo-Su 00:00-23:59"
+              }
+            ],
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "123 Main Street",
-              "addressLocality": "Downtown",
-              "addressRegion": "City",
-              "postalCode": "12345"
+              "streetAddress": "123 Galle Road",
+              "addressLocality": "Colombo",
+              "addressRegion": "Western Province",
+              "postalCode": "00300",
+              "addressCountry": "LK"
             },
-            "service": {
-              "@type": "Service",
-              "name": "Cab Booking Service",
-              "description": "24/7 cab booking with professional drivers",
-              "provider": {
-                "@type": "Organization",
-                "name": "RideEasy"
+            "areaServed": {
+              "@type": "Country",
+              "name": "Sri Lanka"
+            },
+            "serviceType": "Transportation Service",
+            "priceRange": "$$",
+            "currenciesAccepted": "LKR",
+            "paymentAccepted": ["Cash", "Credit Card", "Mobile Payment"],
+            "sameAs": [
+              "https://facebook.com/lankadhish",
+              "https://twitter.com/lankadhish",
+              "https://instagram.com/lankadhish"
+            ]
+          })}
+        </script>
+
+        {/* Structured Data - Service */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Cab Booking Service",
+            "description": "24/7 cab booking service with professional drivers across Sri Lanka",
+            "provider": {
+              "@type": "Organization",
+              "name": "Lankadhish"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Sri Lanka"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Transportation Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Airport Transfer"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "City Rides"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Outstation Trips"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Corporate Bookings"
+                  }
+                }
+              ]
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "LKR",
+              "price": "25",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": "25",
+                "priceCurrency": "LKR",
+                "unitText": "per kilometer"
               }
+            }
+          })}
+        </script>
+
+        {/* Structured Data - Local Business */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Lankadhish",
+            "image": "https://lankadhish.com/hero-image.jpg",
+            "telephone": "+94-77-123-4567",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "123 Galle Road",
+              "addressLocality": "Colombo",
+              "addressRegion": "Western Province",
+              "postalCode": "00300",
+              "addressCountry": "LK"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "6.9271",
+              "longitude": "79.8612"
+            },
+            "url": "https://lankadhish.com",
+            "openingHours": "Mo-Su 00:00-23:59",
+            "priceRange": "$$",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "2500"
             }
           })}
         </script>
@@ -190,7 +330,7 @@ const Index = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-4xl mobile-heading-md font-bold mb-4">Why Choose RideEasy?</h2>
+            <h2 className="text-4xl md:text-4xl mobile-heading-md font-bold mb-4">Why Choose Lankadhish?</h2>
             <p className="text-xl md:text-xl mobile-text-base text-muted-foreground max-w-2xl mx-auto">
               We're committed to providing you with the best transportation experience
             </p>
@@ -275,13 +415,13 @@ const Index = () => {
               <CardContent className="pt-6">
                 <div className="flex justify-center mb-6">
                   {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} className="w-8 h-8 md:w-8 md:h-8 w-6 h-6 text-primary fill-current" />
+                    <Star key={i} className="w-6 h-6 md:w-8 md:h-8 text-primary fill-current" />
                   ))}
                 </div>
-                
+
                 {/* Avatar */}
-                <div className="w-20 h-20 md:w-20 md:h-20 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl md:text-2xl mobile-heading-sm font-bold text-primary">
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-lg md:text-2xl font-bold text-primary">
                     {testimonials[currentTestimonial].avatar}
                   </span>
                 </div>
@@ -344,7 +484,7 @@ const Index = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-4xl mobile-heading-md font-bold mb-4">Ready to Ride?</h2>
           <p className="text-xl md:text-xl mobile-text-base mb-8 max-w-2xl mx-auto">
-            Join thousands of satisfied customers who trust RideEasy for their transportation needs.
+            Join thousands of satisfied customers who trust Lankadhish for their transportation needs.
           </p>
           <Button asChild size="lg" className="hero-button text-lg md:text-lg mobile-button px-8 py-4">
             <Link to="/booking">Book Your Ride Now</Link>

@@ -23,10 +23,14 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 font-bold text-xl">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Car className="w-5 h-5 text-primary-foreground" />
+            <div className="w-16 h-16 rounded-lg flex items-center justify-center">
+              <img
+                src="src/assets/cablogo.png"
+                alt="Lankadhish Logo"
+                className="w-50 h-50 object-contain"
+              />
             </div>
-            <span>RideEasy</span>
+            {/* <span>Lankadhish</span> */}
           </Link>
 
           {/* Desktop Navigation */}
@@ -35,9 +39,8 @@ const Navigation = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  isActive(item.path) ? "text-primary" : "text-foreground"
-                }`}
+                className={`text-sm font-medium transition-colors hover:text-primary ${isActive(item.path) ? "text-primary" : "text-foreground"
+                  }`}
               >
                 {item.name}
               </Link>
@@ -65,9 +68,8 @@ const Navigation = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    isActive(item.path) ? "text-primary" : "text-foreground"
-                  }`}
+                  className={`text-sm font-medium transition-colors hover:text-primary ${isActive(item.path) ? "text-primary" : "text-foreground"
+                    }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}

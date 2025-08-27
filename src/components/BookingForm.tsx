@@ -90,10 +90,11 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
       if (error) throw error;
 
       // Send email notification
-      const emailResponse = await fetch('/api/send-contact-email', {
+      const emailResponse = await fetch('https://iuheutrsjkybzadpcvud.supabase.co/functions/v1/send-contact-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1aGV1dHJzamt5YnphZHBjdnVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyMDY3OTEsImV4cCI6MjA3MTc4Mjc5MX0.0cHxipBHKpfiuSNNuTQDdMpSL9QRJ1Rf2La1mLDvHRA`,
         },
         body: JSON.stringify({
           name: data.name,

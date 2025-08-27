@@ -28,11 +28,11 @@ const Booking = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
-    if (!formData.pickupLocation || !formData.dropLocation || !formData.date || 
+    if (!formData.pickupLocation || !formData.dropLocation || !formData.date ||
         !formData.time || !formData.passengerName || !formData.passengerPhone) {
       toast({
         title: "Missing Information",
@@ -42,24 +42,62 @@ const Booking = () => {
       return;
     }
 
-    // Show success message
-    toast({
-      title: "Booking Submitted Successfully!",
-      description: "Our team will contact you shortly to confirm your ride details.",
-    });
+    try {
+      // Send email notification
+      const emailResponse = await fetch('https://iuheutrsjkybzadpcvud.supabase.co/functions/v1/send-contact-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1aGV1dHJzamt5YnphZHBjdnVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyMDY3OTEsImV4cCI6MjA3MTc4Mjc5MX0.0cHxipBHKpfiuSNNuTQDdMpSL9QRJ1Rf2La1mLDvHRA`,
+        },
+        body: JSON.stringify({
+          name: formData.passengerName,
+          email: formData.passengerEmail || 'no-email@provided.com',
+          phone: formData.passengerPhone,
+          message: `Booking request from ${formData.passengerName}`,
+          type: 'booking',
+          bookingDetails: {
+            pickupLocation: formData.pickupLocation,
+            destination: formData.dropLocation,
+            pickupDate: formData.date,
+            pickupTime: formData.time,
+            passengerCount: 1,
+            carType: formData.cabType,
+            specialRequests: formData.specialRequests,
+          },
+        }),
+      });
 
-    // Reset form
-    setFormData({
-      pickupLocation: "",
-      dropLocation: "",
-      date: "",
-      time: "",
-      passengerName: "",
-      passengerPhone: "",
-      passengerEmail: "",
-      cabType: "",
-      specialRequests: ""
-    });
+      if (!emailResponse.ok) {
+        console.warn('Email notification failed');
+      }
+
+      // Show success message
+      toast({
+        title: "Booking Submitted Successfully!",
+        description: "Our team will contact you shortly to confirm your ride details.",
+      });
+
+      // Reset form
+      setFormData({
+        pickupLocation: "",
+        dropLocation: "",
+        date: "",
+        time: "",
+        passengerName: "",
+        passengerPhone: "",
+        passengerEmail: "",
+        cabType: "",
+        specialRequests: ""
+      });
+    } catch (error) {
+      console.error('Booking submission error:', error);
+      toast({
+        title: "Submission Failed",
+        description: "Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
