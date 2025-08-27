@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Car } from "lucide-react";
+import Logo from "@/assets/cablogo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +26,7 @@ const Navigation = () => {
           <Link to="/" className="flex items-center space-x-2 font-bold text-xl">
             <div className="w-16 h-16 rounded-lg flex items-center justify-center">
               <img
-                src="src/assets/cablogo.png"
+                src={Logo} 
                 alt="Lankadhish Logo"
                 className="w-50 h-50 object-contain"
               />
