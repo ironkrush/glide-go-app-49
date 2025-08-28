@@ -15,10 +15,10 @@ import {
   Check,
   Star
 } from "lucide-react";
-import miniCar from "@/assets/mini-car.png";
-import sedanCar from "@/assets/sedan-car.png";
-import suvCar from "@/assets/suv-car.png";
-import luxuryCar from "@/assets/luxury-car.png";
+import miniCar from "@/assets/hatch.jpg";
+import sedanCar from "@/assets/dzire.jpg";
+import suvCar from "@/assets/scorpio.jpg";
+import luxuryCar from "@/assets/innova.webp";
 
 const Services = () => {
   const services = [
