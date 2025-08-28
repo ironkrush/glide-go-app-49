@@ -13,8 +13,8 @@ const About = () => {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-6">About Lankadhish</h1>
           <p className="text-xl max-w-3xl mx-auto">
-            Your trusted transportation partner, committed to providing safe, reliable, 
-            and affordable rides with a customer-first approach.
+            Gujarat's trusted transportation partner, committed to providing safe, reliable,
+            and affordable rides across the state with a customer-first approach.
           </p>
         </div>
       </section>
@@ -26,9 +26,9 @@ const About = () => {
             <div>
               <h2 className="text-4xl font-bold mb-6">Our Mission</h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                At Lankadhish, we believe transportation should be simple, safe, and accessible to everyone. 
-                Our mission is to connect people with reliable rides while building stronger communities 
-                through exceptional service and innovative solutions.
+                At Lankadhish Cab Service, we believe in "Travel India With Us" - connecting Gujarat to all over India.
+                Our mission is to provide 24/7 one-way & round-trip services with professional pilots, neat & clean cars,
+                and GPS enabled cabs that are safe for women, ensuring exceptional travel experiences across the nation.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="flex items-start space-x-3">

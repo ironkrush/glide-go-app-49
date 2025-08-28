@@ -96,7 +96,7 @@ const Contact = () => {
       <Helmet>
         <title>Contact Lankadhish - 24/7 Cab Booking Service | Get Support</title>
         <meta name="description" content="Contact Lankadhish for cab booking support, questions, or feedback. Available 24/7 with professional customer service. Call +1 (555) 123-4567 or email us." />
-        <meta name="keywords" content="contact Lankadhish, cab booking support India, taxi service contact, customer service, ride booking help" />
+        <meta name="keywords" content="contact Lankadhish, cab booking support Gujarat, taxi service contact, customer service, ride booking help" />
         <link rel="canonical" href="https://lankadhish.com/contact" />
         <meta property="og:title" content="Contact Lankadhish - 24/7 Cab Booking Service" />
         <meta property="og:description" content="Get in touch with Lankadhish for any questions about our cab booking service. Professional support available 24/7." />
@@ -111,14 +111,14 @@ const Contact = () => {
             "provider": {
               "@type": "Organization",
               "name": "Lankadhish",
-              "telephone": "+94-77-123-4567",
+              "telephone": "+91-9157575675",
               "email": "info@lankadhish.com",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "123 Galle Road",
-                "addressLocality": "Colombo",
-                "addressRegion": "Western Province",
-                "postalCode": "00300"
+                "streetAddress": "123 SG Highway",
+                "addressLocality": "Ahmedabad",
+                "addressRegion": "Gujarat",
+                "postalCode": "380015"
               }
             }
           })}
@@ -157,8 +157,9 @@ const Contact = () => {
                         <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">Phone Support</h3>
                         <p className="text-muted-foreground mobile-text-base mb-2">Call us for immediate assistance</p>
                         <div className="space-y-1">
-                          <p className="font-medium mobile-text-base">+91 98765 43210</p>
-                          <p className="text-sm mobile-text-base text-muted-foreground">Available 24/7</p>
+                          <p className="font-medium mobile-text-base">+91 9157575675</p>
+                          <p className="font-medium mobile-text-base">+91 7567302302</p>
+                          <p className="text-sm mobile-text-base text-muted-foreground">Mr Amar Jankar - Available 24/7</p>
                         </div>
                       </div>
                     </div>
@@ -175,7 +176,7 @@ const Contact = () => {
                         <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">Email Support</h3>
                         <p className="text-muted-foreground mobile-text-base mb-2">Send us your queries anytime</p>
                         <div className="space-y-1">
-                          <p className="font-medium mobile-text-base">info@rideeasy.com</p>
+                          <p className="font-medium mobile-text-base">info@lankadhish.com</p>
                           <p className="text-sm mobile-text-base text-muted-foreground">Response within 2 hours</p>
                         </div>
                       </div>
@@ -193,8 +194,8 @@ const Contact = () => {
                         <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">Office Address</h3>
                         <p className="text-muted-foreground mobile-text-base mb-2">Visit our headquarters</p>
                         <div className="space-y-1">
-                          <p className="font-medium mobile-text-base">123 Main Street</p>
-                          <p className="font-medium mobile-text-base">Downtown, Mumbai 400001</p>
+                          <p className="font-medium mobile-text-base">123 SG Highway</p>
+                          <p className="font-medium mobile-text-base">Ahmedabad, Gujarat 380015</p>
                           <p className="text-sm mobile-text-base text-muted-foreground">Mon-Fri: 9AM - 6PM</p>
                         </div>
                       </div>

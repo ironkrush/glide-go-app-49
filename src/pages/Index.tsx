@@ -22,36 +22,36 @@ import BookingForm from "@/components/BookingForm";
 
 const testimonials = [
   {
-    name: "Priya Perera",
+    name: "Priya Patel",
     rating: 5,
-    text: "Exceptional service from start to finish. The driver was punctual, professional, and the vehicle was immaculate. Lankadhish has become my go-to transportation service for all business meetings in Colombo.",
-    location: "Colombo",
+    text: "Exceptional service from start to finish. The driver was punctual, professional, and the vehicle was immaculate. Lankadhish has become my go-to transportation service for all business meetings in Ahmedabad.",
+    location: "Ahmedabad",
     position: "Marketing Director",
     avatar: "PP"
   },
   {
-    name: "Rohan Silva",
+    name: "Rohan Shah",
     rating: 5,
     text: "Outstanding reliability and affordability. The booking process is seamless, and I've never experienced any delays. Their customer service team is incredibly responsive and helpful.",
-    location: "Kandy",
+    location: "Surat",
     position: "Software Engineer",
     avatar: "RS"
   },
   {
-    name: "Amara Fernando",
+    name: "Anjali Mehta",
     rating: 5,
-    text: "Safety and comfort are their top priorities. Every driver has been courteous and knowledgeable about Sri Lankan roads. The vehicles are well-maintained and equipped with modern amenities.",
-    location: "Galle",
+    text: "Safety and comfort are their top priorities. Every driver has been courteous and knowledgeable about Gujarat roads. The vehicles are well-maintained and equipped with modern amenities.",
+    location: "Vadodara",
     position: "Healthcare Professional",
-    avatar: "AF"
+    avatar: "AM"
   },
   {
-    name: "Kasun Rajapaksa",
+    name: "Kiran Desai",
     rating: 5,
-    text: "The 24/7 availability is truly a game-changer for frequent travelers like myself. Perfect for early morning flights from BIA and late-night returns. Consistently excellent service quality.",
-    location: "Negombo",
+    text: "The 24/7 availability is truly a game-changer for frequent travelers like myself. Perfect for early morning flights from Ahmedabad Airport and late-night returns. Consistently excellent service quality.",
+    location: "Rajkot",
     position: "Business Consultant",
-    avatar: "KR"
+    avatar: "KD"
   }
 ];
 
@@ -76,39 +76,39 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Lankadhish - Premium Cab Booking Service | Best Taxi Service in Sri Lanka | Book Your Ride 24/7</title>
+        <title>Lankadhish - Premium Cab Booking Service | Best Taxi Service in Gujarat | Book Your Ride 24/7</title>
         <meta
           name="description"
-          content="Lankadhish - Sri Lanka's premier cab booking service. Safe, reliable, and affordable rides 24/7. Professional drivers, modern vehicles, competitive rates. Airport transfers, city rides, outstation trips. Book now!"
+          content="Lankadhish Cab Service - Travel India With Us! 24/7 one-way & round-trip service from Gujarat to all over India. Professional pilots, GPS enabled cabs, safe for women. Book now!"
         />
         <meta
           name="keywords"
-          content="Lankadhish, Sri Lanka cab booking, taxi service Sri Lanka, ride booking Colombo, airport transfer Sri Lanka, city transportation, professional drivers, 24/7 cab service, outstation trips Sri Lanka, reliable taxi service, affordable cab rates, premium transportation Sri Lanka, online cab booking, taxi app Sri Lanka, car rental Sri Lanka, chauffeur service, business travel Sri Lanka, tourist transportation, safe rides Sri Lanka"
+          content="Lankadhish cab service, Travel India with us, Gujarat to all India cab, 24/7 one way cab, round trip service, professional pilots, GPS enabled cabs, safe for women, neat clean cars, all India service, outstation cab Gujarat, interstate taxi, Gujarat to Mumbai cab, Gujarat to Delhi taxi, Ahmedabad outstation, Surat to Pune cab, Mr Amar Jankar, 9157575675, 7567302302"
         />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <meta name="author" content="Lankadhish Transportation Services" />
-        <meta name="geo.region" content="LK" />
-        <meta name="geo.country" content="Sri Lanka" />
-        <meta name="geo.placename" content="Colombo, Sri Lanka" />
+        <meta name="geo.region" content="IN-GJ" />
+        <meta name="geo.country" content="India" />
+        <meta name="geo.placename" content="Ahmedabad, Gujarat, India" />
         <meta name="language" content="English" />
         <meta name="revisit-after" content="1 days" />
         <link rel="canonical" href="https://lankadhish.com/" />
 
         {/* Open Graph Meta Tags */}
-        <meta property="og:title" content="Lankadhish - Premium Cab Booking Service | Best Taxi Service in Sri Lanka" />
-        <meta property="og:description" content="Sri Lanka's premier cab booking service. Safe, reliable, and affordable rides 24/7. Professional drivers, modern vehicles, competitive rates. Book your ride now!" />
+        <meta property="og:title" content="Lankadhish - Premium Cab Booking Service | Best Taxi Service in Gujarat" />
+        <meta property="og:description" content="Gujarat's premier cab booking service. Safe, reliable, and affordable rides 24/7. Professional drivers, modern vehicles, competitive rates. Book your ride now!" />
         <meta property="og:url" content="https://lankadhish.com/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://lankadhish.com/hero-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Lankadhish" />
-        <meta property="og:locale" content="en_US" />
+        <meta property="og:locale" content="en_IN" />
 
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Lankadhish - Premium Cab Booking Service | Best Taxi Service in Sri Lanka" />
-        <meta name="twitter:description" content="Sri Lanka's premier cab booking service. Safe, reliable, and affordable rides 24/7. Book your ride now!" />
+        <meta name="twitter:title" content="Lankadhish - Premium Cab Booking Service | Best Taxi Service in Gujarat" />
+        <meta name="twitter:description" content="Gujarat's premier cab booking service. Safe, reliable, and affordable rides 24/7. Book your ride now!" />
         <meta name="twitter:image" content="https://lankadhish.com/hero-image.jpg" />
         <meta name="twitter:site" content="@Lankadhish" />
         <meta name="twitter:creator" content="@Lankadhish" />
@@ -127,7 +127,7 @@ const Index = () => {
             "@type": "Organization",
             "name": "Lankadhish",
             "alternateName": "Lankadhish Transportation Services",
-            "description": "Sri Lanka's premier cab booking service providing safe, reliable transportation 24/7 across the island",
+            "description": "Gujarat's premier cab booking service providing safe, reliable transportation 24/7 across the state",
             "url": "https://lankadhish.com",
             "logo": "https://lankadhish.com/logo.png",
             "image": "https://lankadhish.com/hero-image.jpg",
@@ -141,24 +141,24 @@ const Index = () => {
             "contactPoint": [
               {
                 "@type": "ContactPoint",
-                "telephone": "+94-77-123-4567",
+                "telephone": "+91-9157575675",
                 "contactType": "customer service",
-                "availableLanguage": ["English", "Sinhala", "Tamil"],
-                "areaServed": "LK",
+                "availableLanguage": ["English", "Hindi", "Gujarati"],
+                "areaServed": "IN-GJ",
                 "hoursAvailable": "Mo-Su 00:00-23:59"
               }
             ],
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "123 Galle Road",
-              "addressLocality": "Colombo",
-              "addressRegion": "Western Province",
-              "postalCode": "00300",
-              "addressCountry": "LK"
+              "streetAddress": "123 SG Highway",
+              "addressLocality": "Ahmedabad",
+              "addressRegion": "Gujarat",
+              "postalCode": "380015",
+              "addressCountry": "IN"
             },
             "areaServed": {
-              "@type": "Country",
-              "name": "Sri Lanka"
+              "@type": "State",
+              "name": "Gujarat, India"
             },
             "serviceType": "Transportation Service",
             "priceRange": "$$",
@@ -184,8 +184,8 @@ const Index = () => {
               "name": "Lankadhish"
             },
             "areaServed": {
-              "@type": "Country",
-              "name": "Sri Lanka"
+              "@type": "State",
+              "name": "Gujarat, India"
             },
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
@@ -276,11 +276,11 @@ const Index = () => {
         <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl hero-mobile-title font-bold mb-6 leading-tight">
-              Book Your Cab <span className="text-primary">Anytime</span>, Anywhere
+            <h1 className="text-5xl md:text-6xl lg:text-7xl hero-mobile-title font-bold mb-6 leading-tight pt-24">
+              <span className="text-primary">Travel India With Us</span> - Gujarat to All Over India
             </h1>
             <p className="text-xl md:text-2xl hero-mobile-subtitle mb-8 text-muted-foreground max-w-2xl">
-              Safe, reliable, and affordable rides at your fingertips. Experience premium transportation with professional drivers.
+              24/7 One-Way & Round-Trip Service. Professional pilots, GPS enabled cabs, safe for women. Experience premium transportation from Gujarat to anywhere in India.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button asChild size="lg" className="hero-button text-lg md:text-lg mobile-button px-8 py-4">

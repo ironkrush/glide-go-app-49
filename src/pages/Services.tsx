@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { 
   Plane, 
   Building, 
@@ -22,109 +23,146 @@ import luxuryCar from "@/assets/luxury-car.png";
 const Services = () => {
   const services = [
     {
-      icon: Plane,
-      title: "Airport Transfers",
-      description: "Reliable pickups and drops for all major airports. Flight tracking ensures on-time service.",
-      features: ["Flight tracking", "Meet & greet service", "24/7 availability", "Fixed pricing"]
+      icon: Users,
+      title: "Professional Pilots",
+      description: "Experienced and trained drivers ensuring safe and comfortable journeys across India.",
+      features: ["Licensed drivers", "Background verified", "Local route knowledge", "Courteous service"]
     },
     {
-      icon: Building,
-      title: "City Rides", 
-      description: "Convenient transportation within the city for shopping, meetings, or leisure activities.",
-      features: ["Quick booking", "Multiple stops", "Real-time tracking", "Professional drivers"]
+      icon: Car,
+      title: "Neat & Clean Cars",
+      description: "Well-maintained and sanitized vehicles for a hygienic and comfortable travel experience.",
+      features: ["Regular sanitization", "AC vehicles", "Comfortable seating", "Clean interiors"]
     },
     {
       icon: Map,
-      title: "Outstation Trips",
-      description: "Comfortable long-distance travel to nearby cities and tourist destinations.",
-      features: ["Multiple day packages", "Tourist guide available", "AC vehicles", "Flexible itinerary"]
+      title: "GPS Enabled Cabs",
+      description: "Real-time tracking and navigation for efficient routes and passenger safety.",
+      features: ["Live tracking", "Optimized routes", "Safety monitoring", "ETA updates"]
+    },
+    {
+      icon: Building,
+      title: "Safe for Women",
+      description: "Special safety measures and verified drivers ensuring secure travel for women passengers.",
+      features: ["Verified drivers", "SOS features", "24/7 support", "Safe travel protocols"]
+    },
+    {
+      icon: Plane,
+      title: "All India Service",
+      description: "Comprehensive coverage from Gujarat to all major cities and destinations across India.",
+      features: ["Pan-India coverage", "Interstate permits", "Tourist destinations", "Business hubs"]
     },
     {
       icon: Briefcase,
-      title: "Corporate Bookings",
-      description: "Dedicated transportation solutions for businesses and corporate events.",
-      features: ["Bulk booking discounts", "Priority support", "Invoicing options", "Account management"]
+      title: "24/7 One Way Cab",
+      description: "Round-the-clock availability for one-way and round-trip journeys as per your convenience.",
+      features: ["24/7 availability", "One-way trips", "Round trips", "Flexible timing"]
     }
   ];
 
   const fleetTypes = [
     {
-      name: "Mini",
+      name: "Hatchback",
+      model: "Maruti Swift / Hyundai i20",
       capacity: "4 Passengers",
+      price: "₹12/km",
+      originalPrice: "₹15/km",
+      features: ["AC", "Music System", "Clean Interior", "GPS Tracking", "Fuel Efficient"],
+      bestFor: "City rides & daily commute",
+      image: miniCar, // Will be replaced with Indian hatchback
+      rating: 4.3,
+      reviews: 2850,
+      fuelType: "Petrol/CNG",
+      transmission: "Manual/Auto",
+      luggage: "2 Bags",
+      popular: false,
+      savings: "20% OFF"
+    },
+    {
+      name: "Sedan",
+      model: "Honda City / Maruti Dzire",
+      capacity: "4 Passengers",
+      price: "₹18/km",
+      originalPrice: "₹22/km",
+      features: ["Premium AC", "Leather Seats", "Phone Charging", "WiFi", "Spacious Boot"],
+      bestFor: "Business meetings & airport transfers",
+      image: sedanCar, // Will be replaced with Indian sedan
+      rating: 4.6,
+      reviews: 3200,
+      fuelType: "Petrol/CNG/Diesel",
+      transmission: "Manual/Automatic",
+      luggage: "3 Bags",
+      popular: true,
+      savings: "18% OFF"
+    },
+    {
+      name: "SUV",
+      model: "Mahindra Scorpio / Tata Safari",
+      capacity: "6-7 Passengers",
       price: "₹25/km",
       originalPrice: "₹30/km",
-      features: ["AC", "Music System", "Clean Interior", "GPS Tracking"],
-      bestFor: "Short city rides",
-      image: miniCar,
-      rating: 4.2,
-      reviews: 1250,
-      fuelType: "Petrol",
-      transmission: "Manual",
-      luggage: "2 Bags",
+      features: ["Spacious Interior", "Extra Luggage", "Premium Comfort", "Entertainment System", "High Ground Clearance"],
+      bestFor: "Family trips & outstation travel",
+      image: suvCar, // Will be replaced with Indian SUV
+      rating: 4.5,
+      reviews: 1890,
+      fuelType: "Diesel",
+      transmission: "Manual/Automatic",
+      luggage: "5 Bags",
       popular: false,
       savings: "17% OFF"
     },
     {
-      name: "Sedan",
+      name: "Premium",
+      model: "Toyota Camry / Honda Accord",
       capacity: "4 Passengers",
       price: "₹35/km",
       originalPrice: "₹42/km",
-      features: ["Premium AC", "Leather Seats", "Phone Charging", "WiFi"],
-      bestFor: "Business meetings",
-      image: sedanCar,
-      rating: 4.5,
-      reviews: 2100,
-      fuelType: "Petrol/CNG",
-      transmission: "Automatic",
-      luggage: "3 Bags",
-      popular: true,
-      savings: "16% OFF"
-    },
-    {
-      name: "SUV",
-      capacity: "6-7 Passengers",
-      price: "₹55/km",
-      originalPrice: "₹65/km",
-      features: ["Spacious", "Extra Luggage", "Premium Comfort", "Entertainment System"],
-      bestFor: "Family trips",
-      image: suvCar,
-      rating: 4.4,
-      reviews: 890,
-      fuelType: "Diesel",
-      transmission: "Automatic",
-      luggage: "5 Bags",
-      popular: false,
-      savings: "15% OFF"
-    },
-    {
-      name: "Luxury",
-      capacity: "4 Passengers",
-      price: "₹85/km",
-      originalPrice: "₹100/km",
-      features: ["Premium Cars", "Chauffeur Service", "VIP Treatment", "Complimentary Water"],
-      bestFor: "Special occasions",
-      image: luxuryCar,
+      features: ["Luxury Interior", "Chauffeur Service", "VIP Treatment", "Complimentary Water", "Premium Sound System"],
+      bestFor: "Corporate events & special occasions",
+      image: luxuryCar, // Will be replaced with Indian luxury car
       rating: 4.8,
-      reviews: 450,
-      fuelType: "Petrol",
+      reviews: 750,
+      fuelType: "Petrol/Hybrid",
       transmission: "Automatic",
       luggage: "4 Bags",
       popular: false,
-      savings: "15% OFF"
+      savings: "17% OFF"
     }
   ];
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>Cab Services in Gujarat | Taxi Fleet Ahmedabad, Surat, Vadodara | Lankadhish</title>
+        <meta
+          name="description"
+          content="Premium cab services across Gujarat. Choose from Hatchbacks, Sedans, SUVs & Luxury cars in Ahmedabad, Surat, Vadodara, Rajkot. Professional drivers, competitive rates, 24/7 availability. Book now!"
+        />
+        <meta
+          name="keywords"
+          content="cab services Gujarat, taxi fleet Ahmedabad, sedan booking Surat, SUV rental Vadodara, luxury cars Rajkot, professional drivers Gujarat, 24/7 cab service, Maruti Swift booking, Honda City taxi, Mahindra Scorpio rental, Toyota Camry hire, Gujarat transportation, outstation cab Gujarat, airport transfer Ahmedabad"
+        />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+        <meta name="geo.region" content="IN-GJ" />
+        <meta name="geo.country" content="India" />
+        <meta name="geo.placename" content="Gujarat, India" />
+        <link rel="canonical" href="https://lankadhish.com/services" />
+        <meta property="og:title" content="Premium Cab Services Gujarat - Lankadhish Fleet" />
+        <meta property="og:description" content="Choose from our diverse fleet of premium vehicles with professional drivers across Gujarat. Safe, reliable, and affordable transportation in Ahmedabad, Surat, Vadodara." />
+        <meta property="og:url" content="https://lankadhish.com/services" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_IN" />
+      </Helmet>
       <Navigation />
       
       {/* Hero Section */}
       <section className="pt-24 pb-16 gradient-hero text-white">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-5xl mobile-heading-lg font-bold mb-6">Our Services</h1>
+          <h1 className="text-5xl md:text-5xl mobile-heading-lg font-bold mb-6">Travel India With Us - Gujarat to All Over India</h1>
           <p className="text-xl md:text-xl mobile-text-lg max-w-3xl mx-auto">
-            Comprehensive transportation solutions for every need. From airport transfers 
-            to corporate bookings, we've got you covered.
+            24/7 One-Way & Round-Trip Service. Professional pilots, neat & clean cars, GPS enabled cabs.
+            Safe for women with all India service coverage from Gujarat.
           </p>
         </div>
       </section>
@@ -200,6 +238,7 @@ const Services = () => {
                   {/* Vehicle Name & Rating */}
                   <div className="mb-3">
                     <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-1">{vehicle.name}</h3>
+                    <p className="text-sm text-muted-foreground mb-2 font-medium">{vehicle.model}</p>
                     <div className="flex items-center justify-center space-x-1 mb-2">
                       <div className="flex items-center">
                         {[...Array(5)].map((_, i) => (

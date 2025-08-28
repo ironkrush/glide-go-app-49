@@ -283,11 +283,11 @@ const Booking = () => {
           <h2 className="text-3xl md:text-3xl mobile-heading-md font-bold mb-4">Need Immediate Assistance?</h2>
           <p className="text-soft mobile-text-base mb-6">Call us directly for urgent bookings or special requirements</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black mobile-button">
+            <Button size="lg" variant="outline" className="border-white text-black hover:bg-black hover:text-white mobile-button">
               <Phone className="w-4 h-4 mr-2" />
               Call: +91 98765 43210
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black mobile-button">
+            <Button size="lg" variant="outline" className="border-white text-black hover:bg-black hover:text-white mobile-button">
               WhatsApp: +91 98765 43210
             </Button>
           </div>
