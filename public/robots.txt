@@ -12,3 +12,12 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://lankadhish.com/sitemap.xml
+
+# Allow all search engines to crawl the blog
+Allow: /blogs/
+
+# Crawl-delay (optional, helps with server load)
+Crawl-delay: 1

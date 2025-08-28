@@ -8,68 +8,80 @@ import { Calendar, User, ArrowRight, Clock } from "lucide-react";
 const Blog = () => {
   const blogPosts = [
     {
-      slug: "safe-travel-tips",
-      title: "10 Essential Safe Travel Tips for Every Journey",
-      excerpt: "Discover expert safety tips to ensure your travels are secure and worry-free. From booking to arrival, we've got you covered.",
-      author: "Sarah Johnson",
-      date: "December 15, 2024",
-      readTime: "5 min read",
-      category: "Safety",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      slug: "airport-transfer-guide",
-      title: "The Complete Guide to Stress-Free Airport Transfers",
-      excerpt: "Learn how to navigate airport transfers like a pro. Tips for timing, luggage, and choosing the right transportation method.",
-      author: "Michael Chen",
-      date: "December 12, 2024", 
-      readTime: "7 min read",
-      category: "Travel",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      slug: "sustainable-transportation",
-      title: "Eco-Friendly Transportation: Making Greener Travel Choices",
-      excerpt: "Explore sustainable transportation options and learn how to reduce your carbon footprint while traveling.",
-      author: "Emily Davis",
-      date: "December 10, 2024",
-      readTime: "6 min read", 
-      category: "Environment",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      slug: "business-travel-efficiency",
-      title: "Maximizing Efficiency in Business Travel",
-      excerpt: "Professional tips for making your business trips more productive and cost-effective. Time-saving strategies from experienced travelers.",
-      author: "David Wilson",
-      date: "December 8, 2024",
+      slug: "gujarat-to-mumbai-cab-guide",
+      title: "Complete Guide: Gujarat to Mumbai by Cab",
+      excerpt: "Discover the best routes, stops, and travel tips for your journey from Gujarat to Mumbai. Professional cab service insights included.",
+      author: "Mr Amar Jankar",
+      date: "January 15, 2024",
       readTime: "8 min read",
-      category: "Business",
-      image: "/api/placeholder/400/250"
+      category: "Travel Guide",
+      image: "🚗",
+      distance: "525 km",
+      duration: "8-10 hours"
     },
     {
-      slug: "ride-sharing-etiquette",
-      title: "Ride-Sharing Etiquette: A Guide for Passengers and Drivers",
-      excerpt: "Master the unwritten rules of ride-sharing for a pleasant experience for everyone. Communication, safety, and courtesy tips.",
-      author: "Lisa Rodriguez",
-      date: "December 5, 2024",
-      readTime: "4 min read",
-      category: "Etiquette",
-      image: "/api/placeholder/400/250"
+      slug: "gujarat-to-delhi-road-trip",
+      title: "Gujarat to Delhi: Ultimate Road Trip Guide",
+      excerpt: "Plan your perfect road trip from Gujarat to Delhi with our comprehensive guide covering routes, attractions, and booking tips.",
+      author: "Mr Amar Jankar",
+      date: "January 20, 2024",
+      readTime: "12 min read",
+      category: "Road Trip",
+      image: "🏛️",
+      distance: "950 km",
+      duration: "12-14 hours"
     },
     {
-      slug: "local-transportation-guide",
-      title: "Navigating Local Transportation in Major Cities",
-      excerpt: "Your comprehensive guide to public and private transportation options in popular destinations around the world.",
-      author: "James Thompson",
-      date: "December 3, 2024",
+      slug: "gujarat-to-goa-coastal-route",
+      title: "Best Route from Gujarat to Goa by Cab",
+      excerpt: "Explore the scenic coastal route from Gujarat to Goa. Tips for comfortable travel and must-visit stops along the way.",
+      author: "Mr Amar Jankar",
+      date: "January 25, 2024",
       readTime: "10 min read",
-      category: "Travel",
-      image: "/api/placeholder/400/250"
+      category: "Coastal Route",
+      image: "🏖️",
+      distance: "600 km",
+      duration: "10-12 hours"
+    },
+    {
+      slug: "gujarat-to-bangalore-silicon-valley",
+      title: "Gujarat to Bangalore: Silicon Valley Route",
+      excerpt: "Professional cab service from Gujarat to India's Silicon Valley. Best routes, tech stops, and business travel tips.",
+      author: "Mr Amar Jankar",
+      date: "January 30, 2024",
+      readTime: "11 min read",
+      category: "Business Travel",
+      image: "💻",
+      distance: "1200 km",
+      duration: "16-18 hours"
+    },
+    {
+      slug: "gujarat-to-agra-taj-mahal",
+      title: "Gujarat to Agra: Taj Mahal Express",
+      excerpt: "Visit the iconic Taj Mahal from Gujarat. Best routes, photography tips, and heritage tour planning.",
+      author: "Mr Amar Jankar",
+      date: "February 1, 2024",
+      readTime: "9 min read",
+      category: "Heritage Tour",
+      image: "🕌",
+      distance: "650 km",
+      duration: "10-12 hours"
+    },
+    {
+      slug: "gujarat-to-rajasthan-desert-adventure",
+      title: "Gujarat to Rajasthan: Desert Adventure Guide",
+      excerpt: "Experience the royal heritage of Rajasthan with our detailed travel guide from Gujarat. Best routes and cultural insights.",
+      author: "Mr Amar Jankar",
+      date: "February 5, 2024",
+      readTime: "7 min read",
+      category: "Cultural Tour",
+      image: "🏰",
+      distance: "400 km",
+      duration: "6-8 hours"
     }
   ];
 
-  const categories = ["All", "Safety", "Travel", "Business", "Environment", "Etiquette"];
+  const categories = ["All", "Travel Guide", "Road Trip", "Coastal Route", "Business Travel", "Heritage Tour", "Cultural Tour"];
 
   return (
     <div className="min-h-screen">
@@ -78,11 +90,21 @@ const Blog = () => {
       {/* Hero Section */}
       <section className="pt-24 pb-16 gradient-hero text-white">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">Travel Blog</h1>
-          <p className="text-xl max-w-3xl mx-auto">
-            Insights, tips, and stories from the world of transportation. 
+          <h1 className="text-5xl font-bold mb-6">Travel Blog & Destination Guides</h1>
+          <p className="text-xl max-w-3xl mx-auto mb-8">
+            Insights, tips, and stories from the world of transportation.
             Stay informed and travel smarter with our expert advice.
           </p>
+
+          {/* Featured Travel Guides */}
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold mb-3">🚗 Gujarat to All India Travel Guides</h2>
+            <p className="text-lg mb-4">Comprehensive destination guides for traveling from Gujarat to major Indian cities with professional cab service</p>
+            <div className="flex flex-wrap gap-2 justify-center">
+              <span className="bg-white/20 px-3 py-1 rounded-full text-sm">Mumbai • Delhi • Goa • Bangalore</span>
+              <span className="bg-white/20 px-3 py-1 rounded-full text-sm">Agra • Rajasthan • Kashmir • Kerala</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -113,8 +135,13 @@ const Blog = () => {
                 <div className="aspect-video bg-muted overflow-hidden">
                   <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
                     <div className="text-center p-6">
+                      <div className="text-4xl mb-3">{post.image}</div>
                       <h3 className="font-semibold text-lg mb-2">{post.category}</h3>
-                      <p className="text-sm text-muted-foreground">Feature Image</p>
+                      {post.distance && (
+                        <div className="text-sm text-muted-foreground bg-white/60 px-3 py-1 rounded-full">
+                          {post.distance} • {post.duration}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
