@@ -78,10 +78,46 @@ const Blog = () => {
       image: "🏰",
       distance: "400 km",
       duration: "6-8 hours"
+    },
+    {
+      slug: "best-cab-service-gujarat-2024",
+      title: "Best Cab Service in Gujarat 2024",
+      excerpt: "Discover Gujarat's #1 rated cab service. Professional drivers, GPS enabled cabs, 24/7 service across Ahmedabad, Surat, Vadodara.",
+      author: "Mr Amar Jankar",
+      date: "March 15, 2024",
+      readTime: "10 min read",
+      category: "Service Guide",
+      image: "🏆",
+      distance: "All Gujarat",
+      duration: "24/7 Service"
+    },
+    {
+      slug: "ahmedabad-airport-taxi-service",
+      title: "Ahmedabad Airport Taxi Service",
+      excerpt: "24/7 AMD airport cab service with flight tracking, professional drivers, and fixed rates. Best airport transfers in Ahmedabad.",
+      author: "Mr Amar Jankar",
+      date: "March 20, 2024",
+      readTime: "8 min read",
+      category: "Airport Service",
+      image: "✈️",
+      distance: "25 km",
+      duration: "45 mins"
+    },
+    {
+      slug: "surat-to-mumbai-cab-service",
+      title: "Surat to Mumbai Cab Service",
+      excerpt: "Professional cab service from Diamond City to Financial Capital. Business travel specialist with competitive rates and reliable service.",
+      author: "Mr Amar Jankar",
+      date: "March 25, 2024",
+      readTime: "9 min read",
+      category: "Business Travel",
+      image: "💎",
+      distance: "284 km",
+      duration: "5-6 hours"
     }
   ];
 
-  const categories = ["All", "Travel Guide", "Road Trip", "Coastal Route", "Business Travel", "Heritage Tour", "Cultural Tour"];
+  const categories = ["All", "Travel Guide", "Road Trip", "Coastal Route", "Business Travel", "Heritage Tour", "Cultural Tour", "Service Guide", "Airport Service"];
 
   return (
     <div className="min-h-screen">

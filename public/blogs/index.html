@@ -49,11 +49,30 @@
     </style>
 </head>
 <body>
-    <header>
+    <!-- Navigation Bar -->
+    <nav style="background: white; padding: 1rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: fixed; top: 0; left: 0; right: 0; z-index: 1000;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px;">
+            <a href="/" style="font-size: 1.5rem; font-weight: 700; color: hsl(45 100% 51%); text-decoration: none;">
+                🚗 Lankadhish
+            </a>
+            <div style="display: flex; gap: 2rem; align-items: center;">
+                <a href="/" style="color: hsl(220 15% 10%); text-decoration: none; font-weight: 500;">Home</a>
+                <a href="/services" style="color: hsl(220 15% 10%); text-decoration: none; font-weight: 500;">Services</a>
+                <a href="/about" style="color: hsl(220 15% 10%); text-decoration: none; font-weight: 500;">About</a>
+                <a href="/contact" style="color: hsl(220 15% 10%); text-decoration: none; font-weight: 500;">Contact</a>
+                <a href="/booking" style="background: var(--gradient-primary); color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 600;">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <header style="margin-top: 80px;">
         <div class="container">
             <div class="header-content">
                 <h1>Lankadhish Travel Blog</h1>
                 <p class="subtitle">Your Guide to Traveling India from Gujarat | Expert Tips & Destination Guides</p>
+                <div style="margin-top: 1rem;">
+                    <a href="/" style="color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 500;">← Back to Main Website</a>
+                </div>
             </div>
         </div>
     </header>
@@ -212,6 +231,31 @@
                     <div class="blog-meta">
                         <span>📅 Cultural Journey</span>
                         <a href="gujarat-to-kolkata-cultural.html" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- New SEO-Optimized Blogs -->
+            <article class="blog-card">
+                <div class="blog-image">🏆 Best Service</div>
+                <div class="blog-content">
+                    <h2 class="blog-title">Best Cab Service in Gujarat 2024</h2>
+                    <p class="blog-excerpt">Discover Gujarat's #1 rated cab service. Professional drivers, GPS enabled cabs, 24/7 service across Ahmedabad, Surat, Vadodara.</p>
+                    <div class="blog-meta">
+                        <span>📅 Service Guide</span>
+                        <a href="best-cab-service-gujarat-2024.html" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-image">✈️ Airport</div>
+                <div class="blog-content">
+                    <h2 class="blog-title">Ahmedabad Airport Taxi Service</h2>
+                    <p class="blog-excerpt">24/7 AMD airport cab service with flight tracking, professional drivers, and fixed rates. Best airport transfers in Ahmedabad.</p>
+                    <div class="blog-meta">
+                        <span>📅 Airport Service</span>
+                        <a href="ahmedabad-airport-taxi-service.html" class="read-more">Read More</a>
                     </div>
                 </div>
             </article>

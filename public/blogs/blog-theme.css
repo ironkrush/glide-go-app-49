@@ -1,28 +1,40 @@
-/* Lankadhish Blog Theme - Consistent with Main Website */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
+/* Lankadhish Blog Theme - EXACT MATCH with Main Website */
+:root {
+    /* Exact colors from main site */
+    --background: 0 0% 98%;
+    --foreground: 220 15% 10%;
+    --primary: 45 100% 51%;
+    --secondary: 220 15% 15%;
+    --gradient-primary: linear-gradient(135deg, hsl(45 100% 51%), hsl(38 100% 55%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 15% 8%) 0%, hsl(220 15% 15%) 100%);
+    --shadow-yellow: 0 4px 20px hsl(45 100% 51% / 0.3);
 }
 
-body { 
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    line-height: 1.8; 
-    color: #1a1a1a; 
-    background: #fafafa; 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container { 
-    max-width: 800px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.8;
+    color: hsl(var(--foreground));
+    background: hsl(var(--background));
+    font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-/* Header with Lankadhish gradient */
-header { 
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-    color: white; 
-    padding: 3rem 0; 
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header with EXACT main site gradient */
+header {
+    background: var(--gradient-hero);
+    color: white;
+    padding: 3rem 0;
     position: relative;
     overflow: hidden;
 }
@@ -149,17 +161,18 @@ p {
     font-size: 1.3rem;
 }
 
-/* Contact CTA */
-.contact-cta { 
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-    color: white; 
-    padding: 2.5rem; 
-    border-radius: 12px; 
-    text-align: center; 
+/* Contact CTA - EXACT main site style */
+.contact-cta {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
     margin: 3rem 0;
-    box-shadow: 0 8px 25px rgba(103, 126, 234, 0.3);
+    box-shadow: var(--shadow-yellow);
     position: relative;
     overflow: hidden;
+    font-weight: 700;
 }
 
 .contact-cta::before {
@@ -183,22 +196,23 @@ p {
     font-size: 1.5rem;
 }
 
-.contact-cta a { 
-    color: #fff; 
-    font-weight: 600; 
-    text-decoration: none; 
-    background: rgba(255,255,255,0.2); 
-    padding: 0.75rem 1.5rem; 
-    border-radius: 8px; 
+.contact-cta a {
+    color: hsl(var(--foreground));
+    font-weight: 700;
+    text-decoration: none;
+    background: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
     display: inline-block;
-    margin: 0 0.5rem;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
+    margin: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .contact-cta a:hover {
-    background: rgba(255,255,255,0.3);
-    transform: translateY(-2px);
+    background: hsl(var(--background));
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 /* Lists */
