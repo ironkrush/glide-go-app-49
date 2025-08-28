@@ -8,9 +8,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CalendarIcon, Clock, Users, Car, MapPin, Phone, Mail } from "lucide-react";
+import { CalendarIcon, Clock, Users, Car, MapPin, Phone, Mail, CheckCircle, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { sendBookingEmail } from "@/services/emailService";
+import LocationAutocomplete from "@/components/LocationAutocomplete";
+import { baserowService } from "@/services/baserowService";
+import { LocationSuggestion } from "@/services/locationService";
 import {
   Form,
   FormControl,
@@ -71,8 +74,8 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
   const onSubmit = async (data: BookingFormData) => {
     setIsSubmitting(true);
     try {
-      // Send email using the new simple email service
-      const emailSent = await sendBookingEmail({
+      // Submit to Baserow first
+      await baserowService.submitBooking({
         name: data.name,
         email: data.email,
         phone: data.phone,
@@ -85,8 +88,22 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
         specialRequests: data.specialRequests,
       });
 
-      if (!emailSent) {
-        throw new Error('Failed to send email');
+      // Also send email as backup
+      try {
+        await sendBookingEmail({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          pickupLocation: data.pickupLocation,
+          destination: data.destination,
+          pickupDate: data.pickupDate,
+          pickupTime: data.pickupTime,
+          passengerCount: data.passengerCount,
+          carType: data.carType,
+          specialRequests: data.specialRequests,
+        });
+      } catch (emailError) {
+        console.warn('Email sending failed, but data is saved to Baserow:', emailError);
       }
 
       setShowSuccessDialog(true);
@@ -164,7 +181,12 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
                     <FormItem>
                       <FormLabel>Pickup Location</FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter pickup address" {...field} />
+                        <LocationAutocomplete
+                          placeholder="Enter pickup address"
+                          value={field.value}
+                          onChange={field.onChange}
+                          showPopularCities={true}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -178,7 +200,12 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
                     <FormItem>
                       <FormLabel>Destination</FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter destination" {...field} />
+                        <LocationAutocomplete
+                          placeholder="Enter destination"
+                          value={field.value}
+                          onChange={field.onChange}
+                          showPopularCities={true}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

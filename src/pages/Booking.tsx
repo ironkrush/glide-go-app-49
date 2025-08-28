@@ -7,9 +7,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar, Clock, MapPin, Phone, User, Car } from "lucide-react";
+import { Calendar, Clock, MapPin, Phone, User, Car, CheckCircle, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { sendBookingEmail } from "@/services/emailService";
+import LocationAutocomplete from "@/components/LocationAutocomplete";
+import { baserowService } from "@/services/baserowService";
+import { LocationSuggestion } from "@/services/locationService";
 
 const Booking = () => {
   const { toast } = useToast();
@@ -44,8 +47,8 @@ const Booking = () => {
     }
 
     try {
-      // Send email using the new simple email service
-      const emailSent = await sendBookingEmail({
+      // Submit to Baserow first
+      await baserowService.submitBooking({
         name: formData.passengerName,
         email: formData.passengerEmail || 'no-email@provided.com',
         phone: formData.passengerPhone,
@@ -58,8 +61,22 @@ const Booking = () => {
         specialRequests: formData.specialRequests,
       });
 
-      if (!emailSent) {
-        throw new Error('Failed to send email');
+      // Also send email as backup
+      try {
+        await sendBookingEmail({
+          name: formData.passengerName,
+          email: formData.passengerEmail || 'no-email@provided.com',
+          phone: formData.passengerPhone,
+          pickupLocation: formData.pickupLocation,
+          destination: formData.dropLocation,
+          pickupDate: formData.date,
+          pickupTime: formData.time,
+          passengerCount: '1',
+          carType: formData.cabType,
+          specialRequests: formData.specialRequests,
+        });
+      } catch (emailError) {
+        console.warn('Email sending failed, but data is saved to Baserow:', emailError);
       }
 
       // Show success message
@@ -124,12 +141,11 @@ const Booking = () => {
                         <MapPin className="w-4 h-4 text-primary" />
                         <span>Pickup Location *</span>
                       </Label>
-                      <Input
-                        id="pickup"
+                      <LocationAutocomplete
                         placeholder="Enter pickup address"
                         value={formData.pickupLocation}
-                        onChange={(e) => handleInputChange("pickupLocation", e.target.value)}
-                        required
+                        onChange={(value) => handleInputChange("pickupLocation", value)}
+                        showPopularCities={true}
                       />
                     </div>
                     
@@ -138,12 +154,11 @@ const Booking = () => {
                         <MapPin className="w-4 h-4 text-primary" />
                         <span>Drop Location *</span>
                       </Label>
-                      <Input
-                        id="drop"
+                      <LocationAutocomplete
                         placeholder="Enter destination address"
                         value={formData.dropLocation}
-                        onChange={(e) => handleInputChange("dropLocation", e.target.value)}
-                        required
+                        onChange={(value) => handleInputChange("dropLocation", value)}
+                        showPopularCities={true}
                       />
                     </div>
                   </div>

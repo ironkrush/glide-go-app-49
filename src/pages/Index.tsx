@@ -411,7 +411,7 @@ const Index = () => {
           </div>
 
           <div className="relative max-w-5xl mx-auto">
-            <Card className="p-12 md:p-12 mobile-card-padding text-center shadow-lg border-0 bg-white">
+            <Card className="p-4 md:p-12 text-center shadow-lg border-0 bg-white">
               <CardContent className="pt-6">
                 <div className="flex justify-center mb-6">
                   {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
@@ -430,15 +430,15 @@ const Index = () => {
                   "{testimonials[currentTestimonial].text}"
                 </blockquote>
                 
-                <div className="border-t border-gray-200 pt-6">
-                  <div className="font-bold text-xl md:text-xl mobile-heading-sm mb-1">
+                <div className="border-t border-gray-200 pt-3 md:pt-6">
+                  <div className="font-bold text-lg md:text-xl mb-1">
                     {testimonials[currentTestimonial].name}
                   </div>
-                  <div className="text-primary font-medium testimonial-author-mobile mb-1">
+                  <div className="text-primary font-medium text-sm md:text-base mb-1">
                     {testimonials[currentTestimonial].position}
                   </div>
-                  <div className="text-muted-foreground mobile-text-base flex items-center justify-center gap-1">
-                    <MapPin className="w-4 h-4" />
+                  <div className="text-muted-foreground text-sm md:text-base flex items-center justify-center gap-1">
+                    <MapPin className="w-3 h-3 md:w-4 md:h-4" />
                     {testimonials[currentTestimonial].location}
                   </div>
                 </div>

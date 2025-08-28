@@ -9,9 +9,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Clock, MessageCircle, Car } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageCircle, Car, CheckCircle, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { sendContactEmail } from "@/services/emailService";
+import { baserowService } from "@/services/baserowService";
 import { Helmet } from "react-helmet-async";
 import {
   Form,
@@ -58,8 +59,8 @@ const Contact = () => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     try {
-      // Send email using the new simple email service
-      const emailSent = await sendContactEmail({
+      // Submit to Baserow first
+      await baserowService.submitContact({
         name: data.name,
         email: data.email,
         phone: data.phone,
@@ -67,8 +68,17 @@ const Contact = () => {
         message: data.message,
       });
 
-      if (!emailSent) {
-        throw new Error('Failed to send email');
+      // Also send email as backup
+      try {
+        await sendContactEmail({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          subject: data.subject,
+          message: data.message,
+        });
+      } catch (emailError) {
+        console.warn('Email sending failed, but data is saved to Baserow:', emailError);
       }
 
       setShowSuccessDialog(true);
