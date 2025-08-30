@@ -17,7 +17,7 @@ import {
   Car,
   MapPin
 } from "lucide-react";
-import heroImage from "@/assets/hero-minimalist-cab.jpg";
+import heroImage from "@/assets/cabrm.png";
 import BookingForm from "@/components/BookingForm";
 
 const testimonials = [
