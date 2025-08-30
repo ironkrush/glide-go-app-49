@@ -12,7 +12,8 @@ import { CalendarIcon, Clock, Users, Car, MapPin, Phone, Mail, CheckCircle, Aler
 import { useToast } from "@/hooks/use-toast";
 import { sendBookingEmail } from "@/services/emailService";
 import LocationAutocomplete from "@/components/LocationAutocomplete";
-import { baserowService } from "@/services/baserowService";
+import TaxiAnimation from "@/components/TaxiAnimation";
+import { n8nService } from "@/services/n8nService";
 import { LocationSuggestion } from "@/services/locationService";
 import {
   Form,
@@ -54,6 +55,8 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
   const { toast } = useToast();
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showAnimation, setShowAnimation] = useState(false);
+  const [animationSuccess, setAnimationSuccess] = useState(false);
 
   const form = useForm<BookingFormData>({
     resolver: zodResolver(bookingFormSchema),
@@ -73,24 +76,25 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
 
   const onSubmit = async (data: BookingFormData) => {
     setIsSubmitting(true);
-    try {
-      // Submit to Baserow first
-      await baserowService.submitBooking({
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        pickupLocation: data.pickupLocation,
-        destination: data.destination,
-        pickupDate: data.pickupDate,
-        pickupTime: data.pickupTime,
-        passengerCount: data.passengerCount,
-        carType: data.carType,
-        specialRequests: data.specialRequests,
-      });
+    setShowAnimation(true);
+    setAnimationSuccess(false);
 
-      // Also send email as backup
-      try {
-        await sendBookingEmail({
+    try {
+      let result;
+
+      if (compact) {
+        // Use quick booking service for compact form
+        result = await n8nService.submitQuickBooking({
+          name: data.name,
+          phone: data.phone,
+          pickupLocation: data.pickupLocation,
+          destination: data.destination,
+          pickupDate: data.pickupDate,
+          pickupTime: data.pickupTime,
+        });
+      } else {
+        // Use full booking service for detailed form
+        result = await n8nService.submitBooking({
           name: data.name,
           email: data.email,
           phone: data.phone,
@@ -102,27 +106,40 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
           carType: data.carType,
           specialRequests: data.specialRequests,
         });
-      } catch (emailError) {
-        console.warn('Email sending failed, but data is saved to Baserow:', emailError);
       }
 
-      setShowSuccessDialog(true);
-      form.reset();
+      if (result.success) {
+        setAnimationSuccess(true);
 
-      toast({
-        title: "Booking Request Submitted!",
-        description: "Our team will contact you shortly to confirm your booking.",
-      });
+        // Reset form after animation
+        setTimeout(() => {
+          form.reset();
+          setShowSuccessDialog(true);
+        }, 2500);
+
+        toast({
+          title: "Booking Request Submitted!",
+          description: "Our team will contact you within 15 minutes to confirm your booking.",
+        });
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
     } catch (error: any) {
       console.error('Booking submission error:', error);
+      setShowAnimation(false);
       toast({
         title: "Submission Failed",
-        description: "Please try again or contact us directly.",
+        description: "Please try again or contact us directly at +91 9157575675",
         variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleAnimationComplete = () => {
+    setShowAnimation(false);
+    setAnimationSuccess(false);
   };
 
   const getTomorrowDate = () => {
@@ -263,11 +280,18 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
             <DialogHeader>
               <DialogTitle>Booking Request Submitted!</DialogTitle>
               <DialogDescription>
-                Thank you for choosing RideEasy! Our team will contact you shortly to confirm your booking details and provide you with the estimated fare.
+                Thank you for choosing Lankadhish! Our team will contact you shortly to confirm your booking details and provide you with the estimated fare.
               </DialogDescription>
             </DialogHeader>
           </DialogContent>
         </Dialog>
+
+        {/* Taxi Animation */}
+        <TaxiAnimation
+          isSubmitting={showAnimation}
+          isSuccess={animationSuccess}
+          onAnimationComplete={handleAnimationComplete}
+        />
       </>
     );
   }
@@ -477,11 +501,18 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
           <DialogHeader>
             <DialogTitle>Booking Request Submitted!</DialogTitle>
             <DialogDescription>
-              Thank you for choosing RideEasy! Our team will contact you shortly to confirm your booking details and provide you with the estimated fare.
+              Thank you for choosing Lankadhish! Our team will contact you shortly to confirm your booking details and provide you with the estimated fare.
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
       </Dialog>
+
+      {/* Taxi Animation */}
+      <TaxiAnimation
+        isSubmitting={showAnimation}
+        isSuccess={animationSuccess}
+        onAnimationComplete={handleAnimationComplete}
+      />
     </>
   );
 };

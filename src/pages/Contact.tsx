@@ -12,7 +12,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, MessageCircle, Car, CheckCircle, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { sendContactEmail } from "@/services/emailService";
-import { baserowService } from "@/services/baserowService";
+import TaxiAnimation from "@/components/TaxiAnimation";
+import { n8nService } from "@/services/n8nService";
 import { Helmet } from "react-helmet-async";
 import {
   Form,
@@ -44,6 +45,8 @@ const Contact = () => {
   const { toast } = useToast();
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showAnimation, setShowAnimation] = useState(false);
+  const [animationSuccess, setAnimationSuccess] = useState(false);
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
@@ -58,9 +61,12 @@ const Contact = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
+    setShowAnimation(true);
+    setAnimationSuccess(false);
+
     try {
-      // Submit to Baserow first
-      await baserowService.submitContact({
+      // Submit to n8n webhook
+      const result = await n8nService.submitContact({
         name: data.name,
         email: data.email,
         phone: data.phone,
@@ -68,36 +74,38 @@ const Contact = () => {
         message: data.message,
       });
 
-      // Also send email as backup
-      try {
-        await sendContactEmail({
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          subject: data.subject,
-          message: data.message,
+      if (result.success) {
+        setAnimationSuccess(true);
+
+        // Reset form after animation
+        setTimeout(() => {
+          form.reset();
+          setShowSuccessDialog(true);
+        }, 2500);
+
+        toast({
+          title: "Message Sent Successfully!",
+          description: "Our team will contact you within 24 hours.",
         });
-      } catch (emailError) {
-        console.warn('Email sending failed, but data is saved to Baserow:', emailError);
+      } else {
+        throw new Error(result.message || 'Submission failed');
       }
-
-      setShowSuccessDialog(true);
-      form.reset();
-
-      toast({
-        title: "Message Sent Successfully!",
-        description: "Our team will contact you shortly.",
-      });
     } catch (error: any) {
       console.error('Contact submission error:', error);
+      setShowAnimation(false);
       toast({
         title: "Submission Failed",
-        description: "Please try again or call us directly.",
+        description: "Please try again or contact us directly at +91 9157575675",
         variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleAnimationComplete = () => {
+    setShowAnimation(false);
+    setAnimationSuccess(false);
   };
 
   return (
@@ -426,6 +434,13 @@ const Contact = () => {
           </DialogHeader>
         </DialogContent>
       </Dialog>
+
+      {/* Taxi Animation */}
+      <TaxiAnimation
+        isSubmitting={showAnimation}
+        isSuccess={animationSuccess}
+        onAnimationComplete={handleAnimationComplete}
+      />
     </>
   );
 };

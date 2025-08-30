@@ -11,11 +11,14 @@ import { Calendar, Clock, MapPin, Phone, User, Car, CheckCircle, AlertCircle } f
 import { useToast } from "@/hooks/use-toast";
 import { sendBookingEmail } from "@/services/emailService";
 import LocationAutocomplete from "@/components/LocationAutocomplete";
-import { baserowService } from "@/services/baserowService";
+import TaxiAnimation from "@/components/TaxiAnimation";
+import { n8nService } from "@/services/n8nService";
 import { LocationSuggestion } from "@/services/locationService";
 
 const Booking = () => {
   const { toast } = useToast();
+  const [showAnimation, setShowAnimation] = useState(false);
+  const [animationSuccess, setAnimationSuccess] = useState(false);
   const [formData, setFormData] = useState({
     pickupLocation: "",
     dropLocation: "",
@@ -46,9 +49,12 @@ const Booking = () => {
       return;
     }
 
+    setShowAnimation(true);
+    setAnimationSuccess(false);
+
     try {
-      // Submit to Baserow first
-      await baserowService.submitBooking({
+      // Submit to n8n webhook
+      const result = await n8nService.submitBooking({
         name: formData.passengerName,
         email: formData.passengerEmail || 'no-email@provided.com',
         phone: formData.passengerPhone,
@@ -61,50 +67,46 @@ const Booking = () => {
         specialRequests: formData.specialRequests,
       });
 
-      // Also send email as backup
-      try {
-        await sendBookingEmail({
-          name: formData.passengerName,
-          email: formData.passengerEmail || 'no-email@provided.com',
-          phone: formData.passengerPhone,
-          pickupLocation: formData.pickupLocation,
-          destination: formData.dropLocation,
-          pickupDate: formData.date,
-          pickupTime: formData.time,
-          passengerCount: '1',
-          carType: formData.cabType,
-          specialRequests: formData.specialRequests,
+      if (result.success) {
+        setAnimationSuccess(true);
+
+        // Reset form after animation
+        setTimeout(() => {
+          setFormData({
+            pickupLocation: "",
+            dropLocation: "",
+            date: "",
+            time: "",
+            passengerName: "",
+            passengerEmail: "",
+            passengerPhone: "",
+            cabType: "",
+            specialRequests: "",
+          });
+        }, 2500);
+
+        toast({
+          title: "Booking Submitted Successfully!",
+          description: "Our team will contact you within 15 minutes to confirm your ride details.",
         });
-      } catch (emailError) {
-        console.warn('Email sending failed, but data is saved to Baserow:', emailError);
+      } else {
+        throw new Error(result.message || 'Submission failed');
       }
 
-      // Show success message
-      toast({
-        title: "Booking Submitted Successfully!",
-        description: "Our team will contact you shortly to confirm your ride details.",
-      });
-
-      // Reset form
-      setFormData({
-        pickupLocation: "",
-        dropLocation: "",
-        date: "",
-        time: "",
-        passengerName: "",
-        passengerPhone: "",
-        passengerEmail: "",
-        cabType: "",
-        specialRequests: ""
-      });
     } catch (error) {
       console.error('Booking submission error:', error);
+      setShowAnimation(false);
       toast({
         title: "Submission Failed",
-        description: "Please try again or contact us directly.",
+        description: "Please try again or contact us directly at +91 9157575675",
         variant: "destructive",
       });
     }
+  };
+
+  const handleAnimationComplete = () => {
+    setShowAnimation(false);
+    setAnimationSuccess(false);
   };
 
   return (
@@ -310,6 +312,13 @@ const Booking = () => {
       </section>
 
       <Footer />
+
+      {/* Taxi Animation */}
+      <TaxiAnimation
+        isSubmitting={showAnimation}
+        isSuccess={animationSuccess}
+        onAnimationComplete={handleAnimationComplete}
+      />
     </div>
   );
 };
