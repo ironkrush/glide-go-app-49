@@ -88,10 +88,13 @@ export const sendContactEmail = async (data: ContactData): Promise<boolean> => {
 
     // Web3Forms required fields
     formData.append('access_key', WEB3FORMS_ACCESS_KEY);
-    formData.append('subject', `📧 New Contact Message - Lankadhish: ${data.subject}`);
+    formData.append('subject', `📧 New Contact Message - Lankadhish: ${data.subject || 'General Inquiry'}`);
     formData.append('from_name', data.name);
     formData.append('email', data.email);
 
+    // Add spam protection bypass for testing
+    formData.append('botcheck', '');
+    
     // Create formatted message
     const message = `
 📧 NEW CONTACT MESSAGE - LANKADHISH
@@ -100,7 +103,7 @@ export const sendContactEmail = async (data: ContactData): Promise<boolean> => {
 Name: ${data.name}
 Email: ${data.email}
 Phone: ${data.phone || 'Not provided'}
-Subject: ${data.subject}
+Subject: ${data.subject || 'General Inquiry'}
 
 💬 MESSAGE:
 ${data.message}
@@ -110,17 +113,28 @@ ${data.message}
 
     formData.append('message', message);
 
+    // Debug log
+    console.log('Sending to Web3Forms:', {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      from_name: data.name,
+      email: data.email,
+      subject: data.subject
+    });
+
     // Send to Web3Forms
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       body: formData
     });
 
+    const responseText = await response.text();
+    console.log('Web3Forms response:', response.status, responseText);
+
     if (response.ok) {
       console.log('Contact email sent successfully');
       return true;
     } else {
-      console.error('Failed to send contact email:', response.statusText);
+      console.error('Failed to send contact email:', response.status, responseText);
       return false;
     }
   } catch (error) {

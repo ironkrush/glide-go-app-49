@@ -401,32 +401,32 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-8 md:py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-4xl mobile-heading-md font-bold mb-4">What Our Customers Say</h2>
-            <p className="text-xl md:text-xl mobile-text-base text-muted-foreground">
+          <div className="text-center mb-6 md:mb-16">
+            <h2 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4">What Our Customers Say</h2>
+            <p className="text-base md:text-xl text-muted-foreground">
               Real experiences from satisfied customers across the nation
             </p>
           </div>
 
           <div className="relative max-w-5xl mx-auto">
             <Card className="p-4 md:p-12 text-center shadow-lg border-0 bg-white">
-              <CardContent className="pt-6">
-                <div className="flex justify-center mb-6">
+              <CardContent className="pt-2 md:pt-6">
+                <div className="flex justify-center mb-3 md:mb-6">
                   {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} className="w-6 h-6 md:w-8 md:h-8 text-primary fill-current" />
+                    <Star key={i} className="w-4 h-4 md:w-6 md:h-6 text-primary fill-current" />
                   ))}
                 </div>
 
                 {/* Avatar */}
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-lg md:text-2xl font-bold text-primary">
+                <div className="w-10 h-10 md:w-16 md:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-6">
+                  <span className="text-sm md:text-lg font-bold text-primary">
                     {testimonials[currentTestimonial].avatar}
                   </span>
                 </div>
-                
-                <blockquote className="text-2xl md:text-2xl testimonial-mobile mb-8 text-foreground leading-relaxed max-w-3xl mx-auto">
+
+                <blockquote className="text-sm md:text-xl mb-4 md:mb-8 text-foreground leading-relaxed max-w-3xl mx-auto">
                   "{testimonials[currentTestimonial].text}"
                 </blockquote>
                 
