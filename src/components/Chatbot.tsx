@@ -193,14 +193,14 @@ const Chatbot: React.FC<ChatbotProps> = ({
               </div>
               
               <div className="flex items-center space-x-2">
-                <Button
+                {/* <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => setIsMinimized(!isMinimized)}
                   className="w-8 h-8 text-white hover:bg-white/20"
                 >
                   <Minimize2 className="w-4 h-4" />
-                </Button>
+                </Button> */}
                 <Button
                   variant="ghost"
                   size="icon"
