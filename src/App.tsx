@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
+import Chatbot from "@/components/Chatbot";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -33,6 +34,9 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+
+        {/* Global Chatbot - appears on all pages */}
+        <Chatbot webhookUrl={import.meta.env.VITE_N8N_CHAT_WEBHOOK} />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

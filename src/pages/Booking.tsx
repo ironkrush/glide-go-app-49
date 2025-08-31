@@ -68,6 +68,25 @@ const Booking = () => {
       });
 
       if (result.success) {
+        // Send email backup
+        try {
+          await sendBookingEmail({
+            name: formData.passengerName,
+            email: formData.passengerEmail || 'no-email@provided.com',
+            phone: formData.passengerPhone,
+            pickupLocation: formData.pickupLocation,
+            destination: formData.dropLocation,
+            pickupDate: formData.date,
+            pickupTime: formData.time,
+            passengerCount: '1',
+            carType: formData.cabType,
+            specialRequests: formData.specialRequests,
+          });
+          console.log('Email backup sent successfully');
+        } catch (emailError) {
+          console.warn('Email backup failed, but n8n submission was successful:', emailError);
+        }
+
         setAnimationSuccess(true);
 
         // Reset form after animation

@@ -45,8 +45,8 @@ class N8nService {
       console.warn('n8n webhook not configured - using demo mode');
       // Simulate successful submission for demo
       await new Promise(resolve => setTimeout(resolve, 1500));
-      return { 
-        success: true, 
+      return {
+        success: true,
         message: 'Demo submission successful',
         id: `demo_${Date.now()}`
       };
@@ -58,22 +58,39 @@ class N8nService {
         timestamp: new Date().toISOString(),
         source: 'lankadhish-website',
         userAgent: navigator.userAgent,
-        referrer: document.referrer || 'direct'
+        referrer: document.referrer || 'direct',
+        ipAddress: await this.getClientIP()
       };
+
+      console.log('Sending to n8n webhook:', webhookUrl, payload);
 
       const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify(payload),
       });
 
+      console.log('n8n response status:', response.status);
+
       if (!response.ok) {
-        throw new Error(`n8n webhook error: ${response.status} ${response.statusText}`);
+        const errorText = await response.text();
+        console.error('n8n webhook error response:', errorText);
+        throw new Error(`n8n webhook error: ${response.status} ${response.statusText} - ${errorText}`);
       }
 
-      const result = await response.json();
+      let result;
+      try {
+        result = await response.json();
+      } catch (parseError) {
+        // If response is not JSON, treat as success
+        result = { success: true, message: 'Webhook received successfully' };
+      }
+
+      console.log('n8n webhook success:', result);
+
       return {
         success: true,
         message: result.message || 'Submission successful',
@@ -82,6 +99,16 @@ class N8nService {
     } catch (error) {
       console.error('n8n webhook request failed:', error);
       throw new Error(`Failed to submit data: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  }
+
+  private async getClientIP(): Promise<string> {
+    try {
+      const response = await fetch('https://api.ipify.org?format=json');
+      const data = await response.json();
+      return data.ip;
+    } catch (error) {
+      return 'unknown';
     }
   }
 

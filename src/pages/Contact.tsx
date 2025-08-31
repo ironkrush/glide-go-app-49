@@ -75,6 +75,20 @@ const Contact = () => {
       });
 
       if (result.success) {
+        // Send email backup
+        try {
+          await sendContactEmail({
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            subject: data.subject,
+            message: data.message,
+          });
+          console.log('Email backup sent successfully');
+        } catch (emailError) {
+          console.warn('Email backup failed, but n8n submission was successful:', emailError);
+        }
+
         setAnimationSuccess(true);
 
         // Reset form after animation
@@ -90,7 +104,7 @@ const Contact = () => {
       } else {
         throw new Error(result.message || 'Submission failed');
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Contact submission error:', error);
       setShowAnimation(false);
       toast({

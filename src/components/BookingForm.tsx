@@ -109,6 +109,42 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
       }
 
       if (result.success) {
+        // Send email backup for all forms
+        try {
+          if (compact) {
+            // For quick booking, send simplified email
+            await sendBookingEmail({
+              name: data.name,
+              email: 'quick-booking@lankadhish.com', // Default email for quick bookings
+              phone: data.phone,
+              pickupLocation: data.pickupLocation,
+              destination: data.destination,
+              pickupDate: data.pickupDate,
+              pickupTime: data.pickupTime,
+              passengerCount: '1', // Default for quick booking
+              carType: 'Standard', // Default for quick booking
+              specialRequests: 'Quick booking from homepage'
+            });
+          } else {
+            // For detailed booking, send full email
+            await sendBookingEmail({
+              name: data.name,
+              email: data.email,
+              phone: data.phone,
+              pickupLocation: data.pickupLocation,
+              destination: data.destination,
+              pickupDate: data.pickupDate,
+              pickupTime: data.pickupTime,
+              passengerCount: data.passengerCount,
+              carType: data.carType,
+              specialRequests: data.specialRequests
+            });
+          }
+          console.log('Email backup sent successfully');
+        } catch (emailError) {
+          console.warn('Email backup failed, but n8n submission was successful:', emailError);
+        }
+
         setAnimationSuccess(true);
 
         // Reset form after animation
@@ -124,7 +160,7 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
       } else {
         throw new Error(result.message || 'Submission failed');
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Booking submission error:', error);
       setShowAnimation(false);
       toast({
