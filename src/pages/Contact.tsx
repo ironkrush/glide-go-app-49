@@ -147,7 +147,7 @@ const Contact = () => {
         <Navigation />
         
         {/* Hero Section */}
-        <header className="pt-24 pb-16 gradient-hero text-white">
+        <header className="pt-32 pb-24 gradient-hero text-white">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-5xl md:text-5xl mobile-heading-lg font-bold mb-6">Contact Lankadhish</h1>
             <p className="text-xl md:text-xl mobile-text-lg max-w-3xl mx-auto">
@@ -356,18 +356,18 @@ const Contact = () => {
             </p>
           </div>
           
-          <Card className="overflow-hidden">
-            <div className="w-full h-96 bg-muted flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Interactive Map</h3>
-                <p className="text-muted-foreground">
-                  123 Main Street, Downtown, City 12345
-                </p>
-                <Button className="mt-4" variant="outline">
-                  Get Directions
-                </Button>
-              </div>
+                    <Card className="overflow-hidden">
+            <div className="w-full h-96 bg-muted">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3693.53393150549!2d70.80381517314208!3d22.21981174581217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3959cbb3ff60204d%3A0xb774f93166c9a27f!2sLankadhish%20cab%20service!5e0!3m2!1sen!2sin!4v1756615129484!5m2!1sen!2sin"
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Lankadhish Cab Service Location"
+              />
             </div>
           </Card>
         </div>

@@ -20,6 +20,54 @@ import {
 import heroImage from "@/assets/cabrm.png";
 import BookingForm from "@/components/BookingForm";
 
+// Counter Animation Component
+const AnimatedCounter = ({ endValue, suffix = "", duration = 2000 }: { endValue: number; suffix?: string; duration?: number }) => {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [element, setElement] = useState<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [element, isVisible]);
+
+  useEffect(() => {
+    if (isVisible) {
+      let startTime: number;
+      const animate = (currentTime: number) => {
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+
+        // Easing function for smooth animation
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        setCount(Math.floor(easeOutQuart * endValue));
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+      };
+      requestAnimationFrame(animate);
+    }
+  }, [isVisible, endValue, duration]);
+
+  return (
+    <div ref={setElement} className="text-4xl md:text-4xl mobile-pricing font-bold text-primary mb-2">
+      {count}{suffix}
+    </div>
+  );
+};
+
 const testimonials = [
   {
     name: "Priya Patel",
@@ -312,9 +360,9 @@ const Index = () => {
       </section>
 
       {/* Quick Booking Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+      <section className="py-20 dark-surface ">
+        <div className="container mx-auto px-4 dark-surface">
+          <div className="text-center mb-12 text-white">
             <h2 className="text-4xl md:text-4xl mobile-heading-md font-bold mb-4">Quick Booking</h2>
             <p className="text-xl md:text-xl mobile-text-base text-muted-foreground max-w-2xl mx-auto">
               Book your ride in minutes with our simple booking form
@@ -381,11 +429,11 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 mobile-grid gap-8 text-center">
             <div>
-              <div className="text-4xl md:text-4xl mobile-pricing font-bold text-primary mb-2">50K+</div>
+              <AnimatedCounter endValue={50} suffix="K+" duration={2500} />
               <div className="text-soft mobile-text-base">Happy Customers</div>
             </div>
             <div>
-              <div className="text-4xl md:text-4xl mobile-pricing font-bold text-primary mb-2">100K+</div>
+              <AnimatedCounter endValue={100} suffix="K+" duration={2800} />
               <div className="text-soft mobile-text-base">Rides Completed</div>
             </div>
             <div>
@@ -393,7 +441,7 @@ const Index = () => {
               <div className="text-soft mobile-text-base">Service Available</div>
             </div>
             <div>
-              <div className="text-4xl md:text-4xl mobile-pricing font-bold text-primary mb-2">4.9★</div>
+              <AnimatedCounter endValue={9} suffix="/10★" duration={2200} />
               <div className="text-soft mobile-text-base">Average Rating</div>
             </div>
           </div>

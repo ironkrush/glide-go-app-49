@@ -222,31 +222,7 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Newsletter Signup */}
-      <section className="py-20 dark-surface text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
-          <p className="text-soft mb-8 max-w-2xl mx-auto">
-            Subscribe to our newsletter for the latest travel tips, safety updates, 
-            and transportation insights delivered to your inbox.
-          </p>
-          
-          <div className="max-w-md mx-auto flex gap-2">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg bg-white text-black"
-            />
-            <Button className="hero-button px-6">
-              Subscribe
-            </Button>
-          </div>
-          
-          <p className="text-sm text-soft mt-4">
-            No spam, unsubscribe at any time.
-          </p>
-        </div>
-      </section>
+
 
       <Footer />
     </div>

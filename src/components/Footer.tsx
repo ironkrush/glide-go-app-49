@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <span className="font-bold text-xl">Lankadhish</span>
+              <span className="font-bold text-xl">Lankadhish Cab Services</span>
             </div>
             <p className="text-soft mb-4">
               Your trusted partner for safe, affordable, and reliable transportation. 
@@ -81,7 +81,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-primary" />
-                <span className="text-soft">123 Main St, City, State 12345</span>
+                <span className="text-soft">Kothariya Solvant, Gondal Road, Rajkot</span>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
           <p className="text-soft">
-            © 2024 Lankadhish. All rights reserved. | Privacy Policy | Terms of Service
+            © {new Date().getFullYear()} Lankadhish. All rights reserved. | Privacy Policy | Terms of Service
           </p>
         </div>
       </div>

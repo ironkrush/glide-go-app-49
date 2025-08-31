@@ -183,7 +183,7 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
                       <FormItem>
                         <FormLabel>Phone</FormLabel>
                         <FormControl>
-                          <Input placeholder="+1 (555) 123-4567" {...field} />
+                          <Input placeholder="+91 12345 67890" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

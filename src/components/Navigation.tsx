@@ -31,7 +31,7 @@ const Navigation = () => {
                 className="w-50 h-50 object-contain"
               />
             </div>
-            {/* <span>Lankadhish</span> */}
+             <span>Lankadhish</span> 
           </Link>
 
           {/* Desktop Navigation */}

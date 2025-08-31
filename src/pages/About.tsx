@@ -9,7 +9,7 @@ const About = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 gradient-hero text-white">
+      <section className="pt-32 pb-24 gradient-hero text-white">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-6">About Lankadhish</h1>
           <p className="text-xl max-w-3xl mx-auto">

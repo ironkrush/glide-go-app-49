@@ -157,7 +157,7 @@ const Services = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 gradient-hero text-white">
+      <section className="pt-32 pb-24 gradient-hero text-white">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-5xl mobile-heading-lg font-bold mb-6">Travel India With Us - Gujarat to All Over India</h1>
           <p className="text-xl md:text-xl mobile-text-lg max-w-3xl mx-auto">
