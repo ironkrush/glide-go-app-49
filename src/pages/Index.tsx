@@ -330,7 +330,7 @@ const Index = () => {
             <p className="text-xl md:text-2xl hero-mobile-subtitle mb-8 text-muted-foreground max-w-2xl">
               24/7 One-Way & Round-Trip Service. Professional pilots, GPS enabled cabs, safe for women. Experience premium transportation from Gujarat to anywhere in India.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start py-4">
               <Button asChild size="lg" className="hero-button text-lg md:text-lg mobile-button px-8 py-4">
                 <Link to="/booking">Book Now</Link>
               </Button>

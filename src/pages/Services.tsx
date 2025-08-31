@@ -324,7 +324,7 @@ const Services = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 mobile-grid gap-8">
             <Card className="dark-surface-elevated border-gray-700 p-6 mobile-card-padding">
               <CardContent className="pt-6 text-center">
-                <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-4 text-white">Per Kilometer</h3>
+                <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-4 text-soft">Per Kilometer</h3>
                 <div className="text-3xl md:text-3xl mobile-pricing font-bold text-primary mb-4">₹25 - ₹85</div>
                 <p className="text-soft mobile-text-base mb-6">Based on vehicle type and distance</p>
                 <ul className="text-sm mobile-text-base text-soft space-y-2">
@@ -337,7 +337,7 @@ const Services = () => {
 
             <Card className="dark-surface-elevated border-gray-700 p-6 mobile-card-padding">
               <CardContent className="pt-6 text-center">
-                <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-4 text-white">Hourly Packages</h3>
+                <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-4 text-soft">Hourly Packages</h3>
                 <div className="text-3xl md:text-3xl mobile-pricing font-bold text-primary mb-4">₹750 - ₹2,000</div>
                 <p className="text-soft mobile-text-base mb-6">For multiple stops and waiting time</p>
                 <ul className="text-sm mobile-text-base text-soft space-y-2">
@@ -350,7 +350,7 @@ const Services = () => {
 
             <Card className="dark-surface-elevated border-gray-700 p-6 mobile-card-padding">
               <CardContent className="pt-6 text-center">
-                <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-4 text-white">Fixed Packages</h3>
+                <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-4 text-soft">Fixed Packages</h3>
                 <div className="text-3xl md:text-3xl mobile-pricing font-bold text-primary mb-4">₹2,500 - ₹10,000</div>
                 <p className="text-soft mobile-text-base mb-6">For outstation and full-day trips</p>
                 <ul className="text-sm mobile-text-base text-soft space-y-2">

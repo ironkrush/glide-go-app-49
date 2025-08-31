@@ -226,8 +226,7 @@ const Contact = () => {
                         <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">Office Address</h3>
                         <p className="text-muted-foreground mobile-text-base mb-2">Visit our headquarters</p>
                         <div className="space-y-1">
-                          <p className="font-medium mobile-text-base">123 SG Highway</p>
-                          <p className="font-medium mobile-text-base">Ahmedabad, Gujarat 380015</p>
+                          <p className="font-medium mobile-text-base">Kothariya Solvant, Gondal Road, Rajkot</p>
                           <p className="text-sm mobile-text-base text-muted-foreground">Mon-Fri: 9AM - 6PM</p>
                         </div>
                       </div>
@@ -245,7 +244,7 @@ const Contact = () => {
                         <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">WhatsApp</h3>
                         <p className="text-muted-foreground mobile-text-base mb-2">Quick support via WhatsApp</p>
                         <div className="space-y-1">
-                          <p className="font-medium mobile-text-base">+91 98765 43210</p>
+                          <p className="font-medium mobile-text-base">+91 9157575675</p>
                           <p className="text-sm mobile-text-base text-muted-foreground">Instant messaging support</p>
                         </div>
                       </div>
@@ -399,7 +398,7 @@ const Contact = () => {
             <Card className="dark-surface-elevated border-gray-700 p-6 mobile-card-padding">
               <CardContent className="pt-6">
                 <Clock className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-2 text-white">Office Hours</h3>
+                <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-2 text-soft">Office Hours</h3>
                 <div className="text-soft mobile-text-base space-y-1">
                   <p>Monday - Friday: 9AM - 6PM</p>
                   <p>Saturday: 10AM - 4PM</p>
@@ -411,7 +410,7 @@ const Contact = () => {
             <Card className="dark-surface-elevated border-gray-700 p-6 mobile-card-padding">
               <CardContent className="pt-6">
                 <Phone className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-2 text-white">Phone Support</h3>
+                <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-2 text-soft">Phone Support</h3>
                 <div className="text-soft mobile-text-base space-y-1">
                   <p>Available 24/7</p>
                   <p>Emergency Support</p>
@@ -423,7 +422,7 @@ const Contact = () => {
             <Card className="dark-surface-elevated border-gray-700 p-6 mobile-card-padding">
               <CardContent className="pt-6">
                 <Car className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-2 text-white">Ride Service</h3>
+                <h3 className="text-xl md:text-xl mobile-heading-sm font-semibold mb-2 text-soft">Ride Service</h3>
                 <div className="text-soft mobile-text-base space-y-1">
                   <p>24/7 Availability</p>
                   <p>All Days of Week</p>
