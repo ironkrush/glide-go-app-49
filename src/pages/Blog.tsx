@@ -1,12 +1,34 @@
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Calendar, User, ArrowRight, Clock } from "lucide-react";
+import { Calendar, User, ArrowRight, Clock, Plus } from "lucide-react";
+import BlogAdmin from "@/components/BlogAdmin";
+
+interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  author: string;
+  date: string;
+  readTime: string;
+  category: string;
+  image: string;
+  distance?: string;
+  duration?: string;
+}
 
 const Blog = () => {
-  const blogPosts = [
+  const [showAdmin, setShowAdmin] = useState(false);
+
+  const handleBlogUploaded = () => {
+    setShowAdmin(false);
+  };
+
+  // Static blog posts
+  const blogPosts: BlogPost[] = [
     {
       slug: "gujarat-to-mumbai-cab-guide",
       title: "Complete Guide: Gujarat to Mumbai by Cab",
@@ -15,7 +37,7 @@ const Blog = () => {
       date: "January 15, 2024",
       readTime: "8 min read",
       category: "Travel Guide",
-      image: "🚗",
+      image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=400&fit=crop",
       distance: "525 km",
       duration: "8-10 hours"
     },
@@ -27,7 +49,7 @@ const Blog = () => {
       date: "January 20, 2024",
       readTime: "12 min read",
       category: "Road Trip",
-      image: "🏛️",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop",
       distance: "950 km",
       duration: "12-14 hours"
     },
@@ -39,128 +61,52 @@ const Blog = () => {
       date: "January 25, 2024",
       readTime: "10 min read",
       category: "Coastal Route",
-      image: "🏖️",
+      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=400&fit=crop",
       distance: "600 km",
       duration: "10-12 hours"
-    },
-    {
-      slug: "gujarat-to-bangalore-silicon-valley",
-      title: "Gujarat to Bangalore: Silicon Valley Route",
-      excerpt: "Professional cab service from Gujarat to India's Silicon Valley. Best routes, tech stops, and business travel tips.",
-      author: "Mr Amar Jankar",
-      date: "January 30, 2024",
-      readTime: "11 min read",
-      category: "Business Travel",
-      image: "💻",
-      distance: "1200 km",
-      duration: "16-18 hours"
-    },
-    {
-      slug: "gujarat-to-agra-taj-mahal",
-      title: "Gujarat to Agra: Taj Mahal Express",
-      excerpt: "Visit the iconic Taj Mahal from Gujarat. Best routes, photography tips, and heritage tour planning.",
-      author: "Mr Amar Jankar",
-      date: "February 1, 2024",
-      readTime: "9 min read",
-      category: "Heritage Tour",
-      image: "🕌",
-      distance: "650 km",
-      duration: "10-12 hours"
-    },
-    {
-      slug: "gujarat-to-rajasthan-desert-adventure",
-      title: "Gujarat to Rajasthan: Desert Adventure Guide",
-      excerpt: "Experience the royal heritage of Rajasthan with our detailed travel guide from Gujarat. Best routes and cultural insights.",
-      author: "Mr Amar Jankar",
-      date: "February 5, 2024",
-      readTime: "7 min read",
-      category: "Cultural Tour",
-      image: "🏰",
-      distance: "400 km",
-      duration: "6-8 hours"
-    },
-    {
-      slug: "best-cab-service-gujarat-2024",
-      title: "Best Cab Service in Gujarat 2024",
-      excerpt: "Discover Gujarat's #1 rated cab service. Professional drivers, GPS enabled cabs, 24/7 service across Ahmedabad, Surat, Vadodara.",
-      author: "Mr Amar Jankar",
-      date: "March 15, 2024",
-      readTime: "10 min read",
-      category: "Service Guide",
-      image: "🏆",
-      distance: "All Gujarat",
-      duration: "24/7 Service"
-    },
-    {
-      slug: "ahmedabad-airport-taxi-service",
-      title: "Ahmedabad Airport Taxi Service",
-      excerpt: "24/7 AMD airport cab service with flight tracking, professional drivers, and fixed rates. Best airport transfers in Ahmedabad.",
-      author: "Mr Amar Jankar",
-      date: "March 20, 2024",
-      readTime: "8 min read",
-      category: "Airport Service",
-      image: "✈️",
-      distance: "25 km",
-      duration: "45 mins"
-    },
-    {
-      slug: "surat-to-mumbai-cab-service",
-      title: "Surat to Mumbai Cab Service",
-      excerpt: "Professional cab service from Diamond City to Financial Capital. Business travel specialist with competitive rates and reliable service.",
-      author: "Mr Amar Jankar",
-      date: "March 25, 2024",
-      readTime: "9 min read",
-      category: "Business Travel",
-      image: "💎",
-      distance: "284 km",
-      duration: "5-6 hours"
     }
   ];
 
-  const categories = ["All", "Travel Guide", "Road Trip", "Coastal Route", "Business Travel", "Heritage Tour", "Cultural Tour", "Service Guide", "Airport Service"];
-
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navigation />
-      
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 gradient-hero text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">Travel Blog & Destination Guides</h1>
-          <p className="text-xl max-w-3xl mx-auto mb-8">
-            Insights, tips, and stories from the world of transportation.
-            Stay informed and travel smarter with our expert advice.
-          </p>
 
-          {/* Featured Travel Guides */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold mb-3">🚗 Gujarat to All India Travel Guides</h2>
-            <p className="text-lg mb-4">Comprehensive destination guides for traveling from Gujarat to major Indian cities with professional cab service</p>
-            <div className="flex flex-wrap gap-2 justify-center">
-              <span className="bg-white/20 px-3 py-1 rounded-full text-sm">Mumbai • Delhi • Goa • Bangalore</span>
-              <span className="bg-white/20 px-3 py-1 rounded-full text-sm">Agra • Rajasthan • Kashmir • Kerala</span>
+      {/* Hero Section */}
+      <section className="relative py-20 dark-surface overflow-hidden">
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Travel <span className="text-yellow-400">Blog</span>
+            </h1>
+            <p className="text-xl max-w-3xl mx-auto mb-8">
+              Insights, tips, and stories from the world of transportation.
+              Stay informed and travel smarter with our expert advice.
+            </p>
+
+            {/* Admin Toggle Button */}
+            <div className="mb-8">
+              <Button
+                onClick={() => setShowAdmin(!showAdmin)}
+                variant="outline"
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+              >
+                <Plus className="w-4 h-4 mr-2" />
+                {showAdmin ? 'Hide Admin Panel' : 'Add New Blog'}
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Categories Filter */}
-      <section className="py-8 bg-background border-b">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap gap-2 justify-center">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={category === "All" ? "default" : "outline"}
-                size="sm"
-                className={category === "All" ? "hero-button" : ""}
-              >
-                {category}
-              </Button>
-            ))}
+      {/* Admin Panel */}
+      {showAdmin && (
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <BlogAdmin onBlogUploaded={handleBlogUploaded} />
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Blog Posts Grid */}
       <section className="py-20 bg-background">
@@ -168,20 +114,30 @@ const Blog = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post) => (
               <Card key={post.slug} className="overflow-hidden hover:shadow-lg transition-shadow group">
-                <div className="aspect-video bg-muted overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                    <div className="text-center p-6">
-                      <div className="text-4xl mb-3">{post.image}</div>
-                      <h3 className="font-semibold text-lg mb-2">{post.category}</h3>
-                      {post.distance && (
-                        <div className="text-sm text-muted-foreground bg-white/60 px-3 py-1 rounded-full">
-                          {post.distance} • {post.duration}
-                        </div>
-                      )}
-                    </div>
+                <div className="aspect-video bg-muted overflow-hidden relative">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+
+                  {/* Category Badge */}
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">
+                      {post.category}
+                    </span>
                   </div>
+
+                  {/* Distance Badge */}
+                  {post.distance && (
+                    <div className="absolute bottom-4 right-4">
+                      <span className="bg-black/70 text-white px-3 py-1 rounded-full text-xs">
+                        {post.distance} • {post.duration}
+                      </span>
+                    </div>
+                  )}
                 </div>
-                
+
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-3">
                     <div className="flex items-center space-x-1">
@@ -193,21 +149,21 @@ const Blog = () => {
                       <span>{post.readTime}</span>
                     </div>
                   </div>
-                  
+
                   <h2 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
                     {post.title}
                   </h2>
-                  
+
                   <p className="text-muted-foreground mb-4 line-clamp-3">
                     {post.excerpt}
                   </p>
-                  
+
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
                       <User className="w-4 h-4 text-muted-foreground" />
                       <span className="text-sm text-muted-foreground">{post.author}</span>
                     </div>
-                    
+
                     <Button asChild variant="ghost" size="sm" className="group-hover:text-primary">
                       <Link to={`/blog/${post.slug}`} className="flex items-center space-x-1">
                         <span>Read More</span>
@@ -221,8 +177,6 @@ const Blog = () => {
           </div>
         </div>
       </section>
-
-
 
       <Footer />
     </div>

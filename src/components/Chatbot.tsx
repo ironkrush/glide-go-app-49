@@ -47,17 +47,9 @@ const Chatbot: React.FC<ChatbotProps> = ({
     }
   }, [isOpen]);
 
+  // Simplified online status (always online for lightweight version)
   useEffect(() => {
-    const handleOnline = () => setIsOnline(true);
-    const handleOffline = () => setIsOnline(false);
-    
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
-    
-    return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-    };
+    setIsOnline(true);
   }, []);
 
   const sendMessage = async () => {
@@ -97,7 +89,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
       const rawText = await response.text();
       console.log("Webhook raw response:", rawText);
 
-      let data: any;
+      let data: unknown;
       try {
         data = JSON.parse(rawText);
       } catch (err) {
@@ -106,7 +98,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
 
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: data?.reply || data?.message || rawText || "✅ Message received. We'll get back to you soon.",
+        text: "✅ Message received. We'll get back to you soon.",
         sender: 'bot',
         timestamp: new Date()
       };
@@ -128,7 +120,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
@@ -181,7 +173,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
             </div>
 
             <div className="p-4 border-t border-gray-200 bg-white flex space-x-2">
-              <Input ref={inputRef} value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyPress={handleKeyPress} placeholder="Type your message..." className="flex-1 border-gray-300" />
+              <Input ref={inputRef} value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyDown={handleKeyDown} placeholder="Type your message..." className="flex-1 border-gray-300" />
               <Button onClick={sendMessage} disabled={!inputValue.trim()} className="bg-primary" size="icon">
                 <Send className="w-4 h-4" />
               </Button>

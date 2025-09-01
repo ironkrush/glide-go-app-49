@@ -36,9 +36,9 @@ const Services = () => {
     },
     {
       icon: Map,
-      title: "GPS Enabled Cabs",
-      description: "Real-time tracking and navigation for efficient routes and passenger safety.",
-      features: ["Live tracking", "Optimized routes", "Safety monitoring", "ETA updates"]
+      title: "On-Time Guarantee",
+      description: "Punctual pickups and reliable drop-offs ensuring you never miss a meeting, flight, or event.",
+      features: ["Timely arrivals", "Flight & train sync", "Reliable scheduling"]
     },
     {
       icon: Building,
@@ -63,13 +63,19 @@ const Services = () => {
   const fleetTypes = [
     {
       name: "Hatchback",
-      model: "Maruti Swift / Hyundai i20",
+      model: "WagonR, Celerio, i10 etc.",
       capacity: "4 Passengers",
       price: "₹12/km",
       originalPrice: "₹15/km",
+      pricing: {
+        local: "₹12 per km",
+        outstation: "₹11 per km (Min 250 km/day)",
+        airport: "₹800 – ₹1,200",
+        driverAllowance: "₹300/day"
+      },
       features: ["AC", "Music System", "Clean Interior", "GPS Tracking", "Fuel Efficient"],
       bestFor: "City rides & daily commute",
-      image: miniCar, // Will be replaced with Indian hatchback
+      image: miniCar,
       rating: 4.3,
       reviews: 2850,
       fuelType: "Petrol/CNG",
@@ -80,13 +86,19 @@ const Services = () => {
     },
     {
       name: "Sedan",
-      model: "Honda City / Maruti Dzire",
+      model: "Dzire, Etios, Xcent etc.",
       capacity: "4 Passengers",
-      price: "₹18/km",
+      price: "₹13/km",
       originalPrice: "₹22/km",
+      pricing: {
+        local: "₹13 per km",
+        outstation: "₹12 per km (Min 250 km/day)",
+        airport: "₹1,000 – ₹1,500",
+        driverAllowance: "₹300/day"
+      },
       features: ["Premium AC", "Leather Seats", "Phone Charging", "WiFi", "Spacious Boot"],
       bestFor: "Business meetings & airport transfers",
-      image: sedanCar, // Will be replaced with Indian sedan
+      image: sedanCar,
       rating: 4.6,
       reviews: 3200,
       fuelType: "Petrol/CNG/Diesel",
@@ -97,13 +109,19 @@ const Services = () => {
     },
     {
       name: "SUV",
-      model: "Mahindra Scorpio / Tata Safari",
+      model: "Ertiga, Innova, Xylo etc.",
       capacity: "6-7 Passengers",
-      price: "₹25/km",
+      price: "₹15/km",
       originalPrice: "₹30/km",
+      pricing: {
+        local: "₹15 per km",
+        outstation: "₹14 per km (Min 300 km/day)",
+        airport: "₹1,500 – ₹2,200",
+        driverAllowance: "₹400/day"
+      },
       features: ["Spacious Interior", "Extra Luggage", "Premium Comfort", "Entertainment System", "High Ground Clearance"],
       bestFor: "Family trips & outstation travel",
-      image: suvCar, // Will be replaced with Indian SUV
+      image: suvCar,
       rating: 4.5,
       reviews: 1890,
       fuelType: "Diesel",
@@ -113,21 +131,27 @@ const Services = () => {
       savings: "17% OFF"
     },
     {
-      name: "Premium",
-      model: "Toyota Camry / Honda Accord",
-      capacity: "4 Passengers",
-      price: "₹35/km",
-      originalPrice: "₹42/km",
-      features: ["Luxury Interior", "Chauffeur Service", "VIP Treatment", "Complimentary Water", "Premium Sound System"],
-      bestFor: "Corporate events & special occasions",
-      image: luxuryCar, // Will be replaced with Indian luxury car
-      rating: 4.8,
-      reviews: 750,
-      fuelType: "Petrol/Hybrid",
-      transmission: "Automatic",
-      luggage: "4 Bags",
+      name: "Tempo Traveller",
+      model: "12–17 Seater",
+      capacity: "12-17 Passengers",
+      price: "₹22/km",
+      originalPrice: "₹35/km",
+      pricing: {
+        local: "₹22 per km",
+        outstation: "₹20 per km (Min 300 km/day)",
+        airport: "₹3,500 – ₹4,500",
+        driverAllowance: "₹500/day"
+      },
+      features: ["Large Group Vehicle", "Entertainment System", "Ample Luggage Space", "Comfortable Seating", "AC"],
+      bestFor: "Group travel & events",
+      image: luxuryCar, // Will use luxury car image for now
+      rating: 4.7,
+      reviews: 950,
+      fuelType: "Diesel",
+      transmission: "Manual",
+      luggage: "15+ Bags",
       popular: false,
-      savings: "17% OFF"
+      savings: "20% OFF"
     }
   ];
 
@@ -259,8 +283,33 @@ const Services = () => {
                       <span className="text-2xl md:text-2xl mobile-pricing font-bold text-primary">{vehicle.price}</span>
                       <span className="text-sm text-muted-foreground line-through">{vehicle.originalPrice}</span>
                     </div>
-                    <p className="text-xs text-muted-foreground">per kilometer</p>
+                    <p className="text-xs text-muted-foreground">Local City Rides</p>
                   </div>
+
+                  {/* Detailed Pricing */}
+                  {vehicle.pricing && (
+                    <div className="mb-4 p-3 bg-muted/30 rounded-lg">
+                      <h4 className="text-xs font-semibold mb-2 text-center">Pricing Details</h4>
+                      <div className="space-y-1 text-xs">
+                        <div className="flex justify-between">
+                          <span>Local:</span>
+                          <span className="font-medium">{vehicle.pricing.local}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Outstation:</span>
+                          <span className="font-medium">{vehicle.pricing.outstation}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Airport:</span>
+                          <span className="font-medium">{vehicle.pricing.airport}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Driver Allowance:</span>
+                          <span className="font-medium">{vehicle.pricing.driverAllowance}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Vehicle Details */}
                   <div className="space-y-2 mb-4 text-left">
@@ -358,6 +407,48 @@ const Services = () => {
                   <li>• Outstation round trips</li>
                   <li>• Wedding & event packages</li>
                 </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Extra Charges Section */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Extra Charges</h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+              Transparent pricing with no hidden costs
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <Card className="p-6 md:p-8">
+              <CardContent className="pt-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center p-4 bg-muted/50 rounded-lg">
+                      <span className="font-medium">Night Charges (10 PM – 6 AM)</span>
+                      <span className="text-primary font-bold">₹200</span>
+                    </div>
+                    <div className="flex justify-between items-center p-4 bg-muted/50 rounded-lg">
+                      <span className="font-medium">Waiting Charge (after free time)</span>
+                      <span className="text-primary font-bold">₹200/hour</span>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center p-4 bg-muted/50 rounded-lg">
+                      <span className="font-medium">Toll, Parking & State Tax</span>
+                      <span className="text-primary font-bold">As per slip</span>
+                    </div>
+                    <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                      <p className="text-sm text-green-700 font-medium">
+                        ✓ No hidden charges • ✓ Transparent billing • ✓ GST included
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
