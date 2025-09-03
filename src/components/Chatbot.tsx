@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, User, Bot } from 'lucide-react';
+import { MessageCircle, X, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -85,20 +85,21 @@ const Chatbot: React.FC<ChatbotProps> = ({
         body: JSON.stringify(payload),
       });
 
-      // Debugging: log the raw response
       const rawText = await response.text();
       console.log("Webhook raw response:", rawText);
 
-      let data: unknown;
+      let replyText: string;
+
       try {
-        data = JSON.parse(rawText);
-      } catch (err) {
-        console.warn("Response was not valid JSON, falling back to raw text");
+        const parsed = JSON.parse(rawText);
+        replyText = parsed.message || JSON.stringify(parsed);
+      } catch {
+        replyText = rawText || "✅ Message received. We'll get back to you soon.";
       }
 
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: "✅ Message received. We'll get back to you soon.",
+        text: replyText,
         sender: 'bot',
         timestamp: new Date()
       };
@@ -173,7 +174,14 @@ const Chatbot: React.FC<ChatbotProps> = ({
             </div>
 
             <div className="p-4 border-t border-gray-200 bg-white flex space-x-2">
-              <Input ref={inputRef} value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyDown={handleKeyDown} placeholder="Type your message..." className="flex-1 border-gray-300" />
+              <Input 
+                ref={inputRef} 
+                value={inputValue} 
+                onChange={(e) => setInputValue(e.target.value)} 
+                onKeyDown={handleKeyDown} 
+                placeholder="Type your message..." 
+                className="flex-1 border-gray-300" 
+              />
               <Button onClick={sendMessage} disabled={!inputValue.trim()} className="bg-primary" size="icon">
                 <Send className="w-4 h-4" />
               </Button>
