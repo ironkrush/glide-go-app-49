@@ -85,7 +85,7 @@ const Blog = () => {
             </p>
 
             {/* Admin Toggle Button */}
-            <div className="mb-8">
+            {/* <div className="mb-8">
               <Button
                 onClick={() => setShowAdmin(!showAdmin)}
                 variant="outline"
@@ -94,7 +94,7 @@ const Blog = () => {
                 <Plus className="w-4 h-4 mr-2" />
                 {showAdmin ? 'Hide Admin Panel' : 'Add New Blog'}
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
