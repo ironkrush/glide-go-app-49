@@ -17,8 +17,8 @@ import {
 } from "lucide-react";
 import miniCar from "@/assets/hatchrm.png";
 import sedanCar from "@/assets/dzirerm.png";
-import suvCar from "@/assets/scorpiorm.png";
-import luxuryCar from "@/assets/innova.webp";
+import suvCar from "@/assets/innova.webp";
+import luxuryCar from "@/assets/minibus-removebg-preview.png";
 
 const Services = () => {
   const services = [
@@ -132,7 +132,7 @@ const Services = () => {
     },
     {
       name: "Tempo Traveller",
-      model: "12–17 Seater",
+      model: "14–21 Seater",
       capacity: "12-17 Passengers",
       price: "₹22/km",
       originalPrice: "₹35/km",

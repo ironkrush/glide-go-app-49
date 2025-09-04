@@ -72,7 +72,7 @@ const Blog = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative py-20 dark-surface overflow-hidden">
+      <section className="relative py-32 dark-surface overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center text-white">
@@ -164,7 +164,7 @@ const Blog = () => {
                       <span className="text-sm text-muted-foreground">{post.author}</span>
                     </div>
 
-                    <Button asChild variant="ghost" size="sm" className="group-hover:text-primary">
+                    <Button asChild variant="ghost" size="sm">
                       <Link to={`/blog/${post.slug}`} className="flex items-center space-x-1">
                         <span>Read More</span>
                         <ArrowRight className="w-4 h-4" />
