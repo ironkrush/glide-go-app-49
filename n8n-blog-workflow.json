@@ -1,0 +1,123 @@
+{
+  "name": "Lankadhish Blog Generation Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "blog-generation",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Blog Generation Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "webhookId": "blog-generation"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process blog data from webhook\nconst blogData = $input.first().json;\n\n// Generate slug from title\nfunction generateSlug(title) {\n  return title\n    .toLowerCase()\n    .replace(/[^a-z0-9\\s-]/g, '')\n    .replace(/\\s+/g, '-')\n    .replace(/-+/g, '-')\n    .trim();\n}\n\n// Calculate read time\nfunction calculateReadTime(content) {\n  const wordsPerMinute = 200;\n  const wordCount = content.split(/\\s+/).length;\n  const minutes = Math.ceil(wordCount / wordsPerMinute);\n  return `${minutes} min read`;\n}\n\n// Generate excerpt\nfunction generateExcerpt(content, maxLength = 150) {\n  const plainText = content.replace(/<[^>]*>/g, '');\n  if (plainText.length <= maxLength) {\n    return plainText;\n  }\n  return plainText.substring(0, maxLength).trim() + '...';\n}\n\n// Process the blog data\nconst processedData = {\n  slug: generateSlug(blogData.title),\n  title: blogData.title,\n  content: blogData.content,\n  excerpt: generateExcerpt(blogData.content),\n  author: blogData.author || 'Mr Amar Jankar',\n  date: new Date().toLocaleDateString('en-US', { \n    year: 'numeric', \n    month: 'long', \n    day: 'numeric' \n  }),\n  readTime: calculateReadTime(blogData.content),\n  category: blogData.category,\n  keywords: blogData.keywords.split(',').map(k => k.trim()),\n  image: blogData.image,\n  timestamp: new Date().toISOString(),\n  source: blogData.source\n};\n\nreturn { json: processedData };"
+      },
+      "id": "process-blog-data",
+      "name": "Process Blog Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Generate complete HTML blog file\nconst blogData = $input.first().json;\n\n// HTML template\nconst htmlTemplate = `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>${blogData.title} | Lankadhish Cab Services</title>\n    <meta name=\"description\" content=\"${blogData.excerpt}\" />\n    <meta name=\"keywords\" content=\"${blogData.keywords.join(', ')}, Lankadhish, cab service, Gujarat travel\" />\n    <meta name=\"author\" content=\"${blogData.author}\" />\n    \n    <!-- Favicon -->\n    <link rel=\"icon\" type=\"image/png\" href=\"../src/assets/cablogo.png\" />\n    \n    <!-- Open Graph Meta Tags -->\n    <meta property=\"og:title\" content=\"${blogData.title} | Lankadhish Cab Services\" />\n    <meta property=\"og:description\" content=\"${blogData.excerpt}\" />\n    <meta property=\"og:type\" content=\"article\" />\n    <meta property=\"og:url\" content=\"https://lankadhish.com/blogs/${blogData.slug}.html\" />\n    \n    <!-- Fonts -->\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap\" rel=\"stylesheet\">\n    \n    <!-- Tailwind CSS -->\n    <script src=\"https://cdn.tailwindcss.com\"></script>\n    <script>\n        tailwind.config = {\n            theme: {\n                extend: {\n                    colors: {\n                        primary: '#1e40af',\n                        secondary: '#7c3aed',\n                        accent: '#f59e0b'\n                    }\n                }\n            }\n        }\n    </script>\n    \n    <!-- Structured Data -->\n    <script type=\"application/ld+json\">\n    {\n        \"@context\": \"https://schema.org\",\n        \"@type\": \"BlogPosting\",\n        \"headline\": \"${blogData.title}\",\n        \"description\": \"${blogData.excerpt}\",\n        \"author\": {\n            \"@type\": \"Person\",\n            \"name\": \"${blogData.author}\"\n        },\n        \"datePublished\": \"${blogData.timestamp}\",\n        \"publisher\": {\n            \"@type\": \"Organization\",\n            \"name\": \"Lankadhish Cab Services\"\n        },\n        \"keywords\": \"${blogData.keywords.join(', ')}\",\n        \"articleSection\": \"${blogData.category}\"\n    }\n    </script>\n</head>\n\n<body class=\"bg-white font-['Inter']\">\n    <!-- Navigation -->\n    <nav class=\"bg-white shadow-lg fixed w-full top-0 z-50\">\n        <div class=\"container mx-auto px-4\">\n            <div class=\"flex justify-between items-center py-4\">\n                <div class=\"flex items-center space-x-3\">\n                    <img src=\"../src/assets/cablogo.png\" alt=\"Lankadhish\" class=\"h-10 w-10\" />\n                    <span class=\"text-2xl font-bold text-primary\">Lankadhish</span>\n                </div>\n                <div class=\"hidden md:flex space-x-8\">\n                    <a href=\"../index.html\" class=\"text-gray-700 hover:text-primary transition-colors\">Home</a>\n                    <a href=\"../index.html#services\" class=\"text-gray-700 hover:text-primary transition-colors\">Services</a>\n                    <a href=\"../index.html#about\" class=\"text-gray-700 hover:text-primary transition-colors\">About</a>\n                    <a href=\"../index.html#contact\" class=\"text-gray-700 hover:text-primary transition-colors\">Contact</a>\n                    <a href=\"../index.html#blog\" class=\"text-primary font-medium\">Blog</a>\n                </div>\n                <a href=\"../index.html#booking\" class=\"bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors\">\n                    Book Now\n                </a>\n            </div>\n        </div>\n    </nav>\n\n    <!-- Blog Content -->\n    <main class=\"pt-24\">\n        <!-- Hero Section -->\n        <section class=\"bg-gradient-to-br from-primary via-primary/90 to-secondary text-white py-16\">\n            <div class=\"container mx-auto px-4\">\n                <div class=\"max-w-4xl mx-auto text-center\">\n                    <div class=\"inline-block bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-4\">\n                        ${blogData.category}\n                    </div>\n                    <h1 class=\"text-4xl md:text-5xl font-bold mb-6\">${blogData.title}</h1>\n                    <div class=\"flex flex-wrap justify-center items-center space-x-6 text-white/90 mb-6\">\n                        <div class=\"flex items-center space-x-2\">\n                            <span>👤 ${blogData.author}</span>\n                        </div>\n                        <div class=\"flex items-center space-x-2\">\n                            <span>📅 ${blogData.date}</span>\n                        </div>\n                        <div class=\"flex items-center space-x-2\">\n                            <span>⏱️ ${blogData.readTime}</span>\n                        </div>\n                    </div>\n                    <p class=\"text-xl opacity-90 max-w-3xl mx-auto\">${blogData.excerpt}</p>\n                </div>\n            </div>\n        </section>\n\n        <!-- Blog Content -->\n        <section class=\"py-16\">\n            <div class=\"container mx-auto px-4\">\n                <div class=\"max-w-4xl mx-auto\">\n                    <div class=\"prose prose-lg prose-blue mx-auto\">\n                        ${blogData.content}\n                    </div>\n                    \n                    <!-- Tags -->\n                    <div class=\"mt-12 pt-8 border-t border-gray-200\">\n                        <h3 class=\"text-lg font-semibold text-gray-900 mb-4\">Tags:</h3>\n                        <div class=\"flex flex-wrap gap-2\">\n                            ${blogData.keywords.map(keyword => `\n                                <span class=\"bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium\">\n                                    ${keyword.trim()}\n                                </span>\n                            `).join('')}\n                        </div>\n                    </div>\n                    \n                    <!-- Back to Blog -->\n                    <div class=\"mt-12 text-center\">\n                        <a href=\"../index.html#blog\" class=\"inline-flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors\">\n                            <span>← Back to All Blogs</span>\n                        </a>\n                    </div>\n                </div>\n            </div>\n        </section>\n    </main>\n\n    <!-- Footer -->\n    <footer class=\"bg-gray-900 text-white py-12\">\n        <div class=\"container mx-auto px-4\">\n            <div class=\"grid grid-cols-1 md:grid-cols-4 gap-8\">\n                <div>\n                    <div class=\"flex items-center space-x-3 mb-4\">\n                        <img src=\"../src/assets/cablogo.png\" alt=\"Lankadhish\" class=\"h-8 w-8\" />\n                        <span class=\"text-xl font-bold\">Lankadhish</span>\n                    </div>\n                    <p class=\"text-gray-400\">Professional cab services across Gujarat and India.</p>\n                </div>\n                <div>\n                    <h3 class=\"text-lg font-semibold mb-4\">Quick Links</h3>\n                    <ul class=\"space-y-2\">\n                        <li><a href=\"../index.html\" class=\"text-gray-400 hover:text-white\">Home</a></li>\n                        <li><a href=\"../index.html#services\" class=\"text-gray-400 hover:text-white\">Services</a></li>\n                        <li><a href=\"../index.html#about\" class=\"text-gray-400 hover:text-white\">About</a></li>\n                        <li><a href=\"../index.html#contact\" class=\"text-gray-400 hover:text-white\">Contact</a></li>\n                    </ul>\n                </div>\n                <div>\n                    <h3 class=\"text-lg font-semibold mb-4\">Services</h3>\n                    <ul class=\"space-y-2\">\n                        <li><a href=\"../index.html#services\" class=\"text-gray-400 hover:text-white\">Local Rides</a></li>\n                        <li><a href=\"../index.html#services\" class=\"text-gray-400 hover:text-white\">Outstation</a></li>\n                        <li><a href=\"../index.html#services\" class=\"text-gray-400 hover:text-white\">Airport Transfer</a></li>\n                    </ul>\n                </div>\n                <div>\n                    <h3 class=\"text-lg font-semibold mb-4\">Contact</h3>\n                    <ul class=\"space-y-2 text-gray-400\">\n                        <li>📞 +91 9157575675</li>\n                        <li>✉️ krush2752@gmail.com</li>\n                        <li>📍 Gujarat, India</li>\n                    </ul>\n                </div>\n            </div>\n            <div class=\"border-t border-gray-800 mt-8 pt-8 text-center text-gray-400\">\n                <p>&copy; 2024 Lankadhish Cab Services. All rights reserved.</p>\n            </div>\n        </div>\n    </footer>\n</body>\n</html>`;\n\nreturn {\n  json: {\n    ...blogData,\n    htmlContent: htmlTemplate,\n    filename: `${blogData.slug}.html`\n  }\n};"
+      },
+      "id": "generate-html",
+      "name": "Generate HTML File",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "file",
+        "operation": "upload",
+        "path": "/blogs",
+        "fileName": "={{ $json.filename }}",
+        "binaryData": false,
+        "fileContent": "={{ $json.htmlContent }}",
+        "options": {
+          "commitMessage": "Add new blog: {{ $json.title }}"
+        }
+      },
+      "id": "github-upload",
+      "name": "Upload to GitHub",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"success\": true,\n  \"message\": \"Blog generated and uploaded successfully\",\n  \"blog\": {\n    \"title\": \"{{ $('Process Blog Data').item.json.title }}\",\n    \"slug\": \"{{ $('Process Blog Data').item.json.slug }}\",\n    \"filename\": \"{{ $('Generate HTML File').item.json.filename }}\",\n    \"timestamp\": \"{{ $('Process Blog Data').item.json.timestamp }}\"\n  }\n}"
+      },
+      "id": "webhook-response",
+      "name": "Webhook Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1120, 300]
+    }
+  ],
+  "connections": {
+    "Blog Generation Webhook": {
+      "main": [
+        [
+          {
+            "node": "Process Blog Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Blog Data": {
+      "main": [
+        [
+          {
+            "node": "Generate HTML File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate HTML File": {
+      "main": [
+        [
+          {
+            "node": "Upload to GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to GitHub": {
+      "main": [
+        [
+          {
+            "node": "Webhook Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-03-01T10:00:00.000Z",
+  "versionId": "1"
+}
