@@ -16,12 +16,12 @@ const Footer = () => {
               Available 24/7 for all your travel needs.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-soft hover:text-primary transition-colors">
+              {/* <a href="#" className="text-soft hover:text-primary transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
               <a href="#" className="text-soft hover:text-primary transition-colors">
                 <Twitter className="w-5 h-5" />
-              </a>
+              </a> */}
               <a href="https://www.instagram.com/lankadhishcabservice" target="_blank" className="text-soft hover:text-primary transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
