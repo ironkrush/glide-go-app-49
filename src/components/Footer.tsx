@@ -22,7 +22,7 @@ const Footer = () => {
               <a href="#" className="text-soft hover:text-primary transition-colors">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-soft hover:text-primary transition-colors">
+              <a href="https://www.instagram.com/lankadhishcabservice" target="_blank" className="text-soft hover:text-primary transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
