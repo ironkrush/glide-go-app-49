@@ -72,17 +72,31 @@ const Footer = () => {
             <h3 className="font-semibold text-lg mb-4">Contact Us</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-primary" />
-                <span className="text-soft">+91 9157575675</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-primary" />
-                <span className="text-soft">info@lankadhish.com</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5 text-primary" />
-                <span className="text-soft">Kothariya Solvant, Gondal Road, Rajkot</span>
-              </div>
+  <Phone className="w-5 h-5 text-primary" />
+  <a href="tel:+919157575675" className="text-soft hover:underline">
+    +91 9157575675
+  </a>
+</div>
+
+<div className="flex items-center space-x-3">
+  <Mail className="w-5 h-5 text-primary" />
+  <a href="mailto:info@lankadhish.com" className="text-soft hover:underline">
+    info@lankadhish.com
+  </a>
+</div>
+
+<div className="flex items-center space-x-3">
+  <MapPin className="w-5 h-5 text-primary" />
+  <a
+    href="https://www.google.com/maps/search/?api=1&query=Kothariya+Solvant,+Gondal+Road,+Rajkot"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-soft hover:underline"
+  >
+    Kothariya Solvant, Gondal Road, Rajkot
+  </a>
+</div>
+
             </div>
           </div>
         </div>

@@ -179,78 +179,96 @@ const Contact = () => {
             <div>
               <h2 className="text-3xl md:text-3xl mobile-heading-md font-bold mb-8">Get in Touch</h2>
               <div className="space-y-6">
-                <Card className="p-6 mobile-card-padding">
-                  <CardContent className="pt-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                        <Phone className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">Phone Support</h3>
-                        <p className="text-muted-foreground mobile-text-base mb-2">Call us for immediate assistance</p>
-                        <div className="space-y-1">
-                          <p className="font-medium mobile-text-base">+91 9157575675</p>
-                          <p className="font-medium mobile-text-base">+91 7567302302</p>
-                          <p className="text-sm mobile-text-base text-muted-foreground">Mr Amar Jankar - Available 24/7</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+             <Card className="p-6 mobile-card-padding">
+  <CardContent className="pt-6">
+    <div className="flex items-start space-x-4">
+      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+        <Phone className="w-6 h-6 text-primary" />
+      </div>
+      <div>
+        <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">Phone Support</h3>
+        <p className="text-muted-foreground mobile-text-base mb-2">Call us for immediate assistance</p>
+        <div className="space-y-1">
+          <a href="tel:+917567302302" className="font-medium mobile-text-base hover:underline">
+            +91 7567302302
+          </a>
+          <p className="text-sm mobile-text-base text-muted-foreground">Mr Amar Jankar - Available 24/7</p>
+        </div>
+      </div>
+    </div>
+  </CardContent>
+</Card>
 
-                <Card className="p-6 mobile-card-padding">
-                  <CardContent className="pt-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                        <Mail className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">Email Support</h3>
-                        <p className="text-muted-foreground mobile-text-base mb-2">Send us your queries anytime</p>
-                        <div className="space-y-1">
-                          <p className="font-medium mobile-text-base">info@lankadhish.com</p>
-                          <p className="text-sm mobile-text-base text-muted-foreground">Response within 2 hours</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+<Card className="p-6 mobile-card-padding">
+  <CardContent className="pt-6">
+    <div className="flex items-start space-x-4">
+      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+        <Mail className="w-6 h-6 text-primary" />
+      </div>
+      <div>
+        <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">Email Support</h3>
+        <p className="text-muted-foreground mobile-text-base mb-2">Send us your queries anytime</p>
+        <div className="space-y-1">
+          <a href="mailto:info@lankadhish.com" className="font-medium mobile-text-base hover:underline">
+            info@lankadhish.com
+          </a>
+          <p className="text-sm mobile-text-base text-muted-foreground">Response within 2 hours</p>
+        </div>
+      </div>
+    </div>
+  </CardContent>
+</Card>
 
-                <Card className="p-6 mobile-card-padding">
-                  <CardContent className="pt-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                        <MapPin className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">Office Address</h3>
-                        <p className="text-muted-foreground mobile-text-base mb-2">Visit our headquarters</p>
-                        <div className="space-y-1">
-                          <p className="font-medium mobile-text-base">Kothariya Solvant, Gondal Road, Rajkot</p>
-                          <p className="text-sm mobile-text-base text-muted-foreground">Mon-Fri: 9AM - 6PM</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+<Card className="p-6 mobile-card-padding">
+  <CardContent className="pt-6">
+    <div className="flex items-start space-x-4">
+      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+        <MapPin className="w-6 h-6 text-primary" />
+      </div>
+      <div>
+        <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">Office Address</h3>
+        <p className="text-muted-foreground mobile-text-base mb-2">Visit our headquarters</p>
+        <div className="space-y-1">
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Kothariya+Solvant,+Gondal+Road,+Rajkot"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium mobile-text-base hover:underline"
+          >
+            Kothariya Solvant, Gondal Road, Rajkot
+          </a>
+          <p className="text-sm mobile-text-base text-muted-foreground">Mon-Fri: 9AM - 6PM</p>
+        </div>
+      </div>
+    </div>
+  </CardContent>
+</Card>
 
-                <Card className="p-6 mobile-card-padding">
-                  <CardContent className="pt-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                        <MessageCircle className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">WhatsApp</h3>
-                        <p className="text-muted-foreground mobile-text-base mb-2">Quick support via WhatsApp</p>
-                        <div className="space-y-1">
-                          <p className="font-medium mobile-text-base">+91 9157575675</p>
-                          <p className="text-sm mobile-text-base text-muted-foreground">Instant messaging support</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+<Card className="p-6 mobile-card-padding">
+  <CardContent className="pt-6">
+    <div className="flex items-start space-x-4">
+      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+        <MessageCircle className="w-6 h-6 text-primary" />
+      </div>
+      <div>
+        <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">WhatsApp</h3>
+        <p className="text-muted-foreground mobile-text-base mb-2">Quick support via WhatsApp</p>
+        <div className="space-y-1">
+          <a
+            href="https://wa.me/919157575675"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium mobile-text-base hover:underline"
+          >
+            +91 9157575675
+          </a>
+          <p className="text-sm mobile-text-base text-muted-foreground">Instant messaging support</p>
+        </div>
+      </div>
+    </div>
+  </CardContent>
+</Card>
+
               </div>
             </div>
 
