@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Blog | Lankadhish Cab Services - Expert Travel Guides</title>
+    <meta name="description" content="Explore our comprehensive travel guides for cab journeys across India. Expert tips, routes, and insights for Gujarat to Mumbai, Delhi, Goa, and more destinations." />
+    <meta name="keywords" content="travel blog, cab service blog, Gujarat travel, Mumbai route, Delhi trip, Goa travel, travel guides, Lankadhish blog" />
+    <meta name="author" content="Lankadhish Cab Services" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="src/assets/cablogo.png" />
+    <link rel="shortcut icon" type="image/png" href="src/assets/cablogo.png" />
+    <link rel="apple-touch-icon" href="src/assets/cablogo.png" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Travel Blog | Lankadhish Cab Services" />
+    <meta property="og:description" content="Expert travel guides and tips for cab journeys across India from Gujarat to major destinations." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lankadhish.com/blog.html" />
+    <meta property="og:image" content="src/assets/cablogo.png" />
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Travel Blog | Lankadhish Cab Services" />
+    <meta name="twitter:description" content="Expert travel guides and tips for cab journeys across India." />
+    <meta name="twitter:image" content="src/assets/cablogo.png" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'hsl(45 100% 51%)',
+                        secondary: '#7c3aed',
+                        accent: '#f59e0b',
+                        background: '#ffffff',
+                        muted: '#f8fafc'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Lankadhish Cab Services Travel Blog",
+        "description": "Expert travel guides and tips for cab journeys across India",
+        "url": "https://lankadhish.com/blog.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Lankadhish Cab Services",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://lankadhish.com/src/assets/cablogo.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://lankadhish.com/blog.html"
+        }
+    }
+    </script>
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-hero { background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%); }
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body class="bg-background">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <img src="src/assets/cablogo.png" alt="Lankadhish" class="h-10 w-10" />
+                    <span class="text-2xl font-bold text-primary">Lankadhish</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+                    <a href="index.html#services" class="text-gray-700 hover:text-primary transition-colors">Services</a>
+                    <a href="index.html#about" class="text-gray-700 hover:text-primary transition-colors">About</a>
+                    <a href="index.html#contact" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+                    <a href="blog.html" class="text-primary font-medium">Blog</a>
+                </div>
+                <a href="index.html#booking" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                    Book Now
+                </a>
+                <!-- Mobile menu button -->
+                <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="index.html" class="block py-2 text-gray-700 hover:text-primary">Home</a>
+                <a href="index.html#services" class="block py-2 text-gray-700 hover:text-primary">Services</a>
+                <a href="index.html#about" class="block py-2 text-gray-700 hover:text-primary">About</a>
+                <a href="index.html#contact" class="block py-2 text-gray-700 hover:text-primary">Contact</a>
+                <a href="blog.html" class="block py-2 text-primary font-medium">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-32 bg-black overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center text-white">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    Travel <span class="text-yellow-400">Blog</span>
+                </h1>
+                <p class="text-xl max-w-3xl mx-auto mb-8">
+                    Insights, tips, and stories from the world of transportation.
+                    Stay informed and travel smarter with our expert advice.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="py-20 bg-background">
+        <div class="container mx-auto px-4">
+            <!-- Loading State -->
+            <div id="loading" class="flex justify-center items-center py-20 hidden">
+                <div class="text-center">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+                    <p class="text-gray-600">Loading blog posts...</p>
+                </div>
+            </div>
+
+            <!-- Blog Grid -->
+            <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog posts will be inserted here by JavaScript -->
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination" class="flex justify-center items-center space-x-2 mt-12">
+                <!-- Pagination will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="src/assets/cablogo.png" alt="Lankadhish" class="h-8 w-8" />
+                        <span class="text-xl font-bold">Lankadhish</span>
+                    </div>
+                    <p class="text-gray-400">Professional cab services across Gujarat and India. Safe, reliable, and affordable transportation.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="index.html#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#services" class="text-gray-400 hover:text-white transition-colors">Local Rides</a></li>
+                        <li><a href="index.html#services" class="text-gray-400 hover:text-white transition-colors">Outstation</a></li>
+                        <li><a href="index.html#services" class="text-gray-400 hover:text-white transition-colors">Airport Transfer</a></li>
+                        <li><a href="index.html#services" class="text-gray-400 hover:text-white transition-colors">Corporate</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📞 +91 9157575675</li>
+                        <li>✉️ krush2752@gmail.com</li>
+                        <li>📍 Gujarat, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Lankadhish Cab Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Blog data (15 blogs with full content)
+        const blogPosts = [
+            {
+                slug: "gujarat-to-mumbai-cab-guide",
+                title: "Complete Guide: Gujarat to Mumbai by Cab",
+                excerpt: "Discover the best routes, stops, and travel tips for your journey from Gujarat to Mumbai. Professional cab service insights included.",
+                author: "Mr Amar Jankar",
+                date: "January 15, 2024",
+                readTime: "8 min read",
+                category: "Travel Guide",
+                image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=400&fit=crop",
+                distance: "525 km",
+                duration: "8-10 hours"
+            },
+            {
+                slug: "gujarat-to-delhi-road-trip",
+                title: "Gujarat to Delhi: Ultimate Road Trip Guide",
+                excerpt: "Plan your perfect road trip from Gujarat to Delhi with our comprehensive guide covering routes, attractions, and booking tips.",
+                author: "Mr Amar Jankar",
+                date: "January 20, 2024",
+                readTime: "12 min read",
+                category: "Road Trip",
+                image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop",
+                distance: "950 km",
+                duration: "12-14 hours"
+            },
+            {
+                slug: "gujarat-to-goa-coastal-route",
+                title: "Best Route from Gujarat to Goa by Cab",
+                excerpt: "Explore the scenic coastal route from Gujarat to Goa. Tips for comfortable travel and must-visit stops along the way.",
+                author: "Mr Amar Jankar",
+                date: "January 25, 2024",
+                readTime: "10 min read",
+                category: "Coastal Route",
+                image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=400&fit=crop",
+                distance: "600 km",
+                duration: "10-12 hours"
+            }
+        ];
+
+        // Add remaining 12 blogs
+        blogPosts.push(
+            {
+                slug: "gujarat-to-bangalore-business-travel",
+                title: "Gujarat to Bangalore: Business Travel Guide",
+                excerpt: "Professional business travel from Gujarat to India's Silicon Valley. Corporate cab services and executive travel tips.",
+                author: "Mr Amar Jankar",
+                date: "January 30, 2024",
+                readTime: "9 min read",
+                category: "Business Travel",
+                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=400&fit=crop",
+                distance: "1200 km",
+                duration: "16-18 hours"
+            },
+            {
+                slug: "gujarat-to-rajasthan-heritage-tour",
+                title: "Gujarat to Rajasthan: Heritage Tour",
+                excerpt: "Explore the royal heritage of Rajasthan from Gujarat. Best routes to Jaipur, Udaipur, and Jodhpur with cultural insights.",
+                author: "Mr Amar Jankar",
+                date: "February 5, 2024",
+                readTime: "11 min read",
+                category: "Heritage Tour",
+                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=400&fit=crop",
+                distance: "400 km",
+                duration: "6-8 hours"
+            },
+            {
+                slug: "gujarat-to-agra-taj-mahal-express",
+                title: "Gujarat to Agra: Taj Mahal Express Journey",
+                excerpt: "Visit the iconic Taj Mahal from Gujarat. Best routes, photography tips, and heritage tour planning for the wonder of the world.",
+                author: "Mr Amar Jankar",
+                date: "February 10, 2024",
+                readTime: "7 min read",
+                category: "Heritage Tour",
+                image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&h=400&fit=crop",
+                distance: "650 km",
+                duration: "10-12 hours"
+            },
+            {
+                slug: "gujarat-to-kerala-backwaters",
+                title: "Gujarat to Kerala: Backwaters Paradise",
+                excerpt: "Discover God's Own Country with our comprehensive travel guide from Gujarat to Kerala. Backwaters, beaches, and cultural experiences.",
+                author: "Mr Amar Jankar",
+                date: "February 15, 2024",
+                readTime: "13 min read",
+                category: "Nature Tour",
+                image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800&h=400&fit=crop",
+                distance: "1100 km",
+                duration: "14-16 hours"
+            },
+            {
+                slug: "gujarat-to-himachal-mountain-adventure",
+                title: "Gujarat to Himachal: Mountain Adventure",
+                excerpt: "Experience the majestic Himalayas with our travel guide from Gujarat to Himachal Pradesh. Hill stations, adventure sports, and scenic routes.",
+                author: "Mr Amar Jankar",
+                date: "February 20, 2024",
+                readTime: "14 min read",
+                category: "Adventure Tour",
+                image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop",
+                distance: "800 km",
+                duration: "12-14 hours"
+            },
+            {
+                slug: "gujarat-to-kashmir-paradise-on-earth",
+                title: "Gujarat to Kashmir: Paradise on Earth",
+                excerpt: "Journey to the crown jewel of India with our comprehensive guide from Gujarat to Kashmir. Dal Lake, gardens, and breathtaking landscapes.",
+                author: "Mr Amar Jankar",
+                date: "February 25, 2024",
+                readTime: "15 min read",
+                category: "Scenic Tour",
+                image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop",
+                distance: "1300 km",
+                duration: "18-20 hours"
+            },
+            {
+                slug: "gujarat-to-pune-business-corridor",
+                title: "Gujarat to Pune: Business Corridor Express",
+                excerpt: "Professional business travel service connecting Gujarat's industrial hub with Pune's automotive and IT corridor.",
+                author: "Mr Amar Jankar",
+                date: "March 1, 2024",
+                readTime: "6 min read",
+                category: "Business Travel",
+                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=400&fit=crop",
+                distance: "450 km",
+                duration: "7-8 hours"
+            },
+            {
+                slug: "gujarat-to-hyderabad-tech-city",
+                title: "Gujarat to Hyderabad: Tech City Connection",
+                excerpt: "Connect Gujarat's industrial strength with Hyderabad's IT excellence. Professional travel service for tech professionals and business travelers.",
+                author: "Mr Amar Jankar",
+                date: "March 5, 2024",
+                readTime: "8 min read",
+                category: "Business Travel",
+                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=400&fit=crop",
+                distance: "900 km",
+                duration: "13-15 hours"
+            },
+            {
+                slug: "gujarat-to-chennai-south-india-gateway",
+                title: "Gujarat to Chennai: South India Gateway",
+                excerpt: "Journey to South India's gateway city Chennai from Gujarat. Experience diverse cultures, traditions, and culinary delights.",
+                author: "Mr Amar Jankar",
+                date: "March 10, 2024",
+                readTime: "11 min read",
+                category: "Cultural Tour",
+                image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800&h=400&fit=crop",
+                distance: "1400 km",
+                duration: "20-22 hours"
+            },
+            {
+                slug: "gujarat-to-kolkata-cultural-capital",
+                title: "Gujarat to Kolkata: Cultural Capital Journey",
+                excerpt: "Explore India's cultural capital Kolkata from Gujarat. Rich literary heritage, art, culture, and authentic Bengali experiences.",
+                author: "Mr Amar Jankar",
+                date: "March 15, 2024",
+                readTime: "10 min read",
+                category: "Cultural Tour",
+                image: "https://images.unsplash.com/photo-1558431382-27e303142255?w=800&h=400&fit=crop",
+                distance: "1200 km",
+                duration: "18-20 hours"
+            },
+            {
+                slug: "gujarat-to-jaipur-pink-city-express",
+                title: "Gujarat to Jaipur: Pink City Express",
+                excerpt: "Explore the magnificent Pink City Jaipur from Gujarat. Royal palaces, vibrant markets, and authentic Rajasthani culture.",
+                author: "Mr Amar Jankar",
+                date: "March 20, 2024",
+                readTime: "7 min read",
+                category: "Heritage Tour",
+                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=400&fit=crop",
+                distance: "350 km",
+                duration: "5-6 hours"
+            },
+            {
+                slug: "gujarat-to-udaipur-city-of-lakes",
+                title: "Gujarat to Udaipur: City of Lakes",
+                excerpt: "Discover the romantic City of Lakes Udaipur from Gujarat. Stunning palaces, serene lakes, and unforgettable royal experiences.",
+                author: "Mr Amar Jankar",
+                date: "March 25, 2024",
+                readTime: "9 min read",
+                category: "Heritage Tour",
+                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=400&fit=crop",
+                distance: "300 km",
+                duration: "4-5 hours"
+            }
+        );
+
+        // Pagination variables
+        let currentPage = 1;
+        const blogsPerPage = 9;
+        const totalPages = Math.ceil(blogPosts.length / blogsPerPage);
+
+        // Function to render blog posts
+        function renderBlogs(page = 1) {
+            const startIndex = (page - 1) * blogsPerPage;
+            const endIndex = startIndex + blogsPerPage;
+            const blogsToShow = blogPosts.slice(startIndex, endIndex);
+
+            const blogGrid = document.getElementById('blog-grid');
+            blogGrid.innerHTML = '';
+
+            blogsToShow.forEach(blog => {
+                const blogCard = `
+                    <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="relative">
+                            <img src="${blog.image}" alt="${blog.title}" class="w-full h-48 object-cover" />
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                                    ${blog.category}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h2 class="text-xl font-bold text-gray-900 mb-3 hover:text-primary transition-colors">
+                                <a href="blog-article.html?slug=${blog.slug}">${blog.title}</a>
+                            </h2>
+                            <p class="text-gray-600 mb-4 line-clamp-3">${blog.excerpt}</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                                <div class="flex items-center space-x-4">
+                                    <span>👤 ${blog.author}</span>
+                                    <span>📅 ${blog.date}</span>
+                                    <span>⏱️ ${blog.readTime}</span>
+                                </div>
+                            </div>
+                            ${blog.distance ? `
+                                <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                                    <span>📍 ${blog.distance}</span>
+                                    <span>🕒 ${blog.duration}</span>
+                                </div>
+                            ` : ''}
+                            <a href="blog-article.html?slug=${blog.slug}"
+                               class="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
+                                Read More →
+                            </a>
+                        </div>
+                    </article>
+                `;
+                blogGrid.innerHTML += blogCard;
+            });
+        }
+
+        // Function to render pagination
+        function renderPagination() {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+
+            // Previous button
+            if (currentPage > 1) {
+                pagination.innerHTML += `
+                    <button onclick="changePage(${currentPage - 1})"
+                            class="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                        Previous
+                    </button>
+                `;
+            }
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                const isActive = i === currentPage;
+                pagination.innerHTML += `
+                    <button onclick="changePage(${i})"
+                            class="px-4 py-2 ${isActive ? 'bg-primary text-white' : 'bg-white border border-gray-300 hover:bg-gray-50'} rounded-lg transition-colors">
+                        ${i}
+                    </button>
+                `;
+            }
+
+            // Next button
+            if (currentPage < totalPages) {
+                pagination.innerHTML += `
+                    <button onclick="changePage(${currentPage + 1})"
+                            class="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                        Next
+                    </button>
+                `;
+            }
+        }
+
+        // Function to change page
+        function changePage(page) {
+            currentPage = page;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            renderBlogs(currentPage);
+            renderPagination();
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderBlogs(1);
+            renderPagination();
+        });
+    </script>
+</body>
+</html>
