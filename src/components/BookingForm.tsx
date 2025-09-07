@@ -31,7 +31,23 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-const bookingFormSchema = z.object({
+// Compact form schema (for quick booking on homepage)
+const compactBookingFormSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  phone: z.string().min(10, "Please enter a valid phone number"),
+  pickupLocation: z.string().min(5, "Please enter a pickup location"),
+  destination: z.string().min(5, "Please enter a destination"),
+  pickupDate: z.string().min(1, "Please select a pickup date"),
+  pickupTime: z.string().min(1, "Please select a pickup time"),
+  // Optional fields for compact form
+  email: z.string().optional(),
+  passengerCount: z.string().optional(),
+  carType: z.string().optional(),
+  specialRequests: z.string().optional(),
+});
+
+// Full form schema (for detailed booking page)
+const fullBookingFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
   phone: z.string().min(10, "Please enter a valid phone number"),
@@ -44,7 +60,9 @@ const bookingFormSchema = z.object({
   specialRequests: z.string().optional(),
 });
 
-type BookingFormData = z.infer<typeof bookingFormSchema>;
+type CompactBookingFormData = z.infer<typeof compactBookingFormSchema>;
+type FullBookingFormData = z.infer<typeof fullBookingFormSchema>;
+type BookingFormData = CompactBookingFormData | FullBookingFormData;
 
 interface BookingFormProps {
   compact?: boolean;
@@ -58,8 +76,11 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
   const [showAnimation, setShowAnimation] = useState(false);
   const [animationSuccess, setAnimationSuccess] = useState(false);
 
+  // Debug logging
+  console.log('📋 BookingForm rendered:', { compact, className });
+
   const form = useForm<BookingFormData>({
-    resolver: zodResolver(bookingFormSchema),
+    resolver: zodResolver(compact ? compactBookingFormSchema : fullBookingFormSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -75,7 +96,8 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
   });
 
   const onSubmit = async (data: BookingFormData) => {
-    console.log('Form submission started:', { compact, data });
+    console.log('🚀 Form submission started:', { compact, data });
+    console.log('📝 Form validation passed successfully');
     setIsSubmitting(true);
     setShowAnimation(true);
     setAnimationSuccess(false);
@@ -268,10 +290,11 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
                   />
                 </div>
 
-                <Button 
-                  type="submit" 
-                  className="hero-button w-full" 
+                <Button
+                  type="submit"
+                  className="hero-button w-full"
                   disabled={isSubmitting}
+                  onClick={() => console.log('🔘 Submit button clicked!')}
                 >
                   {isSubmitting ? "Submitting..." : "Request Booking"}
                 </Button>
