@@ -17,7 +17,7 @@ import {
   Car,
   MapPin
 } from "lucide-react";
-import heroImage from "@/assets/heroimage-removebg-preview.png";
+import heroImage from "@/assets/hrimg.png";
 import BookingForm from "@/components/BookingForm";
 
 // Counter Animation Component
