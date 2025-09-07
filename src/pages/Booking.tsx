@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calendar, Clock, MapPin, Phone, User, Car, CheckCircle, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { sendBookingEmail } from "@/services/emailService";
+// Removed email service dependency - using only n8n webhook
 import LocationAutocomplete from "@/components/LocationAutocomplete";
 import TaxiAnimation from "@/components/TaxiAnimation";
 import { n8nService } from "@/services/n8nService";
@@ -68,25 +68,8 @@ const Booking = () => {
       });
 
       if (result.success) {
-        // Send email backup
-        try {
-          await sendBookingEmail({
-            name: formData.passengerName,
-            email: formData.passengerEmail || 'no-email@provided.com',
-            phone: formData.passengerPhone,
-            pickupLocation: formData.pickupLocation,
-            destination: formData.dropLocation,
-            pickupDate: formData.date,
-            pickupTime: formData.time,
-            passengerCount: '1',
-            carType: formData.cabType,
-            specialRequests: formData.specialRequests,
-          });
-          console.log('Email backup sent successfully');
-        } catch (emailError) {
-          console.warn('Email backup failed, but n8n submission was successful:', emailError);
-        }
-
+        // Booking submitted successfully to n8n webhook
+        console.log('Booking submitted successfully to n8n:', result);
         setAnimationSuccess(true);
 
         // Reset form after animation

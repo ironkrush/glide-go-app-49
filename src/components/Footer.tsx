@@ -80,8 +80,8 @@ const Footer = () => {
 
 <div className="flex items-center space-x-3">
   <Mail className="w-5 h-5 text-primary" />
-  <a href="mailto:info@lankadhish.com" className="text-soft hover:underline">
-    info@lankadhish.com
+  <a href="mailto:lankadhishcabservice@gmail.com" className="text-soft text-[.8rem] hover:underline">
+    lankadhishcabservice@gmail.com
   </a>
 </div>
 

@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CalendarIcon, Clock, Users, Car, MapPin, Phone, Mail, CheckCircle, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { sendBookingEmail } from "@/services/emailService";
+// Removed email service dependency - using only n8n webhook
 import LocationAutocomplete from "@/components/LocationAutocomplete";
 import TaxiAnimation from "@/components/TaxiAnimation";
 import { n8nService } from "@/services/n8nService";
@@ -75,6 +75,7 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
   });
 
   const onSubmit = async (data: BookingFormData) => {
+    console.log('Form submission started:', { compact, data });
     setIsSubmitting(true);
     setShowAnimation(true);
     setAnimationSuccess(false);
@@ -84,6 +85,7 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
 
       if (compact) {
         // Use quick booking service for compact form
+        console.log('Submitting quick booking...');
         result = await n8nService.submitQuickBooking({
           name: data.name,
           phone: data.phone,
@@ -94,6 +96,7 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
         });
       } else {
         // Use full booking service for detailed form
+        console.log('Submitting full booking...');
         result = await n8nService.submitBooking({
           name: data.name,
           email: data.email,
@@ -109,42 +112,8 @@ const BookingForm = ({ compact = false, className = "" }: BookingFormProps) => {
       }
 
       if (result.success) {
-        // Send email backup for all forms
-        try {
-          if (compact) {
-            // For quick booking, send simplified email
-            await sendBookingEmail({
-              name: data.name,
-              email: 'quick-booking@lankadhish.com', // Default email for quick bookings
-              phone: data.phone,
-              pickupLocation: data.pickupLocation,
-              destination: data.destination,
-              pickupDate: data.pickupDate,
-              pickupTime: data.pickupTime,
-              passengerCount: '1', // Default for quick booking
-              carType: 'Standard', // Default for quick booking
-              specialRequests: 'Quick booking from homepage'
-            });
-          } else {
-            // For detailed booking, send full email
-            await sendBookingEmail({
-              name: data.name,
-              email: data.email,
-              phone: data.phone,
-              pickupLocation: data.pickupLocation,
-              destination: data.destination,
-              pickupDate: data.pickupDate,
-              pickupTime: data.pickupTime,
-              passengerCount: data.passengerCount,
-              carType: data.carType,
-              specialRequests: data.specialRequests
-            });
-          }
-          console.log('Email backup sent successfully');
-        } catch (emailError) {
-          console.warn('Email backup failed, but n8n submission was successful:', emailError);
-        }
-
+        // Form submitted successfully to n8n webhook
+        console.log('Booking submitted successfully to n8n:', result);
         setAnimationSuccess(true);
 
         // Reset form after animation

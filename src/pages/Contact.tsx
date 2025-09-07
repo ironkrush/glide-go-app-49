@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, MessageCircle, Car, CheckCircle, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { sendContactEmail } from "@/services/emailService";
+// Removed email service dependency - using only n8n webhook
 import TaxiAnimation from "@/components/TaxiAnimation";
 import { n8nService } from "@/services/n8nService";
 import { Helmet } from "react-helmet-async";
@@ -75,20 +75,8 @@ const Contact = () => {
       });
 
       if (result.success) {
-        // Send email backup
-        try {
-          await sendContactEmail({
-            name: data.name,
-            email: data.email,
-            phone: data.phone,
-            subject: data.subject,
-            message: data.message,
-          });
-          console.log('Email backup sent successfully');
-        } catch (emailError) {
-          console.warn('Email backup failed, but n8n submission was successful:', emailError);
-        }
-
+        // Contact form submitted successfully to n8n webhook
+        console.log('Contact form submitted successfully to n8n:', result);
         setAnimationSuccess(true);
 
         // Reset form after animation
@@ -209,8 +197,8 @@ const Contact = () => {
         <h3 className="font-semibold text-lg md:text-lg mobile-heading-sm mb-2">Email Support</h3>
         <p className="text-muted-foreground mobile-text-base mb-2">Send us your queries anytime</p>
         <div className="space-y-1">
-          <a href="mailto:info@lankadhish.com" className="font-medium mobile-text-base hover:underline">
-            info@lankadhish.com
+          <a href="mailto:lankadhishcabservice@gmail.com" className="font-medium mobile-text-base hover:underline">
+            lankadhishcabservice@gmail.com
           </a>
           <p className="text-sm mobile-text-base text-muted-foreground">Response within 2 hours</p>
         </div>

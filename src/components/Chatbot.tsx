@@ -169,7 +169,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
                 </div>
               ))}
 
-              {isTyping && <p className="text-xs text-gray-500">Bot is typing...</p>}
+              {isTyping && <p className="text-xs text-gray-500">Amar is typing...</p>}
               <div ref={messagesEndRef} />
             </div>
 
