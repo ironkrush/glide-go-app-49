@@ -258,10 +258,10 @@ const Booking = () => {
                           <SelectValue placeholder="Select vehicle type" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="mini">Mini - ₹25/km (4 passengers)</SelectItem>
-                          <SelectItem value="sedan">Sedan - ₹35/km (4 passengers)</SelectItem>
-                          <SelectItem value="suv">SUV - ₹55/km (6-7 passengers)</SelectItem>
-                          <SelectItem value="luxury">Luxury - ₹85/km (4 passengers)</SelectItem>
+                          <SelectItem value="mini">Mini - ₹10-12/km (4 passengers)</SelectItem>
+                          <SelectItem value="sedan">Sedan - ₹14-15/km (4 passengers)</SelectItem>
+                          <SelectItem value="suv">SUV - ₹18-20/km (6-7 passengers)</SelectItem>
+                          <SelectItem value="luxury">Luxury - ₹60/km (4 passengers)</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
