@@ -14,6 +14,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import BlogAdmin from "./pages/BlogAdminNew";
 import NotFound from "./pages/NotFound";
+import Analytics from "@/components/Analytics";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+          <Analytics />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
