@@ -302,24 +302,24 @@ const Booking = () => {
           <h2 className="text-3xl md:text-3xl mobile-heading-md font-bold mb-4">Need Immediate Assistance?</h2>
           <p className="text-soft mobile-text-base mb-6">Call us directly for urgent bookings or special requirements</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-  <a href="tel:+919876543210">
+  <a href="tel:+919157575675">
     <Button
       size="lg"
       variant="outline"
       className="border-white text-black hover:bg-black hover:text-white mobile-button"
     >
       <Phone className="w-4 h-4 mr-2" />
-      Call: +91 98765 43210
+      Call: +91 9157575675
     </Button>
   </a>
 
-  <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+  <a href="https://wa.me/919157575675" target="_blank" rel="noopener noreferrer">
     <Button
       size="lg"
       variant="outline"
       className="border-white text-black hover:bg-black hover:text-white mobile-button"
     >
-      WhatsApp: +91 98765 43210
+      WhatsApp: +91 9157575675
     </Button>
   </a>
 </div>
